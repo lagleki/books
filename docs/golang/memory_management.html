@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricky Interview Questions for Senior Golang Developers</title>
+    <style id="tailwind-styles">
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.prose{color:var(--tw-prose-body);max-width:65ch}.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-top:1.2em;margin-bottom:1.2em}.prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);text-decoration:underline;font-weight:500}.prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{font-weight:400;color:var(--tw-prose-counters)}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-top:3em;margin-bottom:3em}.prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-style:italic;color:var(--tw-prose-quotes);border-inline-start-width:.25rem;border-inline-start-color:var(--tw-prose-quote-borders);quotes:"\201C""\201D""\2018""\2019";margin-top:1.6em;margin-bottom:1.6em;padding-inline-start:1em}.prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:800;font-size:2.25em;margin-top:0;margin-bottom:.8888889em;line-height:1.1111111}.prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:900;color:inherit}.prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:700;font-size:1.5em;margin-top:2em;margin-bottom:1em;line-height:1.3333333}.prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:800;color:inherit}.prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;font-size:1.25em;margin-top:1.6em;margin-bottom:.6em;line-height:1.6}.prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.5em;margin-bottom:.5em;line-height:1.5}.prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-top:2em;margin-bottom:2em}.prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-family:inherit;color:var(--tw-prose-kbd);box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);font-size:.875em;border-radius:.3125rem;padding-top:.1875em;padding-inline-end:.375em;padding-bottom:.1875em;padding-inline-start:.375em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-weight:600;font-size:.875em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-pre-code);background-color:var(--tw-prose-pre-bg);overflow-x:auto;font-weight:400;font-size:.875em;line-height:1.7142857;margin-top:1.7142857em;margin-bottom:1.7142857em;border-radius:.375rem;padding-top:.8571429em;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-inline-start:1.1428571em}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:transparent;border-width:0;border-radius:0;padding:0;font-weight:inherit;color:inherit;font-size:inherit;font-family:inherit;line-height:inherit}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){width:100%;table-layout:auto;margin-top:2em;margin-bottom:2em;font-size:.875em;line-height:1.7142857}.prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-th-borders)}.prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;vertical-align:bottom;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-td-borders)}.prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:baseline}.prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-width:1px;border-top-color:var(--tw-prose-th-borders)}.prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.prose :where(th,td):not(:where([class~=not-prose],[class~=not-prose] *)){text-align:start}.prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:rgba(0,0,0,.5);--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;margin-bottom:.5em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(.prose>ul>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ul>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(.prose>ol>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ol>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-top:.5714286em;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.visible{visibility:visible}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.isolate{isolation:isolate}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mt-12{margin-top:3rem}.block{display:block}.inline{display:inline}.flex{display:flex}.max-w-4xl{max-width:56rem}.max-w-none{max-width:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.justify-between{justify-content:space-between}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.px-4{padding-left:1rem;padding-right:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pt-6{padding-top:1.5rem}.uppercase{text-transform:uppercase}.lowercase{text-transform:lowercase}.underline{text-decoration-line:underline}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.\[b\:2\]{b:2}a{color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}a,a:hover{--tw-text-opacity:1}a:hover{color:rgb(30 64 175/var(--tw-text-opacity,1))}.prose a{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}.prose a:hover{--tw-text-opacity:1;color:rgb(30 64 175/var(--tw-text-opacity,1))}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="mb-12 border-b border-gray-200 pb-6 flex justify-between">
+            <div><a href="introduction_to_go.html" class="nav-link">Previous</a></div>
+            <div><a href="index.html" class="nav-link">Table of Contents</a></div>
+            <div><a href="optimizing_go_code.html" class="nav-link">Next</a></div>
+        </header>
+
+        <main class="prose max-w-none">
+            <h1>Tricky Interview Questions for Senior Golang Developers</h1>
+<h3>Question 1: Method Sets and Interfaces</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-keyword">type</span> I <span class="hljs-keyword">interface</span> {
+	M()
+}
+
+<span class="hljs-keyword">type</span> T <span class="hljs-keyword">struct</span> {
+	S <span class="hljs-type">string</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t T)</span></span> M() {
+	fmt.Println(t.S)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-keyword">var</span> i I = T{<span class="hljs-string">"hello"</span>}
+	i.M()
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>Can you modify the <code>M()</code> method to use a pointer receiver <code>(t *T)</code> instead of a value receiver <code>(t T)</code>? What are the implications of this change?</p>
+<p><strong>Solution:</strong></p>
+<p>Yes, you can modify the <code>M()</code> method to use a pointer receiver. However, this changes the method set of the <code>T</code> type.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-keyword">type</span> I <span class="hljs-keyword">interface</span> {
+	M()
+}
+
+<span class="hljs-keyword">type</span> T <span class="hljs-keyword">struct</span> {
+	S <span class="hljs-type">string</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t *T)</span></span> M() {
+	fmt.Println(t.S)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-keyword">var</span> i I = &amp;T{<span class="hljs-string">"hello"</span>} <span class="hljs-comment">// Changed to &amp;T</span>
+	i.M()
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>When <code>M()</code> has a value receiver, both <code>T</code> and <code>*T</code> implement <code>I</code>. When <code>M()</code> has a pointer receiver, only <code>*T</code> implements <code>I</code>. Therefore, you must assign a pointer of type <code>T</code> to the interface <code>i</code>.</p>
+<h3>Question 2: Shadowing Variables</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	fmt.Println(x)
+	x := <span class="hljs-number">5</span>
+	fmt.Println(x)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain the concept of variable shadowing.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be:</p>
+<pre><code class="hljs">10
+5
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>Variable shadowing occurs when a variable is declared in an inner scope with the same name as a variable in an outer scope. In this case, the <code>x</code> variable declared inside the <code>main</code> function shadows the <code>x</code> variable declared in the global scope. Therefore, the first <code>fmt.Println(x)</code> prints the value of the global <code>x</code> variable, which is 10, and the second <code>fmt.Println(x)</code> prints the value of the local <code>x</code> variable, which is 5.</p>
+<h3>Question 3: Defer, Panic, and Recover Order</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+		<span class="hljs-keyword">if</span> r := <span class="hljs-built_in">recover</span>(); r != <span class="hljs-literal">nil</span> {
+			fmt.Println(<span class="hljs-string">"Recovered:"</span>, r)
+		}
+	}()
+
+	<span class="hljs-keyword">defer</span> fmt.Println(<span class="hljs-string">"First defer"</span>)
+	<span class="hljs-built_in">panic</span>(<span class="hljs-string">"Something went wrong"</span>)
+	<span class="hljs-keyword">defer</span> fmt.Println(<span class="hljs-string">"Second defer"</span>)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain the order in which <code>defer</code> statements are executed when a panic occurs.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be:</p>
+<pre><code class="hljs">First defer
+<span class="hljs-symbol">Recovered:</span> Something went wrong
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>When a panic occurs, the <code>defer</code> statements are executed in reverse order of their declaration. In this case, the <code>defer fmt.Println("First defer")</code> statement is executed first, printing “First defer”. Then, the <code>defer func() { ... }()</code> statement is executed, which recovers from the panic and prints “Recovered: Something went wrong”. The <code>defer fmt.Println("Second defer")</code> statement is not executed because the panic occurred before it.</p>
+<h3>Question 4: Struct Embedding and Method Promotion</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-keyword">type</span> A <span class="hljs-keyword">struct</span> {
+	Name <span class="hljs-type">string</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a A)</span></span> PrintName() {
+	fmt.Println(<span class="hljs-string">"A's name:"</span>, a.Name)
+}
+
+<span class="hljs-keyword">type</span> B <span class="hljs-keyword">struct</span> {
+	A
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	b := B{A{Name: <span class="hljs-string">"Alice"</span>}}
+	b.PrintName()
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>Explain how struct embedding works in Go. What is method promotion?</p>
+<p><strong>Solution:</strong></p>
+<p>Struct embedding allows you to include one struct inside another struct. Method promotion allows you to call the methods of the embedded struct directly on the outer struct.</p>
+<p><strong>Explanation:</strong></p>
+<p>In this case, the <code>B</code> struct embeds the <code>A</code> struct. This means that the <code>B</code> struct has all the fields and methods of the <code>A</code> struct. The <code>PrintName()</code> method of the <code>A</code> struct is promoted to the <code>B</code> struct, so you can call it directly on the <code>b</code> variable.</p>
+<h3>Question 5: Channel Direction</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sendOnly</span><span class="hljs-params">(ch <span class="hljs-keyword">chan</span>&lt;- <span class="hljs-type">int</span>)</span></span> {
+	ch &lt;- <span class="hljs-number">1</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">receiveOnly</span><span class="hljs-params">(ch &lt;-<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>)</span></span> {
+	fmt.Println(&lt;-ch)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>, <span class="hljs-number">1</span>)
+	sendOnly(ch)
+	receiveOnly(ch)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>Explain the purpose of channel direction in Go. How do <code>chan&lt;-</code> and <code>&lt;-chan</code> work?</p>
+<p><strong>Solution:</strong></p>
+<p>Channel direction is used to specify whether a channel can be used for sending or receiving. <code>chan&lt;-</code> specifies a send-only channel, and <code>&lt;-chan</code> specifies a receive-only channel.</p>
+<p><strong>Explanation:</strong></p>
+<p>In this case, the <code>sendOnly</code> function takes a send-only channel as an argument. This means that the <code>sendOnly</code> function can only send values to the channel, and it cannot receive values from the channel. The <code>receiveOnly</code> function takes a receive-only channel as an argument. This means that the <code>receiveOnly</code> function can only receive values from the channel, and it cannot send values to the channel.</p>
+<h3>Question 6: Select with Default Case</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"time"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>)
+
+	<span class="hljs-keyword">select</span> {
+	<span class="hljs-keyword">case</span> val := &lt;-ch:
+		fmt.Println(<span class="hljs-string">"Received:"</span>, val)
+	<span class="hljs-keyword">default</span>:
+		fmt.Println(<span class="hljs-string">"No value received"</span>)
+	}
+
+	time.Sleep(<span class="hljs-number">1</span> * time.Second)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain the purpose of the <code>default</code> case in a <code>select</code> statement.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be:</p>
+<pre><code class="hljs"><span class="hljs-attribute">No value received</span>
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>The <code>select</code> statement waits on multiple channel operations. If none of the channel operations are ready, the <code>default</code> case is executed. In this case, the channel <code>ch</code> is empty, so the <code>case val := &lt;-ch</code> branch is not ready. Therefore, the <code>default</code> case is executed, printing “No value received”.</p>
+<h3>Question 7: Race Conditions with Maps</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"sync"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">int</span>)
+	<span class="hljs-keyword">var</span> wg sync.WaitGroup
+
+	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++ {
+		wg.Add(<span class="hljs-number">1</span>)
+		<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(i <span class="hljs-type">int</span>)</span></span> {
+			<span class="hljs-keyword">defer</span> wg.Done()
+			m[i] = i
+		}(i)
+	}
+
+	wg.Wait()
+	fmt.Println(<span class="hljs-string">"Map:"</span>, m)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>The code above attempts to concurrently write to a map. Identify the potential issue and explain how to fix it.</p>
+<p><strong>Solution:</strong></p>
+<p>The issue is a race condition. Multiple goroutines are trying to access and modify the map concurrently without any synchronization mechanism. This can lead to unpredictable and incorrect results.</p>
+<p>To fix this, we need to protect the map using a mutex.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"sync"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">int</span>)
+	<span class="hljs-keyword">var</span> wg sync.WaitGroup
+	<span class="hljs-keyword">var</span> mu sync.Mutex <span class="hljs-comment">// Mutex to protect the map</span>
+
+	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++ {
+		wg.Add(<span class="hljs-number">1</span>)
+		<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(i <span class="hljs-type">int</span>)</span></span> {
+			<span class="hljs-keyword">defer</span> wg.Done()
+			mu.Lock()   <span class="hljs-comment">// Acquire the lock</span>
+			m[i] = i    <span class="hljs-comment">// Write to the map</span>
+			mu.Unlock() <span class="hljs-comment">// Release the lock</span>
+		}(i)
+	}
+
+	wg.Wait()
+	fmt.Println(<span class="hljs-string">"Map:"</span>, m)
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>By using a <code>sync.Mutex</code>, we ensure that only one goroutine can access and modify the map at a time. The <code>mu.Lock()</code> method acquires the lock before writing to the map, and <code>mu.Unlock()</code> releases the lock after the write. This prevents race conditions and ensures that the map is updated correctly.</p>
+<h3>Question 8: Understanding the Zero Value</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>What is the zero value of the following types in Go: <code>int</code>, <code>bool</code>, <code>string</code>, <code>struct</code>, <code>pointer</code>, <code>slice</code>, <code>map</code>, <code>channel</code>, <code>interface</code>?</p>
+<p><strong>Solution:</strong></p>
+<ul>
+<li><code>int</code>: 0</li>
+<li><code>bool</code>: <code>false</code></li>
+<li><code>string</code>: <code>""</code> (empty string)</li>
+<li><code>struct</code>: A struct with all fields set to their zero values.</li>
+<li><code>pointer</code>: <code>nil</code></li>
+<li><code>slice</code>: <code>nil</code></li>
+<li><code>map</code>: <code>nil</code></li>
+<li><code>channel</code>: <code>nil</code></li>
+<li><code>interface</code>: <code>nil</code></li>
+</ul>
+<h3>Question 9: Using <code>time.After</code></h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"time"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	timeout := time.After(<span class="hljs-number">2</span> * time.Second)
+	fmt.Println(<span class="hljs-string">"Waiting..."</span>)
+	&lt;-timeout
+	fmt.Println(<span class="hljs-string">"Timeout!"</span>)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>Explain what the code above does and what it outputs.</p>
+<p><strong>Solution:</strong></p>
+<p>The code waits for 2 seconds and then prints “Timeout!”.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>time.After</code> function returns a channel that receives the current time after the specified duration. In this case, the <code>timeout</code> variable is assigned a channel that will receive the current time after 2 seconds. The <code>&lt;-timeout</code> statement blocks until the channel receives a value. After 2 seconds, the channel receives the current time, and the <code>&lt;-timeout</code> statement unblocks, allowing the program to continue execution and print “Timeout!”.</p>
+<h3>Question 10: Working with Variadic Functions</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sum</span><span class="hljs-params">(nums ...<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> {
+	total := <span class="hljs-number">0</span>
+	<span class="hljs-keyword">for</span> _, num := <span class="hljs-keyword">range</span> nums {
+		total += num
+	}
+	<span class="hljs-keyword">return</span> total
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	fmt.Println(sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>))
+	fmt.Println(sum(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>))
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>Explain how variadic functions work in Go. What is the type of the <code>nums</code> parameter in the <code>sum</code> function?</p>
+<p><strong>Solution:</strong></p>
+<p>Variadic functions are functions that can take a variable number of arguments. The type of the <code>nums</code> parameter in the <code>sum</code> function is <code>[]int</code> (a slice of integers).</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>...</code> syntax in the function signature indicates that the function is variadic. When a variadic function is called, the arguments are passed as a slice to the function. In this case, the <code>sum</code> function takes a variable number of integers as arguments. The arguments are passed as a slice of integers to the <code>nums</code> parameter. The <code>sum</code> function then iterates over the slice and calculates the sum of the integers.</p>
+
+        </main>
+
+        <footer class="mt-12 border-t border-gray-200 pt-6 flex justify-between">
+            <div><a href="introduction_to_go.html" class="nav-link">Previous</a></div>
+            <div><a href="index.html" class="nav-link">Table of Contents</a></div>
+            <div><a href="optimizing_go_code.html" class="nav-link">Next</a></div>
+        </footer>
+    </div>
+    <script>
+        async function runCode(codeElementId, outputElementId, language) {
+            const codeElement = document.getElementById(codeElementId);
+            const outputElement = document.getElementById(outputElementId);
+            const code = codeElement.textContent;
+            outputElement.innerHTML = 'Running...';
+
+            try {
+                if (language === 'go') {
+                    // Load wasm_exec.js if not already loaded
+                    if (!window.Go) {
+                        await new Promise((resolve, reject) => {
+                            const script = document.createElement('script');
+                            script.src = '../wasm/wasm_exec.js';
+                            script.onload = resolve;
+                            script.onerror = reject;
+                            document.head.appendChild(script);
+                        });
+                    }
+
+                    // Initialize Go Wasm instance if not already done
+                    if (!window.goRunnerInstance) {
+                        const go = new Go();
+                        const result = await WebAssembly.instantiateStreaming(
+                            fetch('../wasm/go_runner.wasm'),
+                            go.importObject
+                        );
+                        window.goRunnerInstance = result.instance;
+                        go.run(window.goRunnerInstance);
+                    }
+
+                    // Execute the code
+                    const result = await window.executeGoCode(code);
+                    if (result.error) {
+                        outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                    } else {
+                        outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                    }
+                } else if (language === 'csharp') {
+                    if (!window.csharpWasmRuntimeStarted) {
+                        outputElement.innerHTML = 'Loading .NET Wasm runtime...';
+                        try {
+                            // Dynamically load blazor.webassembly.js if not already present
+                            if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
+                                const script = document.createElement('script');
+                                script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.defer = true;
+                                document.body.appendChild(script);
+
+                                // Wait for DotNet to be available
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            } else {
+                                // If script tag exists, still wait for DotNet to be ready
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            }
+                            window.csharpWasmRuntimeStarted = true;
+                            outputElement.innerHTML = '.NET Wasm runtime loaded. Ready to run C# code.';
+                        } catch (loadError) {
+                            console.error("Error loading .NET Wasm runtime:", loadError);
+                            outputElement.innerHTML = `<pre style="color: red;">Error loading .NET Wasm runtime:\n${loadError}</pre>`;
+                            return;
+                        }
+                    }
+
+                    try {
+                        outputElement.innerHTML = 'Executing C# code...';
+                        if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
+                            outputElement.innerHTML = `<pre style="color: red;">.NET runtime not available for invoking method.</pre>`;
+                            return;
+                        }
+
+                        const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
+                        if (result.error) {
+                            outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                        } else {
+                            outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                        }
+                    } catch (execError) {
+                        console.error("Error executing C# code:", execError);
+                        outputElement.innerHTML = `<pre style="color: red;">Error executing C# code:\n${execError.message || execError}</pre>`;
+                    }
+                } else {
+                    outputElement.innerHTML = `<p>Execution for ${language} is not supported.</p>`;
+                }
+            } catch (error) {
+                outputElement.innerHTML = `<pre style="color: red;">Error:\n${error.message}</pre>`;
+                console.error('Code execution error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

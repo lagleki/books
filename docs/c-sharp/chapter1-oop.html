@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Oriented Programming (OOP) in C#</title>
+    <style id="tailwind-styles">
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.prose{color:var(--tw-prose-body);max-width:65ch}.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-top:1.2em;margin-bottom:1.2em}.prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);text-decoration:underline;font-weight:500}.prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{font-weight:400;color:var(--tw-prose-counters)}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-top:3em;margin-bottom:3em}.prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-style:italic;color:var(--tw-prose-quotes);border-inline-start-width:.25rem;border-inline-start-color:var(--tw-prose-quote-borders);quotes:"\201C""\201D""\2018""\2019";margin-top:1.6em;margin-bottom:1.6em;padding-inline-start:1em}.prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:800;font-size:2.25em;margin-top:0;margin-bottom:.8888889em;line-height:1.1111111}.prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:900;color:inherit}.prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:700;font-size:1.5em;margin-top:2em;margin-bottom:1em;line-height:1.3333333}.prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:800;color:inherit}.prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;font-size:1.25em;margin-top:1.6em;margin-bottom:.6em;line-height:1.6}.prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.5em;margin-bottom:.5em;line-height:1.5}.prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-top:2em;margin-bottom:2em}.prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-family:inherit;color:var(--tw-prose-kbd);box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);font-size:.875em;border-radius:.3125rem;padding-top:.1875em;padding-inline-end:.375em;padding-bottom:.1875em;padding-inline-start:.375em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-weight:600;font-size:.875em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-pre-code);background-color:var(--tw-prose-pre-bg);overflow-x:auto;font-weight:400;font-size:.875em;line-height:1.7142857;margin-top:1.7142857em;margin-bottom:1.7142857em;border-radius:.375rem;padding-top:.8571429em;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-inline-start:1.1428571em}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:transparent;border-width:0;border-radius:0;padding:0;font-weight:inherit;color:inherit;font-size:inherit;font-family:inherit;line-height:inherit}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){width:100%;table-layout:auto;margin-top:2em;margin-bottom:2em;font-size:.875em;line-height:1.7142857}.prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-th-borders)}.prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;vertical-align:bottom;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-td-borders)}.prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:baseline}.prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-width:1px;border-top-color:var(--tw-prose-th-borders)}.prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.prose :where(th,td):not(:where([class~=not-prose],[class~=not-prose] *)){text-align:start}.prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:rgba(0,0,0,.5);--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;margin-bottom:.5em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(.prose>ul>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ul>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(.prose>ol>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ol>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-top:.5714286em;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.visible{visibility:visible}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.isolate{isolation:isolate}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mt-12{margin-top:3rem}.block{display:block}.inline{display:inline}.flex{display:flex}.max-w-4xl{max-width:56rem}.max-w-none{max-width:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.justify-between{justify-content:space-between}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.px-4{padding-left:1rem;padding-right:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pt-6{padding-top:1.5rem}.uppercase{text-transform:uppercase}.lowercase{text-transform:lowercase}.underline{text-decoration-line:underline}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.\[b\:2\]{b:2}a{color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}a,a:hover{--tw-text-opacity:1}a:hover{color:rgb(30 64 175/var(--tw-text-opacity,1))}.prose a{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}.prose a:hover{--tw-text-opacity:1;color:rgb(30 64 175/var(--tw-text-opacity,1))}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="mb-12 border-b border-gray-200 pb-6 flex justify-between">
+            <div></div>
+            <div><a href="index.html" class="nav-link">Table of Contents</a></div>
+            <div><a href="chapter10-code-smells.html" class="nav-link">Next</a></div>
+        </header>
+
+        <main class="prose max-w-none">
+            <h1>Object-Oriented Programming (OOP) in C#</h1>
+<h2>Introduction to OOP Principles</h2>
+<p>Object-Oriented Programming (OOP) is a programming paradigm based on the concept of “objects”, which contain data in the form of fields (attributes) and code in the form of methods (procedures). C# is an object-oriented language that supports the four core principles of OOP:</p>
+<ul>
+<li><strong>Encapsulation:</strong> Bundling data (attributes) and methods that operate on the data into a single unit (class). It hides the internal state of the object and protects it from outside access, exposing only necessary information through a public interface.</li>
+<li><strong>Inheritance:</strong> Creating new classes (derived classes) from existing classes (base classes). Derived classes inherit the attributes and methods of the base class, promoting code reuse and establishing “is-a” relationships.</li>
+<li><strong>Polymorphism:</strong> The ability of an object to take on many forms. It allows objects of different classes to be treated as objects of a common type, enabling code flexibility and extensibility. Polymorphism is achieved through inheritance and interfaces.</li>
+<li><strong>Abstraction:</strong> Simplifying complex reality by modeling classes based on essential attributes and behaviors, hiding unnecessary implementation details from the user. Abstract classes and interfaces are used to achieve abstraction in C#.</li>
+</ul>
+<h2>Tricky Interview Question</h2>
+<p><strong>Question:</strong> Explain the difference between an abstract class and an interface in C#. When would you use one over the other?</p>
+<h2>Code Example</h2>
+<pre><code class="hljs language-csharp"><span class="hljs-comment">// Interface</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IShape</span>
+{
+    <span class="hljs-function"><span class="hljs-built_in">double</span> <span class="hljs-title">GetArea</span>()</span>;
+}
+
+<span class="hljs-comment">// Abstract class</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Shape</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> Name { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-built_in">double</span> <span class="hljs-title">GetArea</span>()</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> <span class="hljs-built_in">string</span> <span class="hljs-title">GetDescription</span>()</span>
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"This is a shape."</span>;
+    }
+}
+
+<span class="hljs-comment">// Concrete class inheriting from abstract class and implementing interface</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> : <span class="hljs-title">Shape</span>, <span class="hljs-title">IShape</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">double</span> Radius { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-built_in">double</span> <span class="hljs-title">GetArea</span>()</span>
+    {
+        <span class="hljs-keyword">return</span> Math.PI * Radius * Radius;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-built_in">string</span> <span class="hljs-title">GetDescription</span>()</span>
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"This is a circle."</span>;
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span> : <span class="hljs-title">Shape</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">double</span> Width { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">double</span> Height { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-built_in">double</span> <span class="hljs-title">GetArea</span>()</span>
+    {
+        <span class="hljs-keyword">return</span> Width * Height;
+    }
+}
+</code></pre>
+<h2>Detailed Answer</h2>
+<p><strong>Abstract Class:</strong></p>
+<ul>
+<li>Can have both abstract and non-abstract methods (concrete methods with implementation).</li>
+<li>Can have fields (member variables).</li>
+<li>Can have constructors.</li>
+<li>A class can inherit from only one abstract class.</li>
+<li>Provides a base implementation that derived classes can inherit and extend.</li>
+</ul>
+<p><strong>Interface:</strong></p>
+<ul>
+<li>Can only have method declarations (no implementation). From C# 8.0, interfaces can have default implementations for members.</li>
+<li>Cannot have fields (member variables).</li>
+<li>Cannot have constructors.</li>
+<li>A class can implement multiple interfaces.</li>
+<li>Defines a contract that implementing classes must adhere to.</li>
+</ul>
+<p><strong>When to use which:</strong></p>
+<ul>
+<li><strong>Abstract Class:</strong> Use when you want to provide a common base implementation for a family of classes, and you expect derived classes to share some common functionality. Also, use when you need to maintain a state (fields).</li>
+<li><strong>Interface:</strong> Use when you want to define a contract that multiple unrelated classes can implement. Use when you want to achieve polymorphism and allow objects of different types to be treated as objects of a common type. Also, use when you want to define a set of methods that a class <em>must</em> implement.</li>
+</ul>
+<p><strong>Potential Pitfalls:</strong></p>
+<ul>
+<li><strong>Abstract Class:</strong> Tight coupling between base class and derived classes. Changes to the base class can affect derived classes.</li>
+<li><strong>Interface:</strong> Interface pollution (adding methods to an interface that not all implementing classes need).</li>
+</ul>
+<h2>Code Debugging Task</h2>
+<p><strong>Task:</strong> Find and fix the bug in the following code that violates the Liskov Substitution Principle.</p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Bird</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fly</span>()</span>
+    {
+        Console.WriteLine(<span class="hljs-string">"Bird is flying"</span>);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Ostrich</span> : <span class="hljs-title">Bird</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fly</span>()</span>
+    {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Exception(<span class="hljs-string">"Ostrich cannot fly"</span>);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
+    {
+        Bird bird = <span class="hljs-keyword">new</span> Ostrich();
+        bird.Fly(); <span class="hljs-comment">// This throws an exception</span>
+    }
+}
+</code></pre>
+<h2>Detailed Explanation of the Bug and Corrected Code</h2>
+<p><strong>Bug:</strong></p>
+<p>The <code>Ostrich</code> class inherits from the <code>Bird</code> class, but it overrides the <code>Fly()</code> method to throw an exception. This violates the Liskov Substitution Principle (LSP), which states that derived classes should be substitutable for their base classes without altering the correctness of the program. In this case, substituting a <code>Bird</code> object with an <code>Ostrich</code> object causes the program to throw an exception, violating the LSP.</p>
+<p><strong>Corrected Code:</strong></p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Bird</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fly</span>()</span>
+    {
+        Console.WriteLine(<span class="hljs-string">"Bird is flying"</span>);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">FlyingBird</span> : <span class="hljs-title">Bird</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fly</span>()</span>
+    {
+        Console.WriteLine(<span class="hljs-string">"FlyingBird is flying"</span>);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Ostrich</span> : <span class="hljs-title">Bird</span>
+{
+    <span class="hljs-comment">// Ostrich doesn't fly</span>
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
+    {
+        Bird bird = <span class="hljs-keyword">new</span> FlyingBird();
+        bird.Fly(); <span class="hljs-comment">// This works fine</span>
+
+        Bird ostrich = <span class="hljs-keyword">new</span> Ostrich();
+        <span class="hljs-comment">//ostrich.Fly(); // Ostrich doesn't fly, so no need to call Fly()</span>
+    }
+}
+</code></pre>
+<p><strong>Explanation of the corrected code:</strong></p>
+<ol>
+<li>Created a new class <code>FlyingBird</code> that inherits from <code>Bird</code> and overrides the <code>Fly()</code> method to provide the flying behavior.</li>
+<li>The <code>Ostrich</code> class now inherits from <code>Bird</code> but does not override the <code>Fly()</code> method. This indicates that ostriches do not fly.</li>
+<li>In the <code>Main()</code> method, we create a <code>FlyingBird</code> object and assign it to a <code>Bird</code> variable. Calling <code>Fly()</code> on this object will execute the <code>FlyingBird</code>’s <code>Fly()</code> method, which prints “FlyingBird is flying”.</li>
+<li>We also create an <code>Ostrich</code> object and assign it to a <code>Bird</code> variable. Since <code>Ostrich</code> does not override the <code>Fly()</code> method, calling <code>Fly()</code> on this object would execute the <code>Bird</code>’s <code>Fly()</code> method, which prints “Bird is flying”. However, since ostriches don’t fly, we don’t call the <code>Fly()</code> method on the <code>Ostrich</code> object.</li>
+</ol>
+<p>This corrected code adheres to the Liskov Substitution Principle because substituting a <code>Bird</code> object with a <code>FlyingBird</code> or <code>Ostrich</code> object does not alter the correctness of the program.</p>
+<h2>Additional Questions and Answers</h2>
+<details><summary>Question: What is the difference between the "ref" and "out" keywords?</summary>
+<blockquote>
+<p>A parameter with the out keyword doesn’t need to be initialized before being passed to a method, while a parameter with the ref keyword must be initialized before the method call that uses these parameters.</p>
+</blockquote>
+</details>
+<details><summary>Question: What's the difference between optional parameters and named parameters?</summary>
+<blockquote>
+<p>Optional parameters allow omitting arguments in function calls, while named parameters enable passing arguments by parameter name.</p>
+</blockquote>
+<pre><code class="hljs language-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">optionalParamFunc</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> p1, <span class="hljs-built_in">int</span> p2 = <span class="hljs-number">2</span>, <span class="hljs-built_in">int</span> p3 = <span class="hljs-number">3</span></span>)</span>;
+optionalParamFunc(<span class="hljs-number">1</span>, p3:<span class="hljs-number">10</span>); <span class="hljs-comment">// Equivalent to optionalParamFunc(1,2,10);</span>
+</code></pre>
+</details>
+<details><summary>Question: What are the main differences between classes and structs in C#?</summary>
+<blockquote>
+<p>Key differences between classes and structs:</p>
+<ul>
+<li>Structs are value types while classes are reference types</li>
+<li>All struct types implicitly inherit from System.ValueType, are implicitly sealed and cannot be abstract</li>
+<li>Assigning struct variables creates copies of the data</li>
+<li>Struct fields cannot have initializers</li>
+<li>Different interpretation of ‘this’ between structs and classes</li>
+<li>Structs cannot have parameterless constructors</li>
+<li>Structs cannot have destructors</li>
+<li>Default value for reference types is null</li>
+<li>Conversion between reference and value types involves boxing/unboxing</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: How to compare strings in C#?</summary>
+<pre><code class="hljs language-csharp"><span class="hljs-built_in">string</span> s1 = <span class="hljs-string">"123"</span>;
+<span class="hljs-built_in">string</span> s2 = s1.Substring(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>) + <span class="hljs-string">"3"</span>;
+
+<span class="hljs-comment">// Value comparisons (all will work)</span>
+<span class="hljs-keyword">if</span> (s1 == s2) { }
+<span class="hljs-keyword">if</span> (s1.CompareTo(s2) == <span class="hljs-number">0</span>) { }
+<span class="hljs-keyword">if</span> (s1.Equals(s2)) { }
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">string</span>.Equals(s1, s2)) { }
+
+<span class="hljs-comment">// Reference comparisons (shouldn't be used)</span>
+<span class="hljs-keyword">if</span> ((<span class="hljs-built_in">object</span>)s1 == (<span class="hljs-built_in">object</span>)s2) { }
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">object</span>.ReferenceEquals(s1, s2)) { }
+</code></pre>
+</details>
+<details><summary>Question: What is abstraction and how does it relate to OOP?</summary>
+<blockquote>
+<p>Abstraction is a simplified model of real-world entities for solving specific problems, represented through objects. Any object is an abstraction as it only partially represents a real entity. During the transformation of real entities into objects, we eliminate non-essential characteristics.
+For example, we could create a simplified Person class that handles movement while abstracting away details like breathing, eating, or sensory functions.</p>
+</blockquote>
+</details>
+<details><summary>Question: What are properties in C#?</summary>
+<blockquote>
+<p>In C#, properties are special accessor methods that provide controlled access to class fields. They consist of get and set blocks:</p>
+<ul>
+<li>The get block returns the field value</li>
+<li>The set block assigns the value using the implicit ‘value’ parameter</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What access modifiers exist in C#?</summary>
+<blockquote>
+<p>C# access modifiers:</p>
+<ul>
+<li>public: Accessible from any code</li>
+<li>private: Accessible only within the declaring class</li>
+<li>protected: Accessible within the class and derived classes</li>
+<li>internal: Accessible within the same assembly</li>
+<li>protected internal: Accessible within assembly or derived classes</li>
+<li>private protected: Accessible within class and derived classes in same assembly</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What is the essence of polymorphism?</summary>
+<blockquote>
+<p>Polymorphism enables functions to handle different data types through:</p>
+<ul>
+<li>Ad-hoc polymorphism (method overloading, type conversion)</li>
+<li>Parametric polymorphism (generics)</li>
+<li>Inclusion polymorphism (inheritance, interfaces, virtual methods)</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: How do events differ from delegates?</summary>
+<blockquote>
+<p>Events differ from delegates like properties differ from fields:</p>
+<ul>
+<li>Events can only be class members and can only be raised within their declaring class</li>
+<li>Event subscribers cannot remove other subscribers</li>
+<li>Events are implemented as private delegate fields with add/remove methods</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: Can a class implement two interfaces with identical methods? If yes, how?</summary>
+<blockquote>
+<p>Yes. Common methods can be implemented once implicitly or twice explicitly (using interface names). Explicit implementations require casting to the interface type for access. Different interface methods should use explicit implementation to avoid conflicts.</p>
+</blockquote>
+</details>
+<details><summary>Question: What is an abstract class? When must a class be declared abstract?</summary>
+<blockquote>
+<p>An abstract class:</p>
+<ul>
+<li>Provides partial implementation to be completed by derived classes</li>
+<li>Cannot be instantiated directly</li>
+<li>Must be declared when containing abstract members</li>
+<li>Used to share common functionality across related classes</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What are the differences between interfaces and abstract classes?</summary>
+<blockquote>
+<p>Key differences:</p>
+<ul>
+<li>Interfaces contain only declarations (no fields or implementations)</li>
+<li>Classes implement multiple interfaces but inherit only one class</li>
+<li>Abstract classes can have fields and partial implementations</li>
+<li>Interfaces define contracts, abstract classes provide base functionality</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What's the difference between abstract and virtual classes/methods?</summary>
+<blockquote>
+<p>Abstract classes:</p>
+<ul>
+<li>Marked with abstract keyword</li>
+<li>Contain abstract members (no implementation)</li>
+<li>Derived classes must implement abstract members</li>
+</ul>
+<p>Virtual members:</p>
+<ul>
+<li>Marked with virtual keyword</li>
+<li>Provide default implementation</li>
+<li>Can be overridden in derived classes using override</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What does the virtual modifier mean?</summary>
+<blockquote>
+<p>The virtual modifier:</p>
+<ul>
+<li>Marks methods/properties as overridable in derived classes</li>
+<li>Requires override keyword in derived classes</li>
+<li>Enables runtime polymorphism based on object type</li>
+<li>Non-virtual methods use compile-time binding</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What's the difference between encapsulation and hiding?</summary>
+<blockquote>
+<p>Encapsulation:</p>
+<ul>
+<li>OOP principle of bundling data with methods</li>
+<li>Protects internal state through access control</li>
+</ul>
+<p>Hiding:</p>
+<ul>
+<li>Using access modifiers to restrict visibility</li>
+<li>Method hiding with ‘new’ keyword in derived classes</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: Can I prevent inheritance from my class?</summary>
+<blockquote>
+<p>Yes. Use the sealed modifier to prevent class inheritance.</p>
+</blockquote>
+</details>
+<details><summary>Question: Can I allow class inheritance but prevent method overriding?</summary>
+<blockquote>
+<p>Yes. Use sealed override on virtual methods in derived classes to prevent further overriding.</p>
+</blockquote>
+</details>
+<details><summary>Question: What's the default access level for class fields?</summary>
+<blockquote>
+<p>Fields default to private access when no modifier is specified.</p>
+</blockquote>
+</details>
+<details><summary>Question: How to assign values to readonly fields?</summary>
+<blockquote>
+<p>Readonly fields can be initialized:</p>
+<ul>
+<li>At declaration</li>
+<li>In class constructors</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: When is a static constructor called?</summary>
+<blockquote>
+<p>A static constructor:</p>
+<ul>
+<li>Runs automatically before first instance creation</li>
+<li>Executes before any static members are accessed</li>
+<li>Runs only once per type</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What's the difference between constants and readonly fields?</summary>
+<blockquote>
+<p>Constants:</p>
+<ul>
+<li>Initialized at compile-time</li>
+<li>Must be value types</li>
+</ul>
+<p>Readonly fields:</p>
+<ul>
+<li>Can be initialized at declaration or in constructors</li>
+<li>Can be reference types</li>
+</ul>
+</blockquote>
+</details>
+<details><summary>Question: What's the difference between cast and as operator?</summary>
+<blockquote>
+<p>Differences:</p>
+<ul>
+<li>Cast throws InvalidCastException on failure</li>
+<li>As operator returns null on failure</li>
+</ul>
+</blockquote>
+</details>
+        </main>
+
+        <footer class="mt-12 border-t border-gray-200 pt-6 flex justify-between">
+            <div></div>
+            <div><a href="index.html" class="nav-link">Table of Contents</a></div>
+            <div><a href="chapter10-code-smells.html" class="nav-link">Next</a></div>
+        </footer>
+    </div>
+    <script>
+        async function runCode(codeElementId, outputElementId, language) {
+            const codeElement = document.getElementById(codeElementId);
+            const outputElement = document.getElementById(outputElementId);
+            const code = codeElement.textContent;
+            outputElement.innerHTML = 'Running...';
+
+            try {
+                if (language === 'go') {
+                    // Load wasm_exec.js if not already loaded
+                    if (!window.Go) {
+                        await new Promise((resolve, reject) => {
+                            const script = document.createElement('script');
+                            script.src = '../wasm/wasm_exec.js';
+                            script.onload = resolve;
+                            script.onerror = reject;
+                            document.head.appendChild(script);
+                        });
+                    }
+
+                    // Initialize Go Wasm instance if not already done
+                    if (!window.goRunnerInstance) {
+                        const go = new Go();
+                        const result = await WebAssembly.instantiateStreaming(
+                            fetch('../wasm/go_runner.wasm'),
+                            go.importObject
+                        );
+                        window.goRunnerInstance = result.instance;
+                        go.run(window.goRunnerInstance);
+                    }
+
+                    // Execute the code
+                    const result = await window.executeGoCode(code);
+                    if (result.error) {
+                        outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                    } else {
+                        outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                    }
+                } else if (language === 'csharp') {
+                    if (!window.csharpWasmRuntimeStarted) {
+                        outputElement.innerHTML = 'Loading .NET Wasm runtime...';
+                        try {
+                            // Dynamically load blazor.webassembly.js if not already present
+                            if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
+                                const script = document.createElement('script');
+                                script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.defer = true;
+                                document.body.appendChild(script);
+
+                                // Wait for DotNet to be available
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            } else {
+                                // If script tag exists, still wait for DotNet to be ready
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            }
+                            window.csharpWasmRuntimeStarted = true;
+                            outputElement.innerHTML = '.NET Wasm runtime loaded. Ready to run C# code.';
+                        } catch (loadError) {
+                            console.error("Error loading .NET Wasm runtime:", loadError);
+                            outputElement.innerHTML = `<pre style="color: red;">Error loading .NET Wasm runtime:\n${loadError}</pre>`;
+                            return;
+                        }
+                    }
+
+                    try {
+                        outputElement.innerHTML = 'Executing C# code...';
+                        if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
+                            outputElement.innerHTML = `<pre style="color: red;">.NET runtime not available for invoking method.</pre>`;
+                            return;
+                        }
+
+                        const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
+                        if (result.error) {
+                            outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                        } else {
+                            outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                        }
+                    } catch (execError) {
+                        console.error("Error executing C# code:", execError);
+                        outputElement.innerHTML = `<pre style="color: red;">Error executing C# code:\n${execError.message || execError}</pre>`;
+                    }
+                } else {
+                    outputElement.innerHTML = `<p>Execution for ${language} is not supported.</p>`;
+                }
+            } catch (error) {
+                outputElement.innerHTML = `<pre style="color: red;">Error:\n${error.message}</pre>`;
+                console.error('Code execution error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

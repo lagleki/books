@@ -1,0 +1,32 @@
+{
+  "name": "csharp-book-converter",
+  "version": "1.0.0",
+  "description": "Convert C# book markdown files to HTML with Tailwind CSS",
+  "main": "convert.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./styles/input.css -o ./dist/styles.css --minify",
+    "build:content": "node ./scripts/build-content.js",
+    "build": "npm run build:css && npm run build:content",
+    "dev:css": "tailwindcss -i ./styles/input.css -o ./dist/styles.css --watch",
+    "dev": "npm-run-all --parallel dev:css build:content --watch",
+    "serve": "http-server ./docs -p 8000 -o --cors"
+  },
+  "dependencies": {
+    "dompurify": "^3.0.5",
+    "fs-extra": "^11.3.0",
+    "marked": "15.0.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.16",
+    "autoprefixer": "10.4.21",
+    "html-validate": "9.5.3",
+    "http-server": "^14.1.1",
+    "jsdom": "26.1.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-highlightjs": "4.2.0",
+    "markdown-it-toc-done-right": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "8.5.3",
+    "tailwindcss": "3.4.17"
+  }
+}
