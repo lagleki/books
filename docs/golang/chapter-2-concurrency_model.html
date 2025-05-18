@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricky Interview Questions for Senior Golang Developers</title>
+    <style id="tailwind-styles">
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.prose{color:var(--tw-prose-body);max-width:65ch}.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-top:1.2em;margin-bottom:1.2em}.prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);text-decoration:underline;font-weight:500}.prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{font-weight:400;color:var(--tw-prose-counters)}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-top:3em;margin-bottom:3em}.prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-style:italic;color:var(--tw-prose-quotes);border-inline-start-width:.25rem;border-inline-start-color:var(--tw-prose-quote-borders);quotes:"\201C""\201D""\2018""\2019";margin-top:1.6em;margin-bottom:1.6em;padding-inline-start:1em}.prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:800;font-size:2.25em;margin-top:0;margin-bottom:.8888889em;line-height:1.1111111}.prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:900;color:inherit}.prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:700;font-size:1.5em;margin-top:2em;margin-bottom:1em;line-height:1.3333333}.prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:800;color:inherit}.prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;font-size:1.25em;margin-top:1.6em;margin-bottom:.6em;line-height:1.6}.prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.5em;margin-bottom:.5em;line-height:1.5}.prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-top:2em;margin-bottom:2em}.prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-family:inherit;color:var(--tw-prose-kbd);box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);font-size:.875em;border-radius:.3125rem;padding-top:.1875em;padding-inline-end:.375em;padding-bottom:.1875em;padding-inline-start:.375em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-weight:600;font-size:.875em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-pre-code);background-color:var(--tw-prose-pre-bg);overflow-x:auto;font-weight:400;font-size:.875em;line-height:1.7142857;margin-top:1.7142857em;margin-bottom:1.7142857em;border-radius:.375rem;padding-top:.8571429em;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-inline-start:1.1428571em}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:transparent;border-width:0;border-radius:0;padding:0;font-weight:inherit;color:inherit;font-size:inherit;font-family:inherit;line-height:inherit}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){width:100%;table-layout:auto;margin-top:2em;margin-bottom:2em;font-size:.875em;line-height:1.7142857}.prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-th-borders)}.prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;vertical-align:bottom;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-td-borders)}.prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:baseline}.prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-width:1px;border-top-color:var(--tw-prose-th-borders)}.prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.prose :where(th,td):not(:where([class~=not-prose],[class~=not-prose] *)){text-align:start}.prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:rgba(0,0,0,.5);--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;margin-bottom:.5em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(.prose>ul>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ul>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(.prose>ol>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ol>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-top:.5714286em;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.visible{visibility:visible}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.isolate{isolation:isolate}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mt-12{margin-top:3rem}.block{display:block}.inline{display:inline}.flex{display:flex}.max-w-4xl{max-width:56rem}.max-w-none{max-width:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.justify-between{justify-content:space-between}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.px-4{padding-left:1rem;padding-right:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pt-6{padding-top:1.5rem}.uppercase{text-transform:uppercase}.lowercase{text-transform:lowercase}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.\[b\:2\]{b:2}a{color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}a,a:hover{--tw-text-opacity:1}a:hover{color:rgb(30 64 175/var(--tw-text-opacity,1))}.prose a{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}.prose a:hover{--tw-text-opacity:1;color:rgb(30 64 175/var(--tw-text-opacity,1))}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="mb-12 border-b border-gray-200 pb-6 flex justify-between">
+            <div><a href="chapter-1-introduction_to_go.html" class="text-blue-600 nav-link">Previous</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Table of Contents</a></div>
+            <div><a href="chapter-3-memory_management.html" class="text-blue-600 nav-link">Next</a></div>
+        </header>
+
+        <main class="prose max-w-none">
+            <h1>Tricky Interview Questions for Senior Golang Developers</h1>
+<h3>Question 1: Context Cancellation</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"context"</span>
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"time"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	ctx, cancel := context.WithTimeout(context.Background(), <span class="hljs-number">1</span>*time.Second)
+	<span class="hljs-keyword">defer</span> cancel()
+
+	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>, <span class="hljs-number">1</span>)
+
+	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+		time.Sleep(<span class="hljs-number">2</span> * time.Second)
+		ch &lt;- <span class="hljs-number">1</span>
+	}()
+
+	<span class="hljs-keyword">select</span> {
+	<span class="hljs-keyword">case</span> &lt;-ch:
+		fmt.Println(<span class="hljs-string">"Received value from channel"</span>)
+	<span class="hljs-keyword">case</span> &lt;-ctx.Done():
+		fmt.Println(<span class="hljs-string">"Context cancelled:"</span>, ctx.Err())
+	}
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain why.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be “Context cancelled: context deadline exceeded”.</p>
+<p><strong>Explanation:</strong></p>
+<p>The code creates a context with a timeout of 1 second. A goroutine is launched that sends a value to the channel <code>ch</code> after 2 seconds. The <code>select</code> statement waits on either receiving a value from the channel or the context being cancelled. Since the context is cancelled after 1 second, and the goroutine sends a value to the channel after 2 seconds, the <code>select</code> statement will execute the <code>case &lt;-ctx.Done()</code> branch, printing “Context cancelled: context deadline exceeded”.</p>
+<h3>Question 2: Goroutine and Channel Deadlock</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">string</span>)
+	ch &lt;- <span class="hljs-string">"Hello"</span>
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will happen when you run this code? Explain why.</p>
+<p><strong>Solution:</strong></p>
+<p>The code will deadlock.</p>
+<p><strong>Explanation:</strong></p>
+<p>The code creates an unbuffered channel and attempts to send a value to it. However, there is no receiver waiting to receive the value. Therefore, the sender will block indefinitely, leading to a deadlock.</p>
+<h3>Question 3: Using <code>sync.Once</code></h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"sync"</span>
+)
+
+<span class="hljs-keyword">var</span> (
+	once     sync.Once
+	resource <span class="hljs-type">string</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">initializeResource</span><span class="hljs-params">()</span></span> {
+	resource = <span class="hljs-string">"Initialized"</span>
+	fmt.Println(<span class="hljs-string">"Resource initialized"</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++ {
+		once.Do(initializeResource)
+		fmt.Println(<span class="hljs-string">"Resource:"</span>, resource)
+	}
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain the purpose of <code>sync.Once</code>.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs">Resource initialized
+<span class="hljs-symbol">Resource:</span> Initialized
+<span class="hljs-symbol">Resource:</span> Initialized
+<span class="hljs-symbol">Resource:</span> Initialized
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p><code>sync.Once</code> is used to ensure that a function is executed only once, even if it is called multiple times from different goroutines. In this case, the <code>initializeResource</code> function is called multiple times, but it is only executed once because of <code>once.Do(initializeResource)</code>. The subsequent calls to <code>once.Do(initializeResource)</code> do nothing.</p>
+<h3>Question 4: Understanding <code>iota</code></h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-keyword">const</span> (
+	A = <span class="hljs-literal">iota</span>
+	B
+	C
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	fmt.Println(A, B, C)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain the purpose of <code>iota</code>.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be <code>0 1 2</code>.</p>
+<p><strong>Explanation:</strong></p>
+<p><code>iota</code> is a special constant that is used to generate a sequence of increasing integer values. It starts at 0 and is incremented by 1 for each constant in a constant declaration. In this case, <code>A</code> is assigned the value 0, <code>B</code> is assigned the value 1, and <code>C</code> is assigned the value 2.</p>
+<h3>Question 5: Slices and Appending</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	slice1 := []<span class="hljs-type">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>}
+	slice2 := <span class="hljs-built_in">append</span>(slice1, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
+	fmt.Println(slice1, slice2)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain how appending to a slice works.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be <code>[1 2 3] [1 2 3 4 5]</code>.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>append</code> function adds elements to the end of a slice. If the slice has enough capacity, the elements are added to the existing underlying array. If the slice does not have enough capacity, a new underlying array is allocated, and the elements are copied to the new array. In this case, <code>slice1</code> has enough capacity to hold the new elements, so the elements are added to the existing underlying array. <code>slice2</code> is a new slice that points to the same underlying array as <code>slice1</code>, but with a different length and capacity.</p>
+<h3>Question 6: Maps and Mutability</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	m := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>{
+		<span class="hljs-string">"a"</span>: <span class="hljs-number">1</span>,
+		<span class="hljs-string">"b"</span>: <span class="hljs-number">2</span>,
+	}
+	<span class="hljs-built_in">delete</span>(m, <span class="hljs-string">"a"</span>)
+	fmt.Println(m)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain how maps work in Go.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be <code>map[b:2]</code>.</p>
+<p><strong>Explanation:</strong></p>
+<p>The code creates a map with two key-value pairs. The code then deletes the key-value pair with the key “a”. The code then prints the map, which now only contains the key-value pair with the key “b”. Maps in Go are mutable, meaning that you can add, delete, and modify key-value pairs after the map has been created.</p>
+<h3>Question 7: Type Assertions</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-keyword">var</span> i <span class="hljs-keyword">interface</span>{} = <span class="hljs-string">"hello"</span>
+
+	s := i.(<span class="hljs-type">string</span>)
+	fmt.Println(s)
+
+	f, ok := i.(<span class="hljs-type">float64</span>)
+	fmt.Println(f, ok)
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain what type assertions are and how they work.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs"><span class="hljs-attribute">hello</span>
+<span class="hljs-number">0</span> <span class="hljs-literal">false</span>
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>Type assertions are used to extract the underlying value of an interface. The first type assertion <code>s := i.(string)</code> asserts that the underlying value of the interface <code>i</code> is a string. Since this is true, the type assertion succeeds, and the value of <code>s</code> is set to “hello”. The second type assertion <code>f, ok := i.(float64)</code> asserts that the underlying value of the interface <code>i</code> is a float64. Since this is false, the type assertion fails, and the value of <code>f</code> is set to the zero value for float64 (0), and the value of <code>ok</code> is set to false.</p>
+<h3>Question 8: String Immutability</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Explain why strings are immutable in Go. What are the benefits of string immutability?</p>
+<p><strong>Solution:</strong></p>
+<p>Strings are immutable in Go for several reasons:</p>
+<ul>
+<li><strong>Simplicity:</strong> Immutability makes strings easier to reason about and work with. You don’t have to worry about a string being modified unexpectedly.</li>
+<li><strong>Safety:</strong> Immutability makes strings safe to share between goroutines. You don’t have to worry about data races when multiple goroutines are accessing the same string.</li>
+<li><strong>Efficiency:</strong> Immutability allows strings to be stored in a more efficient way. For example, strings can be stored in a read-only memory segment.</li>
+</ul>
+<h3>Question 9: Using <code>defer</code> with Named Return Values</h3>
+<p><strong>Code Snippet:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">increment</span><span class="hljs-params">()</span></span> (result <span class="hljs-type">int</span>) {
+	<span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+		result++
+	}()
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	fmt.Println(increment())
+}
+</code></pre>
+<p><strong>Problem Statement:</strong></p>
+<p>What will be the output of the code above? Explain how <code>defer</code> interacts with named return values.</p>
+<p><strong>Solution:</strong></p>
+<p>The output will be <code>1</code>.</p>
+<p><strong>Explanation:</strong></p>
+<p>When a function has named return values, the return values are initialized when the function is called. The <code>defer</code> statement schedules a function call to be executed after the surrounding function returns, but before the return values are returned. In this case, the <code>result</code> variable is initialized to 0 when the <code>increment</code> function is called. The <code>defer</code> statement schedules a function call to be executed after the <code>increment</code> function returns, but before the <code>result</code> variable is returned. The deferred function increments the <code>result</code> variable by 1. Therefore, the <code>increment</code> function returns the value 1.</p>
+<h3>Question 10: Understanding the <code>nil</code> Interface</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Explain what a <code>nil</code> interface is in Go. How is it different from a <code>nil</code> pointer?</p>
+<p><strong>Solution:</strong></p>
+<p>A <code>nil</code> interface is an interface that has a type but no value. A <code>nil</code> pointer is a pointer that points to nothing.</p>
+<p><strong>Explanation:</strong></p>
+<p>An interface is a type that specifies a set of methods that a type must implement. An interface value consists of two parts: a type and a value. The type is the type of the underlying value, and the value is the underlying value itself. A <code>nil</code> interface is an interface that has a type but no value. This means that the interface has a type, but the underlying value is <code>nil</code>. A <code>nil</code> pointer is a pointer that points to nothing. This means that the pointer does not have a type or a value.</p>
+<p>The difference between a <code>nil</code> interface and a <code>nil</code> pointer is that a <code>nil</code> interface has a type, while a <code>nil</code> pointer does not. This means that you can call methods on a <code>nil</code> interface, but you cannot call methods on a <code>nil</code> pointer.</p>
+<h2>Additional Concurrency Q&amp;A</h2>
+<h2>What are lock-free data structures, and does Go have them?</h2>
+<p><strong>Lock-free data structures</strong> are a type of data structure designed for multithreaded operations without using traditional locks like mutexes.</p>
+<p>The main idea is to provide thread safety and avoid problems associated with locks, including deadlocks and performance bottlenecks.</p>
+<p>Lock-free data structures typically use atomic operations like CAS (compare-and-swap) to ensure data consistency between threads. These operations allow threads to compete for data modification while guaranteeing only one thread can successfully modify data at any given time.</p>
+<p>In Go, a language with concurrency support, there are several examples of lock-free or nearly lock-free data structures, especially in the standard library. For example:</p>
+<ol>
+<li><strong>Channels:</strong> although Go channels aren’t completely lock-free, they provide a high-level way to exchange data between goroutines without explicit locks.</li>
+<li><strong>Atomic operations:</strong> the <code>sync/atomic</code> package in Go provides primitives for atomic operations, which are key components for creating lock-free data structures.</li>
+<li><strong><code>sync.Map</code>:</strong> designed for use cases where keys mostly don’t change, it uses optimizations to reduce lock needs.</li>
+</ol>
+<h2>What is a channel, and what types of channels exist in Go?</h2>
+<p><strong>Channels</strong> are communication tools between goroutines.</p>
+<p>Technically they’re pipelines/tubes where you can read or place data. So one goroutine can send data to a channel, and another can read data placed in that channel.</p>
+<p>Go has the <code>chan</code> keyword for channel creation. A channel can only transmit data of one type.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<span class="hljs-keyword">var</span> c <span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>
+fmt.Println(c)
+}
+</code></pre>
+<p>With simple variable declaration, the channel value is <code>nil</code>, meaning the channel is uninitialized. For initialization, the <code>make()</code> function is used.</p>
+<p>Depending on capacity definition, channels can be <strong>buffered</strong> or <strong>unbuffered</strong>.</p>
+<p>To create an unbuffered channel, call <code>make()</code> without specifying channel capacity:</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">var</span> intCh <span class="hljs-keyword">chan</span> <span class="hljs-type">int</span> = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>)
+</code></pre>
+<p>Buffered channels are also created with <code>make()</code>, but the second argument specifies channel capacity. If the channel is empty, the receiver waits until at least one element appears.</p>
+<pre><code class="hljs language-go">chanBuf := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">bool</span>, <span class="hljs-number">3</span>)
+</code></pre>
+<p>Four operations can be performed with a channel:</p>
+<ul>
+<li>create a channel</li>
+<li>write data to a channel</li>
+<li>read from a channel</li>
+<li>close a channel</li>
+</ul>
+<p><strong>Unidirectional channels:</strong> in Go you can define channels as send-only or receive-only.</p>
+<p>A channel can be a function’s return value. However, you should be careful with write/read operations on returned channels.</p>
+<h2>How do buffered and unbuffered channels work?</h2>
+<p><strong>Buffered channels</strong> let you quickly queue tasks so you can handle many requests and process them later. Additionally, buffered channels can be used as semaphores, limiting your application’s throughput.</p>
+<p>The gist: all incoming requests are redirected to a channel that processes them in order. When finishing request processing, the channel notifies the original caller that it’s ready to handle a new request. Thus, the channel’s buffer capacity limits how many concurrent requests it can store.</p>
+<p>Here’s what implementing this method looks like:</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+<span class="hljs-string">"fmt"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+numbers := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>, <span class="hljs-number">5</span>)
+<span class="hljs-comment">// the numbers channel can't store more than five integers - it's a buffered channel with capacity 5</span>
+counter := <span class="hljs-number">10</span>
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; counter; i++ {
+<span class="hljs-keyword">select</span> {
+<span class="hljs-comment">// processing happens here</span>
+<span class="hljs-keyword">case</span> numbers &lt;- i * i:
+fmt.Println(<span class="hljs-string">"About to process"</span>, i)
+<span class="hljs-keyword">default</span>:
+fmt.Print(<span class="hljs-string">"No space for "</span>, i, <span class="hljs-string">" "</span>)
+}
+<span class="hljs-comment">// we start putting data in numbers, but when the channel is full, it stops storing data and executes the default branch</span>
+}
+fmt.Println()
+<span class="hljs-keyword">for</span> {
+<span class="hljs-keyword">select</span> {
+<span class="hljs-keyword">case</span> num := &lt;-numbers:
+fmt.Print(<span class="hljs-string">"*"</span>, num, <span class="hljs-string">" "</span>)
+<span class="hljs-keyword">default</span>:
+fmt.Println(<span class="hljs-string">"Nothing left to read!"</span>)
+<span class="hljs-keyword">return</span>
+}
+}
+}
+</code></pre>
+<p>Similarly, we try to read from <code>numbers</code> using a <code>for</code> loop. When all data is read from the channel, the <code>default</code> branch executes and the program exits with <code>return</code>.
+Running the above code produces this output:</p>
+<pre><code class="hljs language-cmd">$ go run bufChannel.go
+About to process <span class="hljs-number">0</span>
+. . .
+About to process <span class="hljs-number">4</span>
+No space <span class="hljs-keyword">for</span> <span class="hljs-number">5</span> No space <span class="hljs-keyword">for</span> <span class="hljs-number">6</span> No space <span class="hljs-keyword">for</span> <span class="hljs-number">7</span> No space <span class="hljs-keyword">for</span> <span class="hljs-number">8</span> No space
+<span class="hljs-keyword">for</span> <span class="hljs-number">9</span>
+*<span class="hljs-number">0</span> *<span class="hljs-number">1</span> *<span class="hljs-number">4</span> *<span class="hljs-number">9</span> *<span class="hljs-number">16</span> Nothing left to read!
+</code></pre>
+<p>In general:</p>
+<ul>
+<li>a <strong>buffered channel</strong> will only block a goroutine if the entire buffer is full and another write is attempted. Once a read occurs from the channel, the goroutine unblocks. If there’s only one goroutine (just the <code>main</code> function) and the channel blocks it… it won’t block anywhere.</li>
+</ul>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+<span class="hljs-string">"fmt"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+naturals := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>)
+squares := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>)
+
+<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+<span class="hljs-keyword">for</span> x := <span class="hljs-number">0</span>; x &lt;= <span class="hljs-number">10</span>; x++ {
+naturals &lt;- x
+}
+<span class="hljs-built_in">close</span>(naturals)
+}()
+
+<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+<span class="hljs-keyword">for</span> x := <span class="hljs-keyword">range</span> naturals {
+squares &lt;- x * x
+}
+<span class="hljs-built_in">close</span>(squares)
+}()
+
+<span class="hljs-keyword">for</span> x := <span class="hljs-keyword">range</span> squares {
+fmt.Println(x)
+}
+}
+</code></pre>
+<h2>What is the semaphore package in Go?</h2>
+<p><strong>A semaphore</strong> is a construct that can limit or control access to a shared resource. In Go’s context, a semaphore can limit goroutines’ access to a shared resource, though originally semaphores were used to limit thread access.</p>
+<p>Semaphores can have weights that set the maximum number of threads or goroutines accessing the resource.
+The process is maintained using <code>Acquire()</code> and <code>Release()</code> methods defined as:</p>
+<pre><code class="hljs language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Weighted)</span></span> Acquire(ctx context.Context, n <span class="hljs-type">int64</span>) <span class="hljs-type">error</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Weighted)</span></span> Release(n <span class="hljs-type">int64</span>)
+</code></pre>
+<p>The second <code>Acquire()</code> parameter defines the semaphore’s weight.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+<span class="hljs-string">"context"</span>
+<span class="hljs-string">"fmt"</span>
+<span class="hljs-string">"os"</span>
+<span class="hljs-string">"strconv"</span>
+<span class="hljs-string">"time"</span>
+<span class="hljs-string">"golang.org/x/sync/semaphore"</span>
+)
+
+<span class="hljs-keyword">var</span> Workers = <span class="hljs-number">4</span>
+</code></pre>
+<p>This variable defines the maximum number of goroutines this program can execute.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">var</span> sem = semaphore.NewWeighted(<span class="hljs-type">int64</span>(Workers))
+</code></pre>
+<p>Here we define a semaphore with weight equal to the maximum number of goroutines that can execute simultaneously. This means no more than <code>Workers</code> goroutines can acquire the semaphore simultaneously.</p>
+<pre><code class="hljs language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">worker</span><span class="hljs-params">(n <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> {
+square := n * n
+time.Sleep(time.Second)
+<span class="hljs-keyword">return</span> square
+}
+</code></pre>
+<p>The <code>worker()</code> function executes as part of a goroutine. However since we’re using a semaphore, there’s no need to return results to a channel.</p>
+<pre><code class="hljs language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(os.Args) != <span class="hljs-number">2</span> {
+fmt.Println(<span class="hljs-string">"Need #jobs!"</span>)
+<span class="hljs-keyword">return</span>
+}
+
+nJobs, err := strconv.Atoi(os.Args[<span class="hljs-number">1</span>])
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+fmt.Println(err)
+<span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p>We read the number of jobs we want to run.</p>
+<pre><code class="hljs language-go"><span class="hljs-comment">// where to store results</span>
+<span class="hljs-keyword">var</span> results = <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, nJobs)
+<span class="hljs-comment">// required for Acquire()</span>
+ctx := context.TODO()
+
+<span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> results {
+err = sem.Acquire(ctx, <span class="hljs-number">1</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+fmt.Println(<span class="hljs-string">"Cannot acquire semaphore:"</span>, err)
+<span class="hljs-keyword">break</span>
+}
+</code></pre>
+<p>We acquire the semaphore as many times as <code>nJobs</code> specifies. If <code>nJobs</code> exceeds <code>Workers</code>, the <code>Acquire()</code> call will block and wait for <code>Release()</code> calls to unblock.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(i <span class="hljs-type">int</span>)</span></span> {
+<span class="hljs-keyword">defer</span> sem.Release(<span class="hljs-number">1</span>)
+temp := worker(i)
+results[i] = temp
+}(i)
+}
+</code></pre>
+<p>We launch goroutines to perform this task and write results to the <code>results</code> slice. Since each goroutine writes to its own slice element, there are no race conditions.</p>
+<pre><code class="hljs language-go">err = sem.Acquire(ctx, <span class="hljs-type">int64</span>(Workers))
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+fmt.Println(err)
+}
+</code></pre>
+<p>We acquire all tokens this way so the <code>sem.Acquire()</code> call blocks until all worker processes/goroutines finish. Functionally this is similar to calling <code>Wait()</code>.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">for</span> k, v := <span class="hljs-keyword">range</span> results {
+fmt.Println(k, <span class="hljs-string">"-&gt;"</span>, v)
+}
+}
+</code></pre>
+<p>That’s roughly how semaphores are used in practice.</p>
+
+        </main>
+
+        <footer class="mt-12 border-t border-gray-200 pt-6 flex justify-between">
+            <div><a href="chapter-1-introduction_to_go.html" class="text-blue-600 nav-link">Previous</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Table of Contents</a></div>
+            <div><a href="chapter-3-memory_management.html" class="text-blue-600 nav-link">Next</a></div>
+        </footer>
+    </div>
+    <script>
+        async function runCode(codeElementId, outputElementId, language) {
+            const codeElement = document.getElementById(codeElementId);
+            const outputElement = document.getElementById(outputElementId);
+            const code = codeElement.textContent;
+            outputElement.innerHTML = 'Running...';
+
+            try {
+                if (language === 'go') {
+                    // Load wasm_exec.js if not already loaded
+                    if (!window.Go) {
+                        await new Promise((resolve, reject) => {
+                            const script = document.createElement('script');
+                            script.src = '../wasm/wasm_exec.js';
+                            script.onload = resolve;
+                            script.onerror = reject;
+                            document.head.appendChild(script);
+                        });
+                    }
+
+                    // Initialize Go Wasm instance if not already done
+                    if (!window.goRunnerInstance) {
+                        const go = new Go();
+                        const result = await WebAssembly.instantiateStreaming(
+                            fetch('../wasm/go_runner.wasm'),
+                            go.importObject
+                        );
+                        window.goRunnerInstance = result.instance;
+                        go.run(window.goRunnerInstance);
+                    }
+
+                    // Execute the code
+                    const result = await window.executeGoCode(code);
+                    if (result.error) {
+                        outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                    } else {
+                        outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                    }
+                } else if (language === 'csharp') {
+                    if (!window.csharpWasmRuntimeStarted) {
+                        outputElement.innerHTML = 'Loading .NET Wasm runtime...';
+                        try {
+                            // Dynamically load blazor.webassembly.js if not already present
+                            if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
+                                const script = document.createElement('script');
+                                script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.defer = true;
+                                document.body.appendChild(script);
+
+                                // Wait for DotNet to be available
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            } else {
+                                // If script tag exists, still wait for DotNet to be ready
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            }
+                            window.csharpWasmRuntimeStarted = true;
+                            outputElement.innerHTML = '.NET Wasm runtime loaded. Ready to run C# code.';
+                        } catch (loadError) {
+                            console.error("Error loading .NET Wasm runtime:", loadError);
+                            outputElement.innerHTML = `<pre style="color: red;">Error loading .NET Wasm runtime:\n${loadError}</pre>`;
+                            return;
+                        }
+                    }
+
+                    try {
+                        outputElement.innerHTML = 'Executing C# code...';
+                        if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
+                            outputElement.innerHTML = `<pre style="color: red;">.NET runtime not available for invoking method.</pre>`;
+                            return;
+                        }
+
+                        const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
+                        if (result.error) {
+                            outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                        } else {
+                            outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                        }
+                    } catch (execError) {
+                        console.error("Error executing C# code:", execError);
+                        outputElement.innerHTML = `<pre style="color: red;">Error executing C# code:\n${execError.message || execError}</pre>`;
+                    }
+                } else {
+                    outputElement.innerHTML = `<p>Execution for ${language} is not supported.</p>`;
+                }
+            } catch (error) {
+                outputElement.innerHTML = `<pre style="color: red;">Error:\n${error.message}</pre>`;
+                console.error('Code execution error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

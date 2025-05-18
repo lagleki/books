@@ -125,7 +125,12 @@ function processMarkdownFiles() {
       }
       // Get navigation links
       const dir = path.dirname(filePath);
-      const filesInDir = filesByDir[dir].sort();
+      const filesInDir = filesByDir[dir].sort((a, b) => {
+        // Extract numbers from filenames for natural sorting
+        const numA = parseInt(a.match(/\d+/)?.[0] || 0);
+        const numB = parseInt(b.match(/\d+/)?.[0] || 0);
+        return numA - numB;
+      });
       const currentIndex = filesInDir.indexOf(filePath);
       const isIndexFile = path.basename(filePath) === 'index.md';
       
