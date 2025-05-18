@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Testing in C#</title>
+    <style id="tailwind-styles">
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.prose{color:var(--tw-prose-body);max-width:65ch}.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-top:1.2em;margin-bottom:1.2em}.prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);text-decoration:underline;font-weight:500}.prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{font-weight:400;color:var(--tw-prose-counters)}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-top:3em;margin-bottom:3em}.prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-style:italic;color:var(--tw-prose-quotes);border-inline-start-width:.25rem;border-inline-start-color:var(--tw-prose-quote-borders);quotes:"\201C""\201D""\2018""\2019";margin-top:1.6em;margin-bottom:1.6em;padding-inline-start:1em}.prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:800;font-size:2.25em;margin-top:0;margin-bottom:.8888889em;line-height:1.1111111}.prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:900;color:inherit}.prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:700;font-size:1.5em;margin-top:2em;margin-bottom:1em;line-height:1.3333333}.prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:800;color:inherit}.prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;font-size:1.25em;margin-top:1.6em;margin-bottom:.6em;line-height:1.6}.prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.5em;margin-bottom:.5em;line-height:1.5}.prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-top:2em;margin-bottom:2em}.prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-family:inherit;color:var(--tw-prose-kbd);box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);font-size:.875em;border-radius:.3125rem;padding-top:.1875em;padding-inline-end:.375em;padding-bottom:.1875em;padding-inline-start:.375em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-weight:600;font-size:.875em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-pre-code);background-color:var(--tw-prose-pre-bg);overflow-x:auto;font-weight:400;font-size:.875em;line-height:1.7142857;margin-top:1.7142857em;margin-bottom:1.7142857em;border-radius:.375rem;padding-top:.8571429em;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-inline-start:1.1428571em}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:transparent;border-width:0;border-radius:0;padding:0;font-weight:inherit;color:inherit;font-size:inherit;font-family:inherit;line-height:inherit}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){width:100%;table-layout:auto;margin-top:2em;margin-bottom:2em;font-size:.875em;line-height:1.7142857}.prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-th-borders)}.prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;vertical-align:bottom;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-td-borders)}.prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:baseline}.prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-width:1px;border-top-color:var(--tw-prose-th-borders)}.prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.prose :where(th,td):not(:where([class~=not-prose],[class~=not-prose] *)){text-align:start}.prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:rgba(0,0,0,.5);--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;margin-bottom:.5em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(.prose>ul>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ul>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(.prose>ol>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ol>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-top:.5714286em;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.visible{visibility:visible}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.isolate{isolation:isolate}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mt-12{margin-top:3rem}.block{display:block}.inline{display:inline}.flex{display:flex}.max-w-4xl{max-width:56rem}.max-w-none{max-width:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.justify-between{justify-content:space-between}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.px-4{padding-left:1rem;padding-right:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pt-6{padding-top:1.5rem}.uppercase{text-transform:uppercase}.lowercase{text-transform:lowercase}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.\[b\:2\]{b:2}a{color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}a,a:hover{--tw-text-opacity:1}a:hover{color:rgb(30 64 175/var(--tw-text-opacity,1))}.prose a{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}.prose a:hover{--tw-text-opacity:1;color:rgb(30 64 175/var(--tw-text-opacity,1))}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="mb-12 border-b border-gray-200 pb-6 flex justify-between">
+            <div><a href="chapter8-security.html" class="text-blue-600 nav-link">Previous</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Table of Contents</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Next</a></div>
+        </header>
+
+        <main class="prose max-w-none">
+            <h1>Unit Testing in C#</h1>
+<h2>Introduction to Unit Testing and TDD</h2>
+<p>Unit testing is a software testing method where individual units or components of a software are tested. The purpose is to validate that each unit of the software performs as designed. A unit is most often an individual function or procedure in a program.</p>
+<p>Test-Driven Development (TDD) is a software development process that relies on the repetition of a very short development cycle: Requirements are turned into very specific test cases, then the software is improved to pass the new tests, and finally refactored to some acceptable standards. Kent Beck is credited with having developed or refined the technique.</p>
+<p>Mocking is used in unit tests to isolate the code being tested from its dependencies. A mock object simulates the behavior of a real object, allowing you to verify that the code under test interacts with the dependency in the way you expect.</p>
+<p>Assertions are statements that verify that a certain condition is true. Unit tests use assertions to check that the code under test produces the expected results.</p>
+<h2>Tricky Interview Question</h2>
+<p>Explain the difference between mocking and stubbing.</p>
+<h2>Detailed Answer</h2>
+<p><strong>Stubbing</strong> provides canned answers to calls made during the test, usually without recording whether those calls were made at all. Stubs are simple and provide a basic level of isolation.</p>
+<p><strong>Mocking</strong> goes a step further by allowing you to verify that certain interactions occurred with the mock object. Mocks are more complex than stubs and provide a higher level of isolation. Mocking frameworks like Moq allow you to define expectations about how the code under test should interact with its dependencies.</p>
+<p><strong>Unit Testing Frameworks:</strong></p>
+<ul>
+<li><strong>NUnit:</strong> A popular open-source unit testing framework for .NET.</li>
+<li><strong><a href="http://xUnit.net">xUnit.net</a>:</strong> A modern unit testing framework for .NET, designed for extensibility and test-driven development.</li>
+<li><strong>MSTest:</strong> Microsoft’s unit testing framework, included with Visual Studio.</li>
+</ul>
+<h2>Code Example with Moq</h2>
+<p>First, install the Moq NuGet package:</p>
+<pre><code class="hljs language-bash">Install-Package Moq
+</code></pre>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">using</span> Microsoft.VisualStudio.TestTools.UnitTesting;
+<span class="hljs-keyword">using</span> Moq;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">ICalculator</span>
+{
+    <span class="hljs-function"><span class="hljs-built_in">int</span> <span class="hljs-title">Add</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b</span>)</span>;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CalculatorService</span>
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> ICalculator _calculator;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CalculatorService</span>(<span class="hljs-params">ICalculator calculator</span>)</span>
+    {
+        _calculator = calculator;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">PerformCalculation</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> a, <span class="hljs-built_in">int</span> b</span>)</span>
+    {
+        <span class="hljs-keyword">return</span> _calculator.Add(a, b) * <span class="hljs-number">2</span>;
+    }
+}
+
+[<span class="hljs-meta">TestClass</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CalculatorServiceTests</span>
+{
+    [<span class="hljs-meta">TestMethod</span>]
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PerformCalculation_ShouldMultiplySumByTwo</span>()</span>
+    {
+        <span class="hljs-comment">// Arrange</span>
+        <span class="hljs-keyword">var</span> mockCalculator = <span class="hljs-keyword">new</span> Mock&lt;ICalculator&gt;();
+        mockCalculator.Setup(calc =&gt; calc.Add(It.IsAny&lt;<span class="hljs-built_in">int</span>&gt;(), It.IsAny&lt;<span class="hljs-built_in">int</span>&gt;())).Returns(<span class="hljs-number">5</span>);
+
+        <span class="hljs-keyword">var</span> calculatorService = <span class="hljs-keyword">new</span> CalculatorService(mockCalculator.Object);
+
+        <span class="hljs-comment">// Act</span>
+        <span class="hljs-built_in">int</span> result = calculatorService.PerformCalculation(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+
+        <span class="hljs-comment">// Assert</span>
+        Assert.AreEqual(<span class="hljs-number">10</span>, result);
+        mockCalculator.Verify(calc =&gt; calc.Add(It.IsAny&lt;<span class="hljs-built_in">int</span>&gt;(), It.IsAny&lt;<span class="hljs-built_in">int</span>&gt;()), Times.Once);
+    }
+}
+</code></pre>
+<h2>Code Debugging Task</h2>
+<p>Find and fix the issue in the following unit test that causes it to fail intermittently.</p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">using</span> Microsoft.VisualStudio.TestTools.UnitTesting;
+<span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">using</span> System.Threading;
+
+[<span class="hljs-meta">TestClass</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">FlakyTest</span>
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span> _counter;
+
+    [<span class="hljs-meta">TestMethod</span>]
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">IncrementCounter_ShouldEventuallyReachTarget</span>()</span>
+    {
+        <span class="hljs-built_in">int</span> target = <span class="hljs-number">100</span>;
+        <span class="hljs-keyword">while</span> (_counter &lt; target)
+        {
+            ThreadPool.QueueUserWorkItem(_ =&gt; Interlocked.Increment(<span class="hljs-keyword">ref</span> _counter));
+        }
+
+        Assert.AreEqual(target, _counter);
+    }
+}
+</code></pre>
+<h2>Explanation and Corrected Code</h2>
+<p>The issue with the original code is that the <code>Assert.AreEqual</code> is being called <em>before</em> the ThreadPool threads have completed their execution, leading to a race condition. The <code>_counter</code> variable might not have reached the <code>target</code> value by the time the assertion is made.</p>
+<p>To fix this, we need to wait for all the queued work items in the ThreadPool to complete before making the assertion. We can achieve this by using a <code>ManualResetEvent</code>.</p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">using</span> Microsoft.VisualStudio.TestTools.UnitTesting;
+<span class="hljs-keyword">using</span> System;
+<span class="hljs-keyword">using</span> System.Threading;
+
+[<span class="hljs-meta">TestClass</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">FixedFlakyTest</span>
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span> _counter;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ManualResetEvent _resetEvent = <span class="hljs-keyword">new</span> ManualResetEvent(<span class="hljs-literal">false</span>);
+
+    [<span class="hljs-meta">TestMethod</span>]
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">IncrementCounter_ShouldEventuallyReachTarget</span>()</span>
+    {
+        <span class="hljs-built_in">int</span> target = <span class="hljs-number">100</span>;
+        <span class="hljs-built_in">int</span> workerThreads = <span class="hljs-number">0</span>;
+        <span class="hljs-built_in">int</span> completionThreads = <span class="hljs-number">0</span>;
+        ThreadPool.GetMaxThreads(<span class="hljs-keyword">out</span> workerThreads, <span class="hljs-keyword">out</span> completionThreads);
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; target; i++)
+        {
+            ThreadPool.QueueUserWorkItem(_ =&gt;
+            {
+                Interlocked.Increment(<span class="hljs-keyword">ref</span> _counter);
+                <span class="hljs-keyword">if</span> (Interlocked.CompareExchange(<span class="hljs-keyword">ref</span> _counter, <span class="hljs-number">0</span>, target) == target)
+                {
+                    _resetEvent.Set();
+                }
+            });
+        }
+
+        _resetEvent.WaitOne(TimeSpan.FromSeconds(<span class="hljs-number">10</span>)); <span class="hljs-comment">// Wait up to 10 seconds</span>
+
+        Assert.AreEqual(target, _counter);
+    }
+
+    [<span class="hljs-meta">TestCleanup</span>]
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Cleanup</span>()</span>
+    {
+        _counter = <span class="hljs-number">0</span>;
+        _resetEvent.Reset();
+    }
+}
+</code></pre>
+<p>Key changes:</p>
+<ol>
+<li>A <code>ManualResetEvent</code> is used to signal when the counter has reached the target value.</li>
+<li>The <code>ThreadPool.QueueUserWorkItem</code> now sets the <code>ManualResetEvent</code> when the counter reaches the target.</li>
+<li>The test waits for the <code>ManualResetEvent</code> to be set, with a timeout to prevent the test from running indefinitely.</li>
+<li>A <code>TestCleanup</code> method is added to reset the counter and the <code>ManualResetEvent</code> after each test.</li>
+</ol>
+<h2>Additional Questions and Answers</h2>
+<details><summary>Question: What are integration tests vs unit tests?</summary>
+<blockquote>
+<p>Unit testing: Verification of individual application modules (classes, libraries) in isolation from other modules. Enables regression testing (ensuring modules still work after changes).</p>
+</blockquote>
+<blockquote>
+<p>Integration testing: Software modules are combined and tested as a group. These tests verify correct interaction between subsystems (e.g., two classes). Conducted after unit testing.</p>
+</blockquote>
+<blockquote>
+<p>System testing: Verifies the entire application as a whole against requirements using black-box principles (without considering internal implementation).</p>
+</blockquote>
+</details>
+        </main>
+
+        <footer class="mt-12 border-t border-gray-200 pt-6 flex justify-between">
+            <div><a href="chapter8-security.html" class="text-blue-600 nav-link">Previous</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Table of Contents</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Next</a></div>
+        </footer>
+    </div>
+    <script>
+        async function runCode(codeElementId, outputElementId, language) {
+            const codeElement = document.getElementById(codeElementId);
+            const outputElement = document.getElementById(outputElementId);
+            const code = codeElement.textContent;
+            outputElement.innerHTML = 'Running...';
+
+            try {
+                if (language === 'go') {
+                    // Load wasm_exec.js if not already loaded
+                    if (!window.Go) {
+                        await new Promise((resolve, reject) => {
+                            const script = document.createElement('script');
+                            script.src = '../wasm/wasm_exec.js';
+                            script.onload = resolve;
+                            script.onerror = reject;
+                            document.head.appendChild(script);
+                        });
+                    }
+
+                    // Initialize Go Wasm instance if not already done
+                    if (!window.goRunnerInstance) {
+                        const go = new Go();
+                        const result = await WebAssembly.instantiateStreaming(
+                            fetch('../wasm/go_runner.wasm'),
+                            go.importObject
+                        );
+                        window.goRunnerInstance = result.instance;
+                        go.run(window.goRunnerInstance);
+                    }
+
+                    // Execute the code
+                    const result = await window.executeGoCode(code);
+                    if (result.error) {
+                        outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                    } else {
+                        outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                    }
+                } else if (language === 'csharp') {
+                    if (!window.csharpWasmRuntimeStarted) {
+                        outputElement.innerHTML = 'Loading .NET Wasm runtime...';
+                        try {
+                            // Dynamically load blazor.webassembly.js if not already present
+                            if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
+                                const script = document.createElement('script');
+                                script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.defer = true;
+                                document.body.appendChild(script);
+
+                                // Wait for DotNet to be available
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            } else {
+                                // If script tag exists, still wait for DotNet to be ready
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            }
+                            window.csharpWasmRuntimeStarted = true;
+                            outputElement.innerHTML = '.NET Wasm runtime loaded. Ready to run C# code.';
+                        } catch (loadError) {
+                            console.error("Error loading .NET Wasm runtime:", loadError);
+                            outputElement.innerHTML = `<pre style="color: red;">Error loading .NET Wasm runtime:\n${loadError}</pre>`;
+                            return;
+                        }
+                    }
+
+                    try {
+                        outputElement.innerHTML = 'Executing C# code...';
+                        if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
+                            outputElement.innerHTML = `<pre style="color: red;">.NET runtime not available for invoking method.</pre>`;
+                            return;
+                        }
+
+                        const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
+                        if (result.error) {
+                            outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                        } else {
+                            outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                        }
+                    } catch (execError) {
+                        console.error("Error executing C# code:", execError);
+                        outputElement.innerHTML = `<pre style="color: red;">Error executing C# code:\n${execError.message || execError}</pre>`;
+                    }
+                } else {
+                    outputElement.innerHTML = `<p>Execution for ${language} is not supported.</p>`;
+                }
+            } catch (error) {
+                outputElement.innerHTML = `<pre style="color: red;">Error:\n${error.message}</pre>`;
+                console.error('Code execution error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

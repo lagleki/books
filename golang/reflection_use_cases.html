@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricky Interview Questions for Senior Golang Developers</title>
+    <style id="tailwind-styles">
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.prose{color:var(--tw-prose-body);max-width:65ch}.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where([class~=lead]):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-lead);font-size:1.25em;line-height:1.6;margin-top:1.2em;margin-bottom:1.2em}.prose :where(a):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-links);text-decoration:underline;font-weight:500}.prose :where(strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-bold);font-weight:600}.prose :where(a strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th strong):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(ol):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol[type=A]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=A s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-alpha}.prose :where(ol[type=a s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-alpha}.prose :where(ol[type=I]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type=I s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:upper-roman}.prose :where(ol[type=i s]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:lower-roman}.prose :where(ol[type="1"]):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:decimal}.prose :where(ul):not(:where([class~=not-prose],[class~=not-prose] *)){list-style-type:disc;margin-top:1.25em;margin-bottom:1.25em;padding-inline-start:1.625em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{font-weight:400;color:var(--tw-prose-counters)}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker{color:var(--tw-prose-bullets)}.prose :where(dt):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.25em}.prose :where(hr):not(:where([class~=not-prose],[class~=not-prose] *)){border-color:var(--tw-prose-hr);border-top-width:1px;margin-top:3em;margin-bottom:3em}.prose :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-style:italic;color:var(--tw-prose-quotes);border-inline-start-width:.25rem;border-inline-start-color:var(--tw-prose-quote-borders);quotes:"\201C""\201D""\2018""\2019";margin-top:1.6em;margin-bottom:1.6em;padding-inline-start:1em}.prose :where(blockquote p:first-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:open-quote}.prose :where(blockquote p:last-of-type):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:close-quote}.prose :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:800;font-size:2.25em;margin-top:0;margin-bottom:.8888889em;line-height:1.1111111}.prose :where(h1 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:900;color:inherit}.prose :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:700;font-size:1.5em;margin-top:2em;margin-bottom:1em;line-height:1.3333333}.prose :where(h2 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:800;color:inherit}.prose :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;font-size:1.25em;margin-top:1.6em;margin-bottom:.6em;line-height:1.6}.prose :where(h3 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;margin-top:1.5em;margin-bottom:.5em;line-height:1.5}.prose :where(h4 strong):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:700;color:inherit}.prose :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(picture):not(:where([class~=not-prose],[class~=not-prose] *)){display:block;margin-top:2em;margin-bottom:2em}.prose :where(video):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(kbd):not(:where([class~=not-prose],[class~=not-prose] *)){font-weight:500;font-family:inherit;color:var(--tw-prose-kbd);box-shadow:0 0 0 1px rgb(var(--tw-prose-kbd-shadows)/10%),0 3px 0 rgb(var(--tw-prose-kbd-shadows)/10%);font-size:.875em;border-radius:.3125rem;padding-top:.1875em;padding-inline-end:.375em;padding-bottom:.1875em;padding-inline-start:.375em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-code);font-weight:600;font-size:.875em}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:"`"}.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:"`"}.prose :where(a code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h1 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(h2 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.875em}.prose :where(h3 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit;font-size:.9em}.prose :where(h4 code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(blockquote code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(thead th code):not(:where([class~=not-prose],[class~=not-prose] *)){color:inherit}.prose :where(pre):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-pre-code);background-color:var(--tw-prose-pre-bg);overflow-x:auto;font-weight:400;font-size:.875em;line-height:1.7142857;margin-top:1.7142857em;margin-bottom:1.7142857em;border-radius:.375rem;padding-top:.8571429em;padding-inline-end:1.1428571em;padding-bottom:.8571429em;padding-inline-start:1.1428571em}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)){background-color:transparent;border-width:0;border-radius:0;padding:0;font-weight:inherit;color:inherit;font-size:inherit;font-family:inherit;line-height:inherit}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):before{content:none}.prose :where(pre code):not(:where([class~=not-prose],[class~=not-prose] *)):after{content:none}.prose :where(table):not(:where([class~=not-prose],[class~=not-prose] *)){width:100%;table-layout:auto;margin-top:2em;margin-bottom:2em;font-size:.875em;line-height:1.7142857}.prose :where(thead):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-th-borders)}.prose :where(thead th):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-headings);font-weight:600;vertical-align:bottom;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody tr):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:1px;border-bottom-color:var(--tw-prose-td-borders)}.prose :where(tbody tr:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){border-bottom-width:0}.prose :where(tbody td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:baseline}.prose :where(tfoot):not(:where([class~=not-prose],[class~=not-prose] *)){border-top-width:1px;border-top-color:var(--tw-prose-th-borders)}.prose :where(tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){vertical-align:top}.prose :where(th,td):not(:where([class~=not-prose],[class~=not-prose] *)){text-align:start}.prose :where(figure>*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(figcaption):not(:where([class~=not-prose],[class~=not-prose] *)){color:var(--tw-prose-captions);font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose{--tw-prose-body:#374151;--tw-prose-headings:#111827;--tw-prose-lead:#4b5563;--tw-prose-links:#111827;--tw-prose-bold:#111827;--tw-prose-counters:#6b7280;--tw-prose-bullets:#d1d5db;--tw-prose-hr:#e5e7eb;--tw-prose-quotes:#111827;--tw-prose-quote-borders:#e5e7eb;--tw-prose-captions:#6b7280;--tw-prose-kbd:#111827;--tw-prose-kbd-shadows:17 24 39;--tw-prose-code:#111827;--tw-prose-pre-code:#e5e7eb;--tw-prose-pre-bg:#1f2937;--tw-prose-th-borders:#d1d5db;--tw-prose-td-borders:#e5e7eb;--tw-prose-invert-body:#d1d5db;--tw-prose-invert-headings:#fff;--tw-prose-invert-lead:#9ca3af;--tw-prose-invert-links:#fff;--tw-prose-invert-bold:#fff;--tw-prose-invert-counters:#9ca3af;--tw-prose-invert-bullets:#4b5563;--tw-prose-invert-hr:#374151;--tw-prose-invert-quotes:#f3f4f6;--tw-prose-invert-quote-borders:#374151;--tw-prose-invert-captions:#9ca3af;--tw-prose-invert-kbd:#fff;--tw-prose-invert-kbd-shadows:255 255 255;--tw-prose-invert-code:#fff;--tw-prose-invert-pre-code:#d1d5db;--tw-prose-invert-pre-bg:rgba(0,0,0,.5);--tw-prose-invert-th-borders:#4b5563;--tw-prose-invert-td-borders:#374151;font-size:1rem;line-height:1.75}.prose :where(picture>img):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0;margin-bottom:0}.prose :where(li):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;margin-bottom:.5em}.prose :where(ol>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:.375em}.prose :where(.prose>ul>li p):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(.prose>ul>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ul>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(.prose>ol>li>p:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em}.prose :where(.prose>ol>li>p:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:1.25em}.prose :where(ul ul,ul ol,ol ul,ol ol):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.75em;margin-bottom:.75em}.prose :where(dl):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:1.25em;margin-bottom:1.25em}.prose :where(dd):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:.5em;padding-inline-start:1.625em}.prose :where(hr+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h2+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h3+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(h4+*):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(thead th:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(thead th:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(tbody td,tfoot td):not(:where([class~=not-prose],[class~=not-prose] *)){padding-top:.5714286em;padding-inline-end:.5714286em;padding-bottom:.5714286em;padding-inline-start:.5714286em}.prose :where(tbody td:first-child,tfoot td:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-start:0}.prose :where(tbody td:last-child,tfoot td:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){padding-inline-end:0}.prose :where(figure):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:2em;margin-bottom:2em}.prose :where(.prose>:first-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-top:0}.prose :where(.prose>:last-child):not(:where([class~=not-prose],[class~=not-prose] *)){margin-bottom:0}.visible{visibility:visible}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.isolate{isolation:isolate}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mt-12{margin-top:3rem}.block{display:block}.inline{display:inline}.flex{display:flex}.max-w-4xl{max-width:56rem}.max-w-none{max-width:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.justify-between{justify-content:space-between}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235/var(--tw-border-opacity,1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251/var(--tw-bg-opacity,1))}.px-4{padding-left:1rem;padding-right:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pt-6{padding-top:1.5rem}.uppercase{text-transform:uppercase}.lowercase{text-transform:lowercase}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.\[b\:2\]{b:2}a{color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}a,a:hover{--tw-text-opacity:1}a:hover{color:rgb(30 64 175/var(--tw-text-opacity,1))}.prose a{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1));text-decoration-line:underline}.prose a:hover{--tw-text-opacity:1;color:rgb(30 64 175/var(--tw-text-opacity,1))}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="mb-12 border-b border-gray-200 pb-6 flex justify-between">
+            <div><a href="optimizing_go_code.html" class="text-blue-600 nav-link">Previous</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Table of Contents</a></div>
+            <div><a href="testing_benchmarking.html" class="text-blue-600 nav-link">Next</a></div>
+        </header>
+
+        <main class="prose max-w-none">
+            <h1>Tricky Interview Questions for Senior Golang Developers</h1>
+<h3>Question 1: Understanding the <code>go generate</code> Tool</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>What is the <code>go generate</code> tool? How is it used?</p>
+<p><strong>Solution:</strong></p>
+<p>The <code>go generate</code> tool is a command-line tool that is used to automate the generation of Go source code. It allows you to embed commands in your Go source code that will be executed by the <code>go generate</code> tool. These commands can be used to generate code based on other files, such as configuration files or data files.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>go generate</code> tool works by scanning your Go source code for special comments that start with the <code>//go:generate</code> prefix. These comments contain commands that will be executed by the <code>go generate</code> tool. The commands can be any valid command-line command, such as <code>protoc</code> (to generate Go code from protocol buffer files) or <code>stringer</code> (to generate string representations of constants).</p>
+<p>To use the <code>go generate</code> tool, you first need to add the <code>//go:generate</code> comments to your Go source code. Then, you can run the <code>go generate</code> command in your project directory. The <code>go generate</code> command will execute the commands in the <code>//go:generate</code> comments and generate the corresponding Go source code.</p>
+<h3>Question 2: Implementing a Simple Bloom Filter</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Implement a simple Bloom filter in Go.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"hash/fnv"</span>
+)
+
+<span class="hljs-keyword">type</span> BloomFilter <span class="hljs-keyword">struct</span> {
+	bitset  []<span class="hljs-type">bool</span>
+	size    <span class="hljs-type">uint32</span>
+	hashFns []<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">string</span>)</span></span> <span class="hljs-type">uint32</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewBloomFilter</span><span class="hljs-params">(size <span class="hljs-type">uint32</span>, numHashFns <span class="hljs-type">int</span>)</span></span> *BloomFilter {
+	<span class="hljs-keyword">return</span> &amp;BloomFilter{
+		bitset:  <span class="hljs-built_in">make</span>([]<span class="hljs-type">bool</span>, size),
+		size:    size,
+		hashFns: generateHashFunctions(numHashFns),
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">generateHashFunctions</span><span class="hljs-params">(numHashFns <span class="hljs-type">int</span>)</span></span> []<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">string</span>)</span></span> <span class="hljs-type">uint32</span> {
+	hashFns := <span class="hljs-built_in">make</span>([]<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">string</span>)</span></span> <span class="hljs-type">uint32</span>, numHashFns)
+	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; numHashFns; i++ {
+		seed := <span class="hljs-type">uint32</span>(i)
+		hashFns[i] = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(s <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">uint32</span> {
+			h := fnv.New32a()
+			h.Write([]<span class="hljs-type">byte</span>(s))
+			<span class="hljs-keyword">return</span> h.Sum32() % seed
+		}
+	}
+	<span class="hljs-keyword">return</span> hashFns
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(bf *BloomFilter)</span></span> Add(s <span class="hljs-type">string</span>) {
+	<span class="hljs-keyword">for</span> _, hashFn := <span class="hljs-keyword">range</span> bf.hashFns {
+		index := hashFn(s) % bf.size
+		bf.bitset[index] = <span class="hljs-literal">true</span>
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(bf *BloomFilter)</span></span> Contains(s <span class="hljs-type">string</span>) <span class="hljs-type">bool</span> {
+	<span class="hljs-keyword">for</span> _, hashFn := <span class="hljs-keyword">range</span> bf.hashFns {
+		index := hashFn(s) % bf.size
+		<span class="hljs-keyword">if</span> !bf.bitset[index] {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+		}
+	}
+	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	bf := NewBloomFilter(<span class="hljs-number">100</span>, <span class="hljs-number">3</span>)
+	bf.Add(<span class="hljs-string">"hello"</span>)
+	bf.Add(<span class="hljs-string">"world"</span>)
+
+	fmt.Println(bf.Contains(<span class="hljs-string">"hello"</span>)) <span class="hljs-comment">// true</span>
+	fmt.Println(bf.Contains(<span class="hljs-string">"world"</span>)) <span class="hljs-comment">// true</span>
+	fmt.Println(bf.Contains(<span class="hljs-string">"test"</span>))  <span class="hljs-comment">// false (might be true due to false positive)</span>
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>The <code>BloomFilter</code> struct contains a bitset (a slice of booleans), a size, and a slice of hash functions. The <code>NewBloomFilter</code> function creates a new Bloom filter with the specified size and number of hash functions. The <code>Add</code> method adds an element to the Bloom filter by setting the bits at the indices calculated by the hash functions to true. The <code>Contains</code> method checks if an element is in the Bloom filter by checking if the bits at the indices calculated by the hash functions are all true.</p>
+<h3>Question 3: Understanding the <code>pprof</code> Package</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>What is the <code>pprof</code> package in Go? How can it be used to profile Go programs?</p>
+<p><strong>Solution:</strong></p>
+<p>The <code>pprof</code> package in Go provides tools for profiling Go programs. It allows you to collect data about the CPU usage, memory allocation, and goroutine activity of your program. This data can be used to identify performance bottlenecks and optimize your code.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>pprof</code> package works by sampling the execution of your program at regular intervals. The sampling data is then stored in a profile file, which can be analyzed using the <code>go tool pprof</code> command. The <code>go tool pprof</code> command provides a variety of tools for analyzing the profile data, such as:</p>
+<ul>
+<li><strong>Top:</strong> Shows the functions that are consuming the most CPU time or memory.</li>
+<li><strong>Graph:</strong> Shows a graphical representation of the call graph of your program.</li>
+<li><strong>Web:</strong> Starts a web server that allows you to browse the profile data in a web browser.</li>
+</ul>
+<p>To use the <code>pprof</code> package, you first need to import the <code>net/http/pprof</code> package in your Go source code. Then, you need to register the <code>pprof</code> handlers with the <code>http.DefaultServeMux</code>. This can be done by adding the following code to your <code>main</code> function:</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">import</span> _ <span class="hljs-string">"net/http/pprof"</span>
+</code></pre>
+<p>Then, you can run your program and access the <code>pprof</code> handlers by visiting the <code>/debug/pprof</code> endpoint in your web browser. For example, if your program is running on <code>localhost:8080</code>, you can access the <code>pprof</code> handlers by visiting <code>http://localhost:8080/debug/pprof</code>.</p>
+<h3>Question 4: Implementing a Simple Retry Mechanism</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Implement a simple retry mechanism in Go that retries a function a specified number of times if it returns an error.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"time"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">retry</span><span class="hljs-params">(attempts <span class="hljs-type">int</span>, sleep time.Duration, f <span class="hljs-keyword">func</span>()</span></span> <span class="hljs-type">error</span>) (err <span class="hljs-type">error</span>) {
+	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; attempts; i++ {
+		err = f()
+		<span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+		}
+
+		fmt.Println(<span class="hljs-string">"Attempt"</span>, i+<span class="hljs-number">1</span>, <span class="hljs-string">"failed:"</span>, err)
+		time.Sleep(sleep)
+	}
+	<span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">"after %d attempts, last error: %s"</span>, attempts, err)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-keyword">var</span> attempts = <span class="hljs-number">3</span>
+	<span class="hljs-keyword">var</span> sleep = <span class="hljs-number">2</span> * time.Second
+	<span class="hljs-keyword">var</span> operation = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> <span class="hljs-type">error</span> {
+		<span class="hljs-comment">// Simulate an operation that might fail</span>
+		<span class="hljs-keyword">if</span> time.Now().Unix()%<span class="hljs-number">2</span> == <span class="hljs-number">0</span> {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span> <span class="hljs-comment">// Success on even seconds</span>
+		}
+		<span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">"operation failed"</span>) <span class="hljs-comment">// Fail on odd seconds</span>
+	}
+
+	err := retry(attempts, sleep, operation)
+	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+		fmt.Println(<span class="hljs-string">"Operation failed after multiple retries:"</span>, err)
+	} <span class="hljs-keyword">else</span> {
+		fmt.Println(<span class="hljs-string">"Operation succeeded"</span>)
+	}
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>The <code>retry</code> function takes the number of attempts, the sleep duration, and a function as arguments. The <code>retry</code> function calls the function repeatedly until it returns nil or the number of attempts is exceeded. If the function returns an error, the <code>retry</code> function sleeps for the specified duration and then tries again.</p>
+<h3>Question 5: Understanding the <code>sync.Cond</code> Type</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>What is the <code>sync.Cond</code> type in Go? How is it used?</p>
+<p><strong>Solution:</strong></p>
+<p>The <code>sync.Cond</code> type in Go provides a way for goroutines to wait for a specific condition to become true. It is typically used in conjunction with a mutex to protect the shared state that is being waited on.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>sync.Cond</code> type has three methods:</p>
+<ul>
+<li><strong>Wait:</strong> Releases the mutex and waits for a signal.</li>
+<li><strong>Signal:</strong> Wakes up one goroutine that is waiting on the condition.</li>
+<li><strong>Broadcast:</strong> Wakes up all goroutines that are waiting on the condition.</li>
+</ul>
+<p>To use the <code>sync.Cond</code> type, you first need to create a new <code>sync.Cond</code> value. Then, you need to acquire the mutex that protects the shared state. Then, you can call the <code>Wait</code> method to release the mutex and wait for a signal. When the condition becomes true, another goroutine can call the <code>Signal</code> or <code>Broadcast</code> method to wake up the waiting goroutine. The waiting goroutine will then reacquire the mutex and check if the condition is still true.</p>
+<h3>Question 6: Implementing a Simple TCP Server</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Implement a simple TCP server in Go that listens on a specified port and echoes back any data that it receives.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"net"</span>
+	<span class="hljs-string">"os"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">handleConnection</span><span class="hljs-params">(conn net.Conn)</span></span> {
+	<span class="hljs-keyword">defer</span> conn.Close()
+
+	buffer := <span class="hljs-built_in">make</span>([]<span class="hljs-type">byte</span>, <span class="hljs-number">1024</span>)
+	<span class="hljs-keyword">for</span> {
+		n, err := conn.Read(buffer)
+		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+			fmt.Println(<span class="hljs-string">"Error reading:"</span>, err.Error())
+			<span class="hljs-keyword">return</span>
+		}
+
+		fmt.Printf(<span class="hljs-string">"Received: %s"</span>, <span class="hljs-type">string</span>(buffer[:n]))
+
+		_, err = conn.Write(buffer[:n])
+		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+			fmt.Println(<span class="hljs-string">"Error writing:"</span>, err.Error())
+			<span class="hljs-keyword">return</span>
+		}
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	port := <span class="hljs-string">"8080"</span>
+	ln, err := net.Listen(<span class="hljs-string">"tcp"</span>, <span class="hljs-string">":"</span>+port)
+	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+		fmt.Println(<span class="hljs-string">"Error listening:"</span>, err.Error())
+		os.Exit(<span class="hljs-number">1</span>)
+	}
+	<span class="hljs-keyword">defer</span> ln.Close()
+
+	fmt.Println(<span class="hljs-string">"Listening on port "</span> + port)
+
+	<span class="hljs-keyword">for</span> {
+		conn, err := ln.Accept()
+		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+			fmt.Println(<span class="hljs-string">"Error accepting:"</span>, err.Error())
+			os.Exit(<span class="hljs-number">1</span>)
+		}
+
+		fmt.Println(<span class="hljs-string">"Accepted connection"</span>)
+		<span class="hljs-keyword">go</span> handleConnection(conn)
+	}
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>The <code>handleConnection</code> function reads data from the connection and writes it back to the connection. The <code>main</code> function listens on the specified port and accepts incoming connections. For each incoming connection, the <code>main</code> function starts a new goroutine to handle the connection.</p>
+<h3>Question 7: Understanding the <code>go tool trace</code> Command</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>What is the <code>go tool trace</code> command? How can it be used to trace Go programs?</p>
+<p><strong>Solution:</strong></p>
+<p>The <code>go tool trace</code> command is a command-line tool that is used to trace the execution of Go programs. It allows you to collect data about the goroutine activity, garbage collection, and system calls of your program. This data can be used to identify performance bottlenecks and optimize your code.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>go tool trace</code> command works by instrumenting your Go program to collect trace data. The trace data is then stored in a trace file, which can be analyzed using the <code>go tool trace</code> command. The <code>go tool trace</code> command provides a variety of tools for analyzing the trace data, such as:</p>
+<ul>
+<li><strong>Goroutine analysis:</strong> Shows the activity of each goroutine in your program.</li>
+<li><strong>Garbage collection analysis:</strong> Shows the garbage collection activity in your program.</li>
+<li><strong>System call analysis:</strong> Shows the system calls that are being made by your program.</li>
+</ul>
+<p>To use the <code>go tool trace</code> command, you first need to build your Go program with the <code>-trace</code> flag. Then, you can run your program and collect the trace data by using the <code>go tool trace</code> command. For example:</p>
+<pre><code class="hljs language-bash">go build -o myprogram -gcflags=<span class="hljs-string">"-N -l"</span> main.go
+./myprogram
+go tool trace trace.out
+</code></pre>
+<h3>Question 8: Implementing a Simple Semaphore</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Implement a simple semaphore in Go.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span>
+
+<span class="hljs-keyword">type</span> Semaphore <span class="hljs-keyword">struct</span> {
+	ch <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewSemaphore</span><span class="hljs-params">(capacity <span class="hljs-type">int</span>)</span></span> *Semaphore {
+	<span class="hljs-keyword">return</span> &amp;Semaphore{
+		ch: <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}, capacity),
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Semaphore)</span></span> Acquire() {
+	s.ch &lt;- <span class="hljs-keyword">struct</span>{}{}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Semaphore)</span></span> Release() {
+	&lt;-s.ch
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	sem := NewSemaphore(<span class="hljs-number">2</span>) <span class="hljs-comment">// Allow 2 concurrent operations</span>
+
+	sem.Acquire()
+	fmt.Println(<span class="hljs-string">"First operation started"</span>)
+	<span class="hljs-comment">// time.Sleep(1 * time.Second)</span>
+	fmt.Println(<span class="hljs-string">"First operation completed"</span>)
+	sem.Release()
+
+	sem.Acquire()
+	fmt.Println(<span class="hljs-string">"Second operation started"</span>)
+	<span class="hljs-comment">// time.Sleep(1 * time.Second)</span>
+	fmt.Println(<span class="hljs-string">"Second operation completed"</span>)
+	sem.Release()
+
+	sem.Acquire() <span class="hljs-comment">// Blocks until a release</span>
+	fmt.Println(<span class="hljs-string">"Third operation started"</span>)
+	<span class="hljs-comment">// time.Sleep(1 * time.Second)</span>
+	fmt.Println(<span class="hljs-string">"Third operation completed"</span>)
+	sem.Release()
+}
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<p>The <code>Semaphore</code> struct contains a channel of empty structs (<code>ch</code>). The <code>NewSemaphore</code> function creates a new semaphore with the specified capacity. The <code>Acquire</code> method acquires a permit from the semaphore by sending a value to the channel. The <code>Release</code> method releases a permit from the semaphore by receiving a value from the channel.</p>
+<h3>Question 9: Understanding the <code>go doc</code> Tool</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>What is the <code>go doc</code> tool? How can it be used to view Go documentation?</p>
+<p><strong>Solution:</strong></p>
+<p>The <code>go doc</code> tool is a command-line tool that is used to view Go documentation. It allows you to view the documentation for Go packages, types, functions, and methods.</p>
+<p><strong>Explanation:</strong></p>
+<p>The <code>go doc</code> tool works by extracting the documentation from the Go source code. The documentation is written in special comments that start with the <code>//</code> prefix. The <code>go doc</code> tool can be used to view the documentation for a specific package, type, function, or method by specifying its name as an argument to the <code>go doc</code> command. For example:</p>
+<pre><code class="hljs language-bash">go doc fmt.Println
+</code></pre>
+<p>This command will display the documentation for the <code>fmt.Println</code> function.</p>
+<h3>Question 10: Implementing a Simple Circuit Breaker</h3>
+<p><strong>Problem Statement:</strong></p>
+<p>Implement a simple circuit breaker in Go.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">"fmt"</span>
+	<span class="hljs-string">"sync"</span>
+	<span class="hljs-string">"time"</span>
+)
+
+<span class="hljs-keyword">type</span> CircuitBreaker <span class="hljs-keyword">struct</span> {
+	mutex     sync.RWMutex
+	state     <span class="hljs-type">string</span> <span class="hljs-comment">// "CLOSED", "OPEN", "HALF-OPEN"</span>
+	failureThreshold <span class="hljs-type">int</span>
+	successThreshold <span class="hljs-type">int</span>
+	timeout     time.Duration
+	failureCount <span class="hljs-type">int</span>
+	successCount <span class="hljs-type">int</span>
+	lastFailure time.Time
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewCircuitBreaker</span><span class="hljs-params">(failureThreshold <span class="hljs-type">int</span>, successThreshold <span class="hljs-type">int</span>, timeout time.Duration)</span></span> *CircuitBreaker {
+	<span class="hljs-keyword">return</span> &amp;CircuitBreaker{
+		state:     <span class="hljs-string">"CLOSED"</span>,
+		failureThreshold: failureThreshold,
+		successThreshold: successThreshold,
+		timeout:     timeout,
+		failureCount: <span class="hljs-number">0</span>,
+		successCount: <span class="hljs-number">0</span>,
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> Call(f <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> <span class="hljs-type">error</span>) <span class="hljs-type">error</span> {
+	cb.mutex.RLock()
+	state := cb.state
+	cb.mutex.RUnlock()
+
+	<span class="hljs-keyword">switch</span> state {
+	<span class="hljs-keyword">case</span> <span class="hljs-string">"CLOSED"</span>:
+		err := f()
+		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+			cb.recordFailure()
+			<span class="hljs-keyword">return</span> err
+		}
+		cb.resetCounts()
+		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+	<span class="hljs-keyword">case</span> <span class="hljs-string">"OPEN"</span>:
+		<span class="hljs-keyword">if</span> time.Since(cb.lastFailure) &gt; cb.timeout {
+			cb.transitionToHalfOpen()
+		}
+		<span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">"circuit breaker is open"</span>)
+	<span class="hljs-keyword">case</span> <span class="hljs-string">"HALF-OPEN"</span>:
+		err := f()
+		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+			cb.recordFailure()
+			cb.transitionToOpen()
+			<span class="hljs-keyword">return</span> err
+		}
+		cb.recordSuccess()
+		<span class="hljs-keyword">if</span> cb.successCount &gt;= cb.successThreshold {
+			cb.transitionToClosed()
+		}
+		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+	<span class="hljs-keyword">default</span>:
+		<span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">"unknown circuit breaker state: %s"</span>, state)
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> recordFailure() {
+	cb.mutex.Lock()
+	<span class="hljs-keyword">defer</span> cb.mutex.Unlock()
+	cb.failureCount++
+	cb.lastFailure = time.Now()
+	<span class="hljs-keyword">if</span> cb.failureCount &gt;= cb.failureThreshold {
+		cb.transitionToOpen()
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> recordSuccess() {
+	cb.mutex.Lock()
+	<span class="hljs-keyword">defer</span> cb.mutex.Unlock()
+	cb.successCount++
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> resetCounts() {
+	cb.mutex.Lock()
+	<span class="hljs-keyword">defer</span> cb.mutex.Unlock()
+	cb.failureCount = <span class="hljs-number">0</span>
+	cb.successCount = <span class="hljs-number">0</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> transitionToOpen() {
+	cb.mutex.Lock()
+	<span class="hljs-keyword">defer</span> cb.mutex.Unlock()
+	cb.state = <span class="hljs-string">"OPEN"</span>
+	fmt.Println(<span class="hljs-string">"Circuit breaker transitioned to OPEN state"</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> transitionToHalfOpen() {
+	cb.mutex.Lock()
+	<span class="hljs-keyword">defer</span> cb.mutex.Unlock()
+	cb.state = <span class="hljs-string">"HALF-OPEN"</span>
+	fmt.Println(<span class="hljs-string">"Circuit breaker transitioned to HALF-OPEN state"</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(cb *CircuitBreaker)</span></span> transitionToClosed() {
+	cb.mutex.Lock()
+	<span class="hljs-keyword">defer</span> cb.mutex.Unlock()
+	cb.state = <span class="hljs-string">"CLOSED"</span>
+	fmt.Println(<span class="hljs-string">"Circuit breaker transitioned to CLOSED state"</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	cb := NewCircuitBreaker(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>*time.Second)
+
+	operation := <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> <span class="hljs-type">error</span> {
+		<span class="hljs-comment">// Simulate an operation that might fail</span>
+		<span class="hljs-keyword">if</span> time.Now().Unix()%<span class="hljs-number">3</span> == <span class="hljs-number">0</span> {
+			<span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">"operation failed"</span>)
+		}
+		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+	}
+
+	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
+		err := cb.Call(operation)
+		<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+			fmt.Println(<span class="hljs-string">"Call failed:"</span>, err)
+		} <span class="hljs-keyword">else</span> {
+			fmt.Println(<span class="hljs-string">"Call succeeded"</span>)
+		}
+		time.Sleep(<span class="hljs-number">1</span> * time.Second)
+	}
+}</code></pre>
+
+        </main>
+
+        <footer class="mt-12 border-t border-gray-200 pt-6 flex justify-between">
+            <div><a href="optimizing_go_code.html" class="text-blue-600 nav-link">Previous</a></div>
+            <div><a href="index.html" class="text-blue-600 nav-link">Table of Contents</a></div>
+            <div><a href="testing_benchmarking.html" class="text-blue-600 nav-link">Next</a></div>
+        </footer>
+    </div>
+    <script>
+        async function runCode(codeElementId, outputElementId, language) {
+            const codeElement = document.getElementById(codeElementId);
+            const outputElement = document.getElementById(outputElementId);
+            const code = codeElement.textContent;
+            outputElement.innerHTML = 'Running...';
+
+            try {
+                if (language === 'go') {
+                    // Load wasm_exec.js if not already loaded
+                    if (!window.Go) {
+                        await new Promise((resolve, reject) => {
+                            const script = document.createElement('script');
+                            script.src = '../wasm/wasm_exec.js';
+                            script.onload = resolve;
+                            script.onerror = reject;
+                            document.head.appendChild(script);
+                        });
+                    }
+
+                    // Initialize Go Wasm instance if not already done
+                    if (!window.goRunnerInstance) {
+                        const go = new Go();
+                        const result = await WebAssembly.instantiateStreaming(
+                            fetch('../wasm/go_runner.wasm'),
+                            go.importObject
+                        );
+                        window.goRunnerInstance = result.instance;
+                        go.run(window.goRunnerInstance);
+                    }
+
+                    // Execute the code
+                    const result = await window.executeGoCode(code);
+                    if (result.error) {
+                        outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                    } else {
+                        outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                    }
+                } else if (language === 'csharp') {
+                    if (!window.csharpWasmRuntimeStarted) {
+                        outputElement.innerHTML = 'Loading .NET Wasm runtime...';
+                        try {
+                            // Dynamically load blazor.webassembly.js if not already present
+                            if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
+                                const script = document.createElement('script');
+                                script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.defer = true;
+                                document.body.appendChild(script);
+
+                                // Wait for DotNet to be available
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            } else {
+                                // If script tag exists, still wait for DotNet to be ready
+                                await new Promise(resolve => {
+                                    const interval = setInterval(() => {
+                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
+                                            clearInterval(interval);
+                                            resolve();
+                                        }
+                                    }, 100);
+                                });
+                            }
+                            window.csharpWasmRuntimeStarted = true;
+                            outputElement.innerHTML = '.NET Wasm runtime loaded. Ready to run C# code.';
+                        } catch (loadError) {
+                            console.error("Error loading .NET Wasm runtime:", loadError);
+                            outputElement.innerHTML = `<pre style="color: red;">Error loading .NET Wasm runtime:\n${loadError}</pre>`;
+                            return;
+                        }
+                    }
+
+                    try {
+                        outputElement.innerHTML = 'Executing C# code...';
+                        if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
+                            outputElement.innerHTML = `<pre style="color: red;">.NET runtime not available for invoking method.</pre>`;
+                            return;
+                        }
+
+                        const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
+                        if (result.error) {
+                            outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                        } else {
+                            outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                        }
+                    } catch (execError) {
+                        console.error("Error executing C# code:", execError);
+                        outputElement.innerHTML = `<pre style="color: red;">Error executing C# code:\n${execError.message || execError}</pre>`;
+                    }
+                } else {
+                    outputElement.innerHTML = `<p>Execution for ${language} is not supported.</p>`;
+                }
+            } catch (error) {
+                outputElement.innerHTML = `<pre style="color: red;">Error:\n${error.message}</pre>`;
+                console.error('Code execution error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
