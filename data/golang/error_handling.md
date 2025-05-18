@@ -106,13 +106,13 @@ import (
 )
 
 type RateLimiter struct {
-	tokens    chan struct{}
+	tokens       chan struct{}
 	fillInterval time.Duration
 }
 
 func NewRateLimiter(rate int) *RateLimiter {
 	rl := &RateLimiter{
-		tokens:    make(chan struct{}, rate),
+		tokens:       make(chan struct{}, rate),
 		fillInterval: time.Second / time.Duration(rate),
 	}
 
@@ -271,9 +271,9 @@ import (
 )
 
 type LRUCache struct {
-	capacity  int
-	cache     map[interface{}]*list.Element
-	list      *list.List
+	capacity int
+	cache    map[interface{}]*list.Element
+	list     *list.List
 }
 
 type entry struct {
@@ -283,9 +283,9 @@ type entry struct {
 
 func NewLRUCache(capacity int) *LRUCache {
 	return &LRUCache{
-		capacity:  capacity,
-		cache:     make(map[interface{}]*list.Element),
-		list:      list.New(),
+		capacity: capacity,
+		cache:    make(map[interface{}]*list.Element),
+		list:     list.New(),
 	}
 }
 

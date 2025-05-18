@@ -228,7 +228,6 @@ func main() {
 	fmt.Println("Queue processing complete.")
 }
 ```
-
 **Explanation:**
 
 This example demonstrates how to implement a simple message queue in Go using channels. The message queue has a queue of messages. The producer enqueues messages to the queue. The consumer dequeues messages from the queue.
@@ -686,6 +685,7 @@ One common rate limiting approach is using the token bucket algorithm, which all
 
 The rate package provides the NewLimiter() function for creating a new token bucket rate limiter. For example:
 
+```go
 limiter := rate.NewLimiter(rate.Limit(100), 100)
 
 Then you can use the limiter.Allow() method to check if a token is available before performing a task:
@@ -699,11 +699,14 @@ if limiter.Allow() {
 // rate limit exceeded
 
 }
+```
 
 Alternatively, you can use the limiter.Wait() method to wait until a token becomes available:
 
+```go
 limiter.Wait()
 
 // perform task
+```
 
-You can also use the limiter.Reserve() method to reserve a token in advance and perform the task later.
+You can also use the `limiter.Reserve()` method to reserve a token in advance and perform the task later.

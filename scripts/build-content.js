@@ -125,7 +125,7 @@ function processMarkdownFiles() {
       }
       // Get navigation links
       const dir = path.dirname(filePath);
-      const filesInDir = filesByDir[dir];
+      const filesInDir = filesByDir[dir].sort();
       const currentIndex = filesInDir.indexOf(filePath);
       const isIndexFile = path.basename(filePath) === 'index.md';
       
@@ -138,7 +138,7 @@ function processMarkdownFiles() {
         if (filesInDir.length > 1) {
           const firstChapter = filesInDir.find(f => path.basename(f) !== 'index.md');
           if (firstChapter) {
-            nextLink = `<a href="${path.basename(firstChapter, '.md') + '.html'}" class="nav-link">First chapter</a>`;
+            nextLink = `<a href="${path.basename(firstChapter, '.md') + '.html'}" class="text-blue-600 nav-link">First chapter</a>`;
           }
         }
       } else {
@@ -146,17 +146,17 @@ function processMarkdownFiles() {
         // Previous link
         if (currentIndex > 0) {
           const prevFile = filesInDir[currentIndex - 1];
-          prevLink = `<a href="${path.basename(prevFile, '.md') + '.html'}" class="nav-link">Previous</a>`;
+          prevLink = `<a href="${path.basename(prevFile, '.md') + '.html'}" class="text-blue-600 nav-link">Previous</a>`;
         }
         
         // Next link
         if (currentIndex < filesInDir.length - 1) {
           const nextFile = filesInDir[currentIndex + 1];
-          nextLink = `<a href="${path.basename(nextFile, '.md') + '.html'}" class="nav-link">Next</a>`;
+          nextLink = `<a href="${path.basename(nextFile, '.md') + '.html'}" class="text-blue-600 nav-link">Next</a>`;
         }
         
         // TOC link (points to index.html in current directory)
-        tocLink = `<a href="index.html" class="nav-link">Table of Contents</a>`;
+        tocLink = `<a href="index.html" class="text-blue-600 nav-link">Table of Contents</a>`;
       }
       
       finalHtml = finalHtml

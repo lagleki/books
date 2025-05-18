@@ -15,20 +15,20 @@ Go doesn't have inheritance, but it has structs - data types that can include ot
 type Parent struct{}
 
 func (c *Parent) Print() {
-fmt.Println("parent")
+	fmt.Println("parent")
 }
 
 type Child struct {
-Parent
+	Parent
 }
 
 func (p *Child) Print() {
-fmt.Println("child")
+	fmt.Println("child")
 }
 
 func main() {
-var x Child
-x.Print()
+	var x Child
+	x.Print()
 }
 
 // child
@@ -44,23 +44,23 @@ Here's another embedding example:
 
 ```go
 type Engine struct {
-Power int
-Type  string
+	Power int
+	Type  string
 }
 
 type Car struct {
-Engine  
-Brand   string
-Model   string
+	Engine
+	Brand string
+	Model string
 }
 
 func main() {
-c := Car{
-Engine: Engine{Power: 150, Type: "Petrol"},
-Brand:  "Ford",
-Model:  "Fiesta",
-}
-fmt.Println(c.Power)
+	c := Car{
+		Engine: Engine{Power: 150, Type: "Petrol"},
+		Brand:  "Ford",
+		Model:  "Fiesta",
+	}
+	fmt.Println(c.Power)
 }
 ```
 
@@ -68,11 +68,11 @@ And an example with embedded methods:
 
 ```go
 type Writer interface {
-Write([]byte) (int, error)
+	Write([]byte) (int, error)
 }
 
 type Logger struct {
-Writer
+	Writer
 }
 ```
 
@@ -943,6 +943,7 @@ limiter := rate.NewLimiter(rate.Limit(100), 100)
 
 Then you can use the limiter.Allow() method to check if a token is available before performing a task:
 
+```go
 if limiter.Allow() {
 
 // perform task
@@ -952,12 +953,14 @@ if limiter.Allow() {
 // rate limit exceeded
 
 }
-
+```
 Alternatively, you can use the limiter.Wait() method to wait until a token becomes available:
 
+```go
 limiter.Wait()
 
 // perform task
+```
 
 You can also use the limiter.Reserve() method to reserve a token in advance and perform the task later.
 
