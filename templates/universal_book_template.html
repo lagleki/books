@@ -1,131 +1,267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{page_title}}</title>
+    <title>{{page_title}} - Lojban Booker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style id="tailwind-styles">
-        {%TAILWIND_CSS%}
+        /* {%TAILWIND_CSS%} */
+        /* Custom styles for a more polished look */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .prose code {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .prose pre {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #f3f4f6; /* gray-100 */
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            padding: 1em;
+            overflow-x: auto;
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            font-weight: 700;
+        }
+        .prose details {
+            background-color: #f9fafb; /* gray-50 */
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .prose summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+        .prose summary:focus-visible {
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Tailwind focus ring */
+        }
+        .prose details[open] > summary {
+            margin-bottom: 0.5rem;
+        }
+        .nav-link {
+            @apply text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-150;
+        }
+        .nav-link-disabled {
+            @apply text-gray-400 cursor-not-allowed;
+        }
+        .toc { /* Class for markdown-it-toc-done-right */
+            @apply bg-gray-100 p-4 rounded-lg my-6;
+        }
+        .toc ul {
+            @apply list-none p-0 m-0;
+        }
+        .toc li {
+            @apply mb-1;
+        }
+        .toc a {
+            @apply text-gray-700 hover:text-black;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 py-8">
-        <header class="mb-12 border-b border-gray-200 pb-6 flex justify-between">
-            <div>{{nav_previous_link}}</div>
-            <div>{{nav_toc_link}}</div>
-            <div>{{nav_next_link}}</div>
+<body class="bg-white text-gray-800 dark:bg-slate-900 dark:text-slate-200 min-h-screen flex flex-col transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full max-w-4xl">
+        <header class="mb-8 sm:mb-12 pb-4 sm:pb-6 border-b border-gray-200 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4 order-1 sm:order-none sm:w-1/2">
+                 <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 leading-tight">
+                    <a href="../index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{{page_title}}</a>
+                </h1>
+            </div>
+            <div class="flex items-center space-x-3 order-3 sm:order-none mt-4 sm:mt-0">
+                <span class="nav-link-item">{{nav_previous_link}}</span>
+                <span class="nav-link-item">{{nav_toc_link}}</span>
+                <span class="nav-link-item">{{nav_next_link}}</span>
+            </div>
+            <div class="order-2 sm:order-none">
+                <button id="darkModeToggle" aria-label="Toggle dark mode" class="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707zm12.728 0l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
         </header>
 
-        <main class="prose max-w-none">
+        <main class="prose prose-lg lg:prose-xl dark:prose-invert max-w-none">
             {%MARKDOWN_CONTENT%}
         </main>
-
-        <footer class="mt-12 border-t border-gray-200 pt-6 flex justify-between">
-            <div>{{nav_previous_link}}</div>
-            <div>{{nav_toc_link}}</div>
-            <div>{{nav_next_link}}</div>
-        </footer>
     </div>
+
+    <footer class="mt-auto py-6 sm:py-8 border-t border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 max-w-4xl">
+            <div class="flex-1 text-left">
+                <span class="nav-link-item">{{nav_previous_link}}</span>
+            </div>
+            <div class="flex-1 text-center">
+                <span class="nav-link-item">{{nav_toc_link}}</span>
+            </div>
+            <div class="flex-1 text-right">
+                <span class="nav-link-item">{{nav_next_link}}</span>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Dark Mode Toggle Script
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+
+        function updateIcons(isDark) {
+            if (isDark) {
+                themeToggleLightIcon.classList.remove('hidden'); // Show Sun icon
+                themeToggleDarkIcon.classList.add('hidden');    // Hide Moon icon
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');  // Show Moon icon
+                themeToggleLightIcon.classList.add('hidden');   // Hide Sun icon
+            }
+        }
+
+        function applyTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateIcons(isDark);
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+        }
+
+        // Initial theme application
+        // HTML icons are set for light mode by default: Moon visible (theme-toggle-dark-icon), Sun hidden (theme-toggle-light-icon)
+        let initialUserPrefersDark = false;
+        const storedUserTheme = localStorage.getItem('color-theme');
+
+        if (storedUserTheme) {
+            initialUserPrefersDark = storedUserTheme === 'dark';
+        } else {
+            initialUserPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        applyTheme(initialUserPrefersDark);
+
+        darkModeToggle.addEventListener('click', () => {
+            const isCurrentlyDark = document.documentElement.classList.contains('dark');
+            applyTheme(!isCurrentlyDark);
+        });
+
+        // Listen for system theme changes if no user preference is stored
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('color-theme') === null) {
+                 applyTheme(e.matches);
+            }
+        });
+
+
         async function runCode(codeElementId, outputElementId, language) {
             const codeElement = document.getElementById(codeElementId);
             const outputElement = document.getElementById(outputElementId);
             const code = codeElement.textContent;
-            outputElement.innerHTML = 'Running...';
+            outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Running...</span>';
 
             try {
                 if (language === 'go') {
-                    // Load wasm_exec.js if not already loaded
                     if (!window.Go) {
                         await new Promise((resolve, reject) => {
                             const script = document.createElement('script');
-                            script.src = '../wasm/wasm_exec.js';
+                            script.src = '../wasm/wasm_exec.js'; // Ensure this path is correct relative to the HTML file in 'docs'
                             script.onload = resolve;
                             script.onerror = reject;
                             document.head.appendChild(script);
                         });
                     }
 
-                    // Initialize Go Wasm instance if not already done
                     if (!window.goRunnerInstance) {
                         const go = new Go();
                         const result = await WebAssembly.instantiateStreaming(
-                            fetch('../wasm/go_runner.wasm'),
+                            fetch('../wasm/go_runner.wasm'), // Ensure this path is correct
                             go.importObject
                         );
                         window.goRunnerInstance = result.instance;
-                        go.run(window.goRunnerInstance);
+                        go.run(window.goRunnerInstance); // Do not await, it's a long-running process
                     }
-
-                    // Execute the code
-                    const result = await window.executeGoCode(code);
+                    
+                    outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Executing Go code...</span>';
+                    const result = await window.executeGoCode(code); // Assuming executeGoCode is globally available from go_runner.wasm
                     if (result.error) {
-                        outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                        outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`;
                     } else {
-                        outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                        outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`;
                     }
                 } else if (language === 'csharp') {
                     if (!window.csharpWasmRuntimeStarted) {
-                        outputElement.innerHTML = 'Loading .NET Wasm runtime...';
+                        outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Loading .NET Wasm runtime...</span>';
                         try {
-                            // Dynamically load blazor.webassembly.js if not already present
                             if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
                                 const script = document.createElement('script');
-                                script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.src = '../wasm/csharp/blazor.webassembly.js'; // Ensure this path is correct
                                 script.defer = true;
+                                // script.setAttribute('_framework', 'blazor.webassembly.js'); // Required for some Blazor versions
                                 document.body.appendChild(script);
 
-                                // Wait for DotNet to be available
-                                await new Promise(resolve => {
-                                    const interval = setInterval(() => {
+                                await new Promise((resolve, reject) => {
+                                    const checkInterval = setInterval(() => {
                                         if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
-                                            clearInterval(interval);
+                                            clearInterval(checkInterval);
                                             resolve();
                                         }
                                     }, 100);
+                                    setTimeout(() => { // Timeout for loading
+                                        clearInterval(checkInterval);
+                                        reject(new Error('.NET runtime loading timed out.'));
+                                    }, 30000); // 30 seconds timeout
                                 });
                             } else {
-                                // If script tag exists, still wait for DotNet to be ready
-                                await new Promise(resolve => {
-                                    const interval = setInterval(() => {
+                                 await new Promise((resolve, reject) => { // Ensure DotNet is ready even if script tag exists
+                                    const checkInterval = setInterval(() => {
                                         if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
-                                            clearInterval(interval);
+                                            clearInterval(checkInterval);
                                             resolve();
                                         }
                                     }, 100);
+                                     setTimeout(() => {
+                                        clearInterval(checkInterval);
+                                        reject(new Error('.NET runtime already loaded but not ready.'));
+                                    }, 30000);
                                 });
                             }
                             window.csharpWasmRuntimeStarted = true;
-                            outputElement.innerHTML = '.NET Wasm runtime loaded. Ready to run C# code.';
+                             outputElement.innerHTML = '<span class="text-green-600 dark:text-green-400">.NET Wasm runtime loaded.</span>';
                         } catch (loadError) {
                             console.error("Error loading .NET Wasm runtime:", loadError);
-                            outputElement.innerHTML = `<pre style="color: red;">Error loading .NET Wasm runtime:\n${loadError}</pre>`;
+                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error loading .NET Wasm runtime:\n${loadError.message || loadError}</pre>`;
                             return;
                         }
                     }
 
                     try {
-                        outputElement.innerHTML = 'Executing C# code...';
+                        outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Executing C# code...</span>';
                         if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
-                            outputElement.innerHTML = `<pre style="color: red;">.NET runtime not available for invoking method.</pre>`;
+                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">.NET runtime not available for invoking method.</pre>`;
                             return;
                         }
-
+                        // Ensure the assembly 'CSharpWasmRunner' is loaded if it's separate
+                        // await window.DotNet.invokeMethodAsync('BlazorApp', 'EnsureAssemblyLoaded', 'CSharpWasmRunner');
                         const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
                         if (result.error) {
-                            outputElement.innerHTML = `<pre style="color: red;">Error:\n${result.error}</pre>`;
+                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`;
                         } else {
-                            outputElement.innerHTML = `<pre>Output:\n${result.output}</pre>`;
+                            outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`;
                         }
                     } catch (execError) {
                         console.error("Error executing C# code:", execError);
-                        outputElement.innerHTML = `<pre style="color: red;">Error executing C# code:\n${execError.message || execError}</pre>`;
+                        outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error executing C# code:\n${execError.message || execError}</pre>`;
                     }
                 } else {
-                    outputElement.innerHTML = `<p>Execution for ${language} is not supported.</p>`;
+                    outputElement.innerHTML = `<p class="text-yellow-500 dark:text-yellow-400">Execution for ${language} is not supported.</p>`;
                 }
             } catch (error) {
-                outputElement.innerHTML = `<pre style="color: red;">Error:\n${error.message}</pre>`;
+                outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${error.message}</pre>`;
                 console.error('Code execution error:', error);
             }
         }

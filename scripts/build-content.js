@@ -143,25 +143,47 @@ function processMarkdownFiles() {
         if (filesInDir.length > 1) {
           const firstChapter = filesInDir.find(f => path.basename(f) !== 'index.md');
           if (firstChapter) {
-            nextLink = `<a href="${path.basename(firstChapter, '.md') + '.html'}" class="text-blue-600 nav-link">First chapter</a>`;
+            nextLink = `<a href="${path.basename(firstChapter, '.md') + '.html'}" class="nav-link">First chapter</a>`;
+          } else {
+            nextLink = `<span class="nav-link-disabled">First chapter</span>`;
           }
+          prevLink = `<span class="nav-link-disabled">Previous</span>`; // No previous for main index
+          tocLink = `<span class="nav-link-disabled">Table of Contents</span>`; // No TOC for main index pointing to itself
         }
       } else {
         // Regular behavior for non-index files
         // Previous link
         if (currentIndex > 0) {
           const prevFile = filesInDir[currentIndex - 1];
-          prevLink = `<a href="${path.basename(prevFile, '.md') + '.html'}" class="text-blue-600 nav-link">Previous</a>`;
+          // Handle if prevFile is index.md
+          const prevFileName = path.basename(prevFile) === 'index.md' ? 'Up to Contents' : 'Previous';
+          prevLink = `<a href="${path.basename(prevFile, '.md') + '.html'}" class="nav-link">${prevFileName}</a>`;
+        } else {
+          prevLink = `<span class="nav-link-disabled">Previous</span>`;
         }
         
         // Next link
         if (currentIndex < filesInDir.length - 1) {
           const nextFile = filesInDir[currentIndex + 1];
-          nextLink = `<a href="${path.basename(nextFile, '.md') + '.html'}" class="text-blue-600 nav-link">Next</a>`;
+          nextLink = `<a href="${path.basename(nextFile, '.md') + '.html'}" class="nav-link">Next</a>`;
+        } else {
+          nextLink = `<span class="nav-link-disabled">Next</span>`;
         }
         
         // TOC link (points to index.html in current directory)
-        tocLink = `<a href="index.html" class="text-blue-600 nav-link">Table of Contents</a>`;
+        // Check if current file is not index.md to show TOC link
+        if (path.basename(filePath) !== 'index.md') {
+            const indexFileInDir = filesInDir.find(f => path.basename(f) === 'index.md');
+            if (indexFileInDir) {
+                 tocLink = `<a href="index.html" class="nav-link">Table of Contents</a>`;
+            } else {
+                // If there's no index.md, maybe disable TOC or link to main book listing?
+                // For now, disable if no index.md in the current book's directory.
+                tocLink = `<span class="nav-link-disabled">Table of Contents</span>`;
+            }
+        } else {
+             tocLink = `<span class="nav-link-disabled">Table of Contents</span>`; // Already on TOC
+        }
       }
       
       finalHtml = finalHtml
@@ -229,27 +251,104 @@ function generateAllBooksPage() {
   // Generate HTML content
   const htmlContent = `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Books</title>
-  <style>
-    body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
-    h1 { color: #333; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 10px 0; }
-    a { color: #0066cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  <title>All Books - Lojban Booker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style id="tailwind-styles">
+    ${tailwindCss}
+    /* Minimal inline styles for body if Tailwind doesn't load, and for basic structure */
+    body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
   </style>
 </head>
-<body>
-  <h1>All Books</h1>
-  <ul>
-    ${books.map(book => `
-      <li><a href="${book.path}/index.html">${book.name}</a></li>
-    `).join('')}
-  </ul>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen flex flex-col items-center py-8 sm:py-12 transition-colors duration-300">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-3xl">
+    <header class="mb-10 flex justify-between items-center">
+      <div class="text-center flex-grow">
+        <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">All Available Books</h1>
+        <p class="mt-3 text-lg text-slate-600 dark:text-slate-400">Browse our collection of programming books.</p>
+      </div>
+      <button id="darkModeToggle" aria-label="Toggle dark mode" class="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors flex-shrink-0">
+          <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707zm12.728 0l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      </button>
+    </header>
+    
+    <main>
+      <ul class="space-y-4">
+        ${books.map(book => `
+          <li class="bg-white dark:bg-slate-800 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+            <a href="${book.path}/index.html" class="block p-6 sm:p-8">
+              <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150">${book.name}</h2>
+              <p class="mt-2 text-slate-500 dark:text-slate-400">Open the book &rarr;</p>
+            </a>
+          </li>
+        `).join('')}
+      </ul>
+      ${books.length === 0 ? '<p class="text-center text-slate-500 dark:text-slate-400 mt-8">No books found. Try running the build script.</p>' : ''}
+    </main>
+
+    <footer class="mt-12 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p>&copy; ${new Date().getFullYear()} Lojban Booker. All rights reserved.</p>
+      <p class="mt-1">Generated by Booker Script</p>
+    </footer>
+  </div>
+  <script>
+    // Dark Mode Toggle Script
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    function updateIcons(isDark) {
+        if (isDark) {
+            themeToggleLightIcon.classList.remove('hidden'); // Show Sun icon
+            themeToggleDarkIcon.classList.add('hidden');    // Hide Moon icon
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');  // Show Moon icon
+            themeToggleLightIcon.classList.add('hidden');   // Hide Sun icon
+        }
+    }
+
+    function applyTheme(isDark) {
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        updateIcons(isDark);
+        localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    }
+
+    // Initial theme application
+    let initialUserPrefersDark = false;
+    const storedUserTheme = localStorage.getItem('color-theme');
+
+    if (storedUserTheme) {
+        initialUserPrefersDark = storedUserTheme === 'dark';
+    } else {
+        initialUserPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    applyTheme(initialUserPrefersDark);
+
+    darkModeToggle.addEventListener('click', () => {
+        const isCurrentlyDark = document.documentElement.classList.contains('dark');
+        applyTheme(!isCurrentlyDark);
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.getItem('color-theme') === null) { // Only if no user override
+             applyTheme(e.matches);
+        }
+    });
+  </script>
 </body>
 </html>
   `;
