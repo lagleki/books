@@ -9,225 +9,469 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style id="tailwind-styles">
         /* {%TAILWIND_CSS%} */
-        /* Custom styles for a more polished look */
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .prose {
+            font-size: 18px;
+            line-height: 1.8;
         }
         .prose code {
             font-family: 'Roboto Mono', monospace;
+            font-size: 16px;
         }
         .prose pre {
             font-family: 'Roboto Mono', monospace;
-            background-color: #f3f4f6; /* gray-100 */
-            border: 1px solid #e5e7eb; /* gray-200 */
-            border-radius: 0.375rem; /* rounded-md */
+            font-size: 16px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            border-radius: 0.375rem;
             padding: 1em;
             overflow-x: auto;
+            line-height: 1.6;
+        }
+        .dark .prose pre {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
         }
         .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
             font-weight: 700;
+            letter-spacing: -0.025em;
         }
         .prose details {
-            background-color: #f9fafb; /* gray-50 */
-            border: 1px solid #e5e7eb; /* gray-200 */
-            border-radius: 0.375rem; /* rounded-md */
-            padding: 1rem;
-            margin-bottom: 1rem;
+            background-color: #f9fafb; border: 1px solid #e5e7eb;
+            border-radius: 0.375rem; padding: 1rem; margin-bottom: 1rem;
         }
-        .prose summary {
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
+        .prose summary { font-weight: 600; cursor: pointer; outline: none; }
+        .prose summary:focus-visible { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); }
+        .prose details[open] > summary { margin-bottom: 0.5rem; }
+        .nav-link { @apply text-teal-600 hover:text-teal-800 text-decoration: none transition-colors duration-150; }
+        .nav-link-disabled { @apply text-gray-400 cursor-not-allowed; }
+
+        .toc-container nav.toc { @apply p-0 m-0 bg-transparent shadow-none rounded-none my-0; }
+        .toc-container nav.toc > ul { @apply list-none p-0 m-0; }
+        .toc-container nav.toc > ul > li { @apply mb-1; }
+        .toc-container nav.toc > ul > li > a {
+            @apply text-slate-600 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 text-sm font-medium;
+            @apply transition-colors duration-150 block py-3 rounded-md px-3;
         }
-        .prose summary:focus-visible {
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Tailwind focus ring */
+        .toc-container nav.toc > ul > li > a:hover {
+            @apply bg-slate-100 dark:bg-slate-700;
+            transform: translateX(2px);
         }
-        .prose details[open] > summary {
-            margin-bottom: 0.5rem;
+        .toc-container nav.toc > ul > li > ul { @apply list-none pl-3 mt-1 border-l border-slate-200 dark:border-slate-700 ml-2; }
+        .toc-container nav.toc > ul > li > ul > li { @apply mb-0.5; }
+        .toc-container nav.toc > ul > li > ul > li > a {
+            @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-xs;
+            @apply transition-colors duration-150 block py-2 px-3 rounded-md;
         }
-        .nav-link {
-            @apply text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-150;
+        .toc-container nav.toc > ul > li > ul > li > a:hover {
+            @apply bg-slate-100 dark:bg-slate-700;
+            transform: translateX(2px);
         }
-        .nav-link-disabled {
-            @apply text-gray-400 cursor-not-allowed;
+        .toc-container nav.toc a.active {
+            @apply text-white dark:text-white font-semibold bg-blue-600 dark:bg-blue-700;
+            transform: translateX(4px);
         }
-        .toc { /* Class for markdown-it-toc-done-right */
-            @apply bg-gray-100 p-4 rounded-lg my-6;
+        .toc-container nav.toc > ul > li > details > summary {
+            @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-sm font-medium;
+            @apply transition-colors duration-150 block py-3 rounded-md px-3 cursor-pointer;
+            list-style: none;
         }
-        .toc ul {
-            @apply list-none p-0 m-0;
+        .toc-container nav.toc > ul > li > details > summary::-webkit-details-marker {
+            display: none;
         }
-        .toc li {
-            @apply mb-1;
+        .toc-container nav.toc > ul > li > details > summary:hover {
+            @apply bg-slate-100 dark:bg-slate-700;
+            transform: translateX(2px);
         }
-        .toc a {
-            @apply text-gray-700 hover:text-black;
+        .toc-container nav.toc > ul > li > details[open] > summary {
+            @apply text-blue-600 dark:text-blue-400;
+        }
+        
+        body.overflow-hidden-important { overflow: hidden !important; }
+
+        #scrollToTopBtn {
+            @apply fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 ease-in-out z-50;
+            @apply opacity-0 translate-y-4 pointer-events-none; /* Initially hidden and off-screen */
+        }
+        #scrollToTopBtn.visible {
+            @apply opacity-100 translate-y-0 pointer-events-auto; /* Visible and on-screen */
+        }
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            #mobile-toc-panel {
+                position: sticky;
+                top: var(--header-height);
+                height: calc(100vh - var(--header-height));
+                z-index: 40;
+            }
+            #mobile-toc-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0,0,0,0.5);
+                z-index: 55;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+            #mobileMenuButton {
+                display: block;
+            }
         }
     </style>
 </head>
 <body class="bg-white text-gray-800 dark:bg-slate-900 dark:text-slate-200 min-h-screen flex flex-col transition-colors duration-300">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full max-w-4xl">
-        <header class="mb-8 sm:mb-12 pb-4 sm:pb-6 border-b border-gray-200 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center">
-            <div class="flex items-center space-x-4 order-1 sm:order-none sm:w-1/2">
-                 <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 leading-tight">
-                    <a href="../index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{{page_title}}</a>
-                </h1>
-            </div>
-            <div class="flex items-center space-x-3 order-3 sm:order-none mt-4 sm:mt-0">
-                <span class="nav-link-item">{{nav_previous_link}}</span>
-                <span class="nav-link-item">{{nav_toc_link}}</span>
-                <span class="nav-link-item">{{nav_next_link}}</span>
-            </div>
-            <div class="order-2 sm:order-none">
-                <button id="darkModeToggle" aria-label="Toggle dark mode" class="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
-                    <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707zm12.728 0l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
-            </div>
-        </header>
 
-        <main class="prose prose-lg lg:prose-xl dark:prose-invert max-w-none">
+    <header id="page-header" class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/80 backdrop-blur-sm shadow-md transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3 sm:py-4">
+                <!-- Left: Mobile Menu & Title -->
+                <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+                    <button id="mobileMenuButton" aria-label="Open table of contents" class="lg:hidden p-2 -ml-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <h1 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 leading-tight truncate max-w-[150px] sm:max-w-xs md:max-w-sm">
+                        <a href="../index.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">{{page_title}}</a>
+                    </h1>
+                </div>
+
+                <!-- Center: Main Navigation Links (visible sm and up) -->
+                <nav class="hidden sm:flex flex-grow justify-center items-center space-x-3 lg:space-x-4 mx-4">
+                    <span class="nav-link-item text-sm">{{nav_previous_link}}</span>
+                    <span class="nav-link-item text-sm">{{nav_toc_link}}</span>
+                    <span class="nav-link-item text-sm">{{nav_next_link}}</span>
+                </nav>
+
+                <!-- Right: Dark Mode Toggle -->
+                <div class="flex items-center flex-shrink-0">
+                    <button id="darkModeToggle" aria-label="Toggle dark mode" class="p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707zm12.728 0l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full grid grid-cols-1 lg:grid-cols-[75%_25%] gap-6">
+        <aside id="desktop-toc-sidebar" class="hidden lg:block lg:col-start-2 lg:row-start-1 flex-shrink-0 pr-6 xl:pr-8 py-4 sticky top-[calc(var(--header-height,60px)_+_1.5rem)] self-start max-h-[calc(100vh_-_var(--header-height,60px)_-_3rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
+            <h3 class="text-sm font-semibold mb-3 text-slate-500 dark:text-slate-400 uppercase tracking-wider">On this page</h3>
+            <div class="toc-container">
+                {%PAGE_TOC%}
+            </div>
+            <script type="application/json" id="toc-data">
+                {%PAGE_TOC_DATA%}
+            </script>
+        </aside>
+
+        <main class="prose prose-lg lg:prose-xl dark:prose-invert max-w-none lg:col-start-1 lg:row-start-1 min-w-0">
             {%MARKDOWN_CONTENT%}
         </main>
     </div>
 
+    <div id="mobile-toc-panel" class="hidden fixed inset-y-0 left-0 z-[60] w-72 sm:w-80 bg-white dark:bg-slate-800 shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100">Table of Contents</h2>
+            <button id="closeMobileMenuButton" aria-label="Close table of contents" class="p-2 -mr-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="toc-container">
+             {%PAGE_TOC%}
+        </div>
+    </div>
+    <div id="mobile-toc-overlay" class="fixed inset-0 z-[55] bg-black bg-opacity-50 hidden transition-opacity duration-300 ease-in-out lg:hidden"></div>
+
     <footer class="mt-auto py-6 sm:py-8 border-t border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 max-w-4xl">
-            <div class="flex-1 text-left">
+            <div class="flex-1 text-left text-sm">
                 <span class="nav-link-item">{{nav_previous_link}}</span>
             </div>
-            <div class="flex-1 text-center">
+            <div class="flex-1 text-center text-sm">
                 <span class="nav-link-item">{{nav_toc_link}}</span>
             </div>
-            <div class="flex-1 text-right">
+            <div class="flex-1 text-right text-sm">
                 <span class="nav-link-item">{{nav_next_link}}</span>
             </div>
         </div>
     </footer>
 
+    <button id="scrollToTopBtn" title="Scroll to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
     <script>
-        // Dark Mode Toggle Script
+        // Dark Mode
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
         const darkModeToggle = document.getElementById('darkModeToggle');
-
         function updateIcons(isDark) {
-            if (isDark) {
-                themeToggleLightIcon.classList.remove('hidden'); // Show Sun icon
-                themeToggleDarkIcon.classList.add('hidden');    // Hide Moon icon
-            } else {
-                themeToggleDarkIcon.classList.remove('hidden');  // Show Moon icon
-                themeToggleLightIcon.classList.add('hidden');   // Hide Sun icon
-            }
+            if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
+            if (isDark) { themeToggleLightIcon.classList.remove('hidden'); themeToggleDarkIcon.classList.add('hidden'); } 
+            else { themeToggleDarkIcon.classList.remove('hidden'); themeToggleLightIcon.classList.add('hidden'); }
         }
-
         function applyTheme(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
+            if (isDark) { document.documentElement.classList.add('dark'); } 
+            else { document.documentElement.classList.remove('dark'); }
             updateIcons(isDark);
-            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            try { localStorage.setItem('color-theme', isDark ? 'dark' : 'light'); } catch (e) {}
         }
-
-        // Initial theme application
-        // HTML icons are set for light mode by default: Moon visible (theme-toggle-dark-icon), Sun hidden (theme-toggle-light-icon)
         let initialUserPrefersDark = false;
-        const storedUserTheme = localStorage.getItem('color-theme');
-
-        if (storedUserTheme) {
-            initialUserPrefersDark = storedUserTheme === 'dark';
-        } else {
-            initialUserPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
+        try {
+            const storedUserTheme = localStorage.getItem('color-theme');
+            if (storedUserTheme) { initialUserPrefersDark = storedUserTheme === 'dark'; } 
+            else { initialUserPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; }
+        } catch(e) { initialUserPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; }
         applyTheme(initialUserPrefersDark);
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', () => {
+                applyTheme(!document.documentElement.classList.contains('dark'));
+            });
+        }
+        try {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (localStorage.getItem('color-theme') === null) { applyTheme(e.matches); }
+            });
+        } catch(e) {}
 
-        darkModeToggle.addEventListener('click', () => {
-            const isCurrentlyDark = document.documentElement.classList.contains('dark');
-            applyTheme(!isCurrentlyDark);
-        });
+        // Sticky Header Height
+        const pageHeader = document.getElementById('page-header');
+        function updateHeaderHeightProperty() {
+            if (pageHeader) { document.documentElement.style.setProperty('--header-height', `${pageHeader.offsetHeight}px`); }
+            else { document.documentElement.style.setProperty('--header-height', `60px`); }
+        }
+        window.addEventListener('load', updateHeaderHeightProperty);
+        window.addEventListener('resize', updateHeaderHeightProperty);
+        updateHeaderHeightProperty();
 
-        // Listen for system theme changes if no user preference is stored
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (localStorage.getItem('color-theme') === null) {
-                 applyTheme(e.matches);
+        // Mobile TOC
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenuButton = document.getElementById('closeMobileMenuButton');
+        const mobileTocPanel = document.getElementById('mobile-toc-panel');
+        const mobileTocOverlay = document.getElementById('mobile-toc-overlay');
+        // Define functions in outer scope
+        let openMobileToc, closeMobileToc;
+
+        if (mobileMenuButton && mobileTocPanel && closeMobileMenuButton && mobileTocOverlay) {
+            const SIDEBAR_VISIBLE_KEY = 'mobileSidebarVisible';
+
+            openMobileToc = () => {
+                console.log('Opening mobile TOC');
+                mobileTocPanel.classList.remove('hidden');
+                mobileTocPanel.classList.remove('-translate-x-full');
+                mobileTocPanel.classList.add('translate-x-0');
+                mobileTocOverlay.style.display = 'block';
+                setTimeout(() => {
+                    mobileTocOverlay.classList.add('opacity-100');
+                }, 10);
+                document.body.classList.add('overflow-hidden-important');
+                localStorage.setItem(SIDEBAR_VISIBLE_KEY, 'true');
+            };
+
+            closeMobileToc = () => {
+                console.log('Closing mobile TOC');
+                mobileTocPanel.classList.add('hidden');
+                mobileTocPanel.classList.add('-translate-x-full');
+                mobileTocPanel.classList.remove('translate-x-0');
+                mobileTocOverlay.classList.remove('opacity-100');
+                setTimeout(() => {
+                    mobileTocOverlay.style.display = 'none';
+                }, 300);
+                document.body.classList.remove('overflow-hidden-important');
+                localStorage.setItem(SIDEBAR_VISIBLE_KEY, 'false');
+            };
+
+            mobileMenuButton.addEventListener('click', () => {
+                if (openMobileToc) openMobileToc();
+            });
+            
+            closeMobileMenuButton.addEventListener('click', () => {
+                if (closeMobileToc) closeMobileToc();
+            });
+            
+            mobileTocOverlay.addEventListener('click', () => {
+                if (closeMobileToc) closeMobileToc();
+            });
+
+            if (mobileTocPanel) {
+                mobileTocPanel.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        setTimeout(() => {
+                            if (closeMobileToc) closeMobileToc();
+                        }, 150);
+                    });
+                });
             }
+
+            const savedSidebarState = localStorage.getItem(SIDEBAR_VISIBLE_KEY);
+            if (savedSidebarState === 'true' && openMobileToc) {
+                openMobileToc();
+            }
+        }
+
+        // Convert nested TOC lists to collapsible sections and add scroll highlighting
+        function makeTocCollapsible(tocContainer) {
+            if (!tocContainer) return;
+            
+            // Find all list items that contain nested lists
+            const itemsWithNestedLists = tocContainer.querySelectorAll('li:has(ul)');
+            
+            itemsWithNestedLists.forEach(item => {
+                const link = item.querySelector('a');
+                const nestedList = item.querySelector('ul');
+                
+                if (link && nestedList) {
+                    // Create details/summary elements
+                    const details = document.createElement('details');
+                    const summary = document.createElement('summary');
+                    
+                    // Move link into summary
+                    summary.appendChild(link);
+                    details.appendChild(summary);
+                    details.appendChild(nestedList);
+                    
+                    // Replace original li with new structure
+                    item.replaceChildren(details);
+                    
+                    // Set initial open state for desktop
+                    if (window.innerWidth >= 1024) {
+                        details.open = true;
+                    }
+                }
+            });
+
+            // Add scroll highlighting if we have TOC data
+            try {
+                const tocData = JSON.parse(document.querySelector('script[type="application/json"]#toc-data')?.textContent || '[]');
+                if (tocData.length > 0) {
+                    const headerElements = tocData.map(item =>
+                        document.getElementById(item.anchor)
+                    ).filter(Boolean);
+
+                    const tocLinks = tocContainer.querySelectorAll('a[href^="#"]');
+                    
+                    function updateActiveTocLink() {
+                        const scrollPosition = window.scrollY + (pageHeader?.offsetHeight || 60) + 16;
+                        
+                        // Find which section is currently in view
+                        let activeIndex = 0;
+                        for (let i = 0; i < headerElements.length; i++) {
+                            if (headerElements[i].offsetTop <= scrollPosition) {
+                                activeIndex = i;
+                            } else {
+                                break;
+                            }
+                        }
+                        
+                        // Update TOC links
+                        tocLinks.forEach(link => link.classList.remove('active'));
+                        if (tocLinks[activeIndex]) {
+                            tocLinks[activeIndex].classList.add('active');
+                            
+                            // Ensure parent details are open
+                            let parentDetails = tocLinks[activeIndex].closest('details');
+                            while (parentDetails) {
+                                parentDetails.open = true;
+                                parentDetails = parentDetails.parentElement.closest('details');
+                            }
+                        }
+                    }
+                    
+                    window.addEventListener('scroll', updateActiveTocLink);
+                    updateActiveTocLink();
+                }
+            } catch (e) {
+                console.error('Error setting up TOC highlighting:', e);
+            }
+        }
+        
+        // Initialize collapsible TOC for both desktop and mobile
+        document.querySelectorAll('.toc-container').forEach(makeTocCollapsible);
+        
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-container a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.getElementById(targetId.substring(1));
+                if (targetElement) {
+                    const headerOffset = pageHeader ? pageHeader.offsetHeight : 60;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 16;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            });
         });
 
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        if (scrollToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) { // Show after 300px scroll
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
+        // runCode function (existing)
         async function runCode(codeElementId, outputElementId, language) {
             const codeElement = document.getElementById(codeElementId);
             const outputElement = document.getElementById(outputElementId);
+            if (!codeElement || !outputElement) {
+                console.error("Code or output element not found for", codeElementId, outputElementId);
+                return;
+            }
             const code = codeElement.textContent;
             outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Running...</span>';
-
             try {
                 if (language === 'go') {
                     if (!window.Go) {
                         await new Promise((resolve, reject) => {
-                            const script = document.createElement('script');
-                            script.src = '../wasm/wasm_exec.js'; // Ensure this path is correct relative to the HTML file in 'docs'
-                            script.onload = resolve;
-                            script.onerror = reject;
-                            document.head.appendChild(script);
+                            const script = document.createElement('script'); script.src = '../wasm/wasm_exec.js';
+                            script.onload = resolve; script.onerror = reject; document.head.appendChild(script);
                         });
                     }
-
                     if (!window.goRunnerInstance) {
                         const go = new Go();
-                        const result = await WebAssembly.instantiateStreaming(
-                            fetch('../wasm/go_runner.wasm'), // Ensure this path is correct
-                            go.importObject
-                        );
-                        window.goRunnerInstance = result.instance;
-                        go.run(window.goRunnerInstance); // Do not await, it's a long-running process
+                        const result = await WebAssembly.instantiateStreaming(fetch('../wasm/go_runner.wasm'), go.importObject);
+                        window.goRunnerInstance = result.instance; go.run(window.goRunnerInstance); 
                     }
-                    
                     outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Executing Go code...</span>';
-                    const result = await window.executeGoCode(code); // Assuming executeGoCode is globally available from go_runner.wasm
-                    if (result.error) {
-                        outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`;
-                    } else {
-                        outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`;
-                    }
+                    const result = await window.executeGoCode(code);
+                    if (result.error) { outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`; }
+                    else { outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`; }
                 } else if (language === 'csharp') {
                     if (!window.csharpWasmRuntimeStarted) {
                         outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Loading .NET Wasm runtime...</span>';
                         try {
                             if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
-                                const script = document.createElement('script');
-                                script.src = '../wasm/csharp/blazor.webassembly.js'; // Ensure this path is correct
-                                script.defer = true;
-                                // script.setAttribute('_framework', 'blazor.webassembly.js'); // Required for some Blazor versions
-                                document.body.appendChild(script);
-
+                                const script = document.createElement('script'); script.src = '../wasm/csharp/blazor.webassembly.js';
+                                script.defer = true; document.body.appendChild(script);
                                 await new Promise((resolve, reject) => {
-                                    const checkInterval = setInterval(() => {
-                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
-                                            clearInterval(checkInterval);
-                                            resolve();
-                                        }
-                                    }, 100);
-                                    setTimeout(() => { // Timeout for loading
-                                        clearInterval(checkInterval);
-                                        reject(new Error('.NET runtime loading timed out.'));
-                                    }, 30000); // 30 seconds timeout
+                                    const checkInterval = setInterval(() => { if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') { clearInterval(checkInterval); resolve();}}, 100);
+                                    setTimeout(() => { clearInterval(checkInterval); reject(new Error('.NET runtime loading timed out.')); }, 30000);
                                 });
                             } else {
-                                 await new Promise((resolve, reject) => { // Ensure DotNet is ready even if script tag exists
-                                    const checkInterval = setInterval(() => {
-                                        if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') {
-                                            clearInterval(checkInterval);
-                                            resolve();
-                                        }
-                                    }, 100);
-                                     setTimeout(() => {
-                                        clearInterval(checkInterval);
-                                        reject(new Error('.NET runtime already loaded but not ready.'));
-                                    }, 30000);
+                                 await new Promise((resolve, reject) => { 
+                                    const checkInterval = setInterval(() => { if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') { clearInterval(checkInterval); resolve(); }}, 100);
+                                     setTimeout(() => { clearInterval(checkInterval); reject(new Error('.NET runtime already loaded but not ready.'));}, 30000);
                                 });
                             }
                             window.csharpWasmRuntimeStarted = true;
@@ -238,21 +482,14 @@
                             return;
                         }
                     }
-
                     try {
                         outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Executing C# code...</span>';
                         if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
-                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">.NET runtime not available for invoking method.</pre>`;
-                            return;
+                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">.NET runtime not available for invoking method.</pre>`; return;
                         }
-                        // Ensure the assembly 'CSharpWasmRunner' is loaded if it's separate
-                        // await window.DotNet.invokeMethodAsync('BlazorApp', 'EnsureAssemblyLoaded', 'CSharpWasmRunner');
                         const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
-                        if (result.error) {
-                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`;
-                        } else {
-                            outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`;
-                        }
+                        if (result.error) { outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`; }
+                        else { outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`; }
                     } catch (execError) {
                         console.error("Error executing C# code:", execError);
                         outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error executing C# code:\n${execError.message || execError}</pre>`;

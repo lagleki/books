@@ -4,9 +4,27 @@
 
 /* Custom link styling */
 a {
-  @apply text-blue-600 hover:text-blue-800 underline;
+  @apply text-teal-600 hover:text-teal-700 hover:underline;
 }
 
 .prose a {
-  @apply text-blue-600 hover:text-blue-800 underline;
+  @apply text-teal-600 hover:text-teal-700 hover:underline;
+}
+
+pre {
+  @apply p-4 rounded-lg overflow-x-auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    background-color: #1e293b;
+    color: #f8fafc;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  pre {
+    background-color: #f1f5f9;
+    color: #0f172a;
+  }
 }

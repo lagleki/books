@@ -1,5 +1,7 @@
 # Object-Oriented Programming (OOP) in C#
 
+[[toc]]
+
 ## Introduction to OOP Principles
 
 Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects", which contain data in the form of fields (attributes) and code in the form of methods (procedures). C# is an object-oriented language that supports the four core principles of OOP:

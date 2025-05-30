@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const MarkdownIt = require('markdown-it');
 const hljs = require('markdown-it-highlightjs');
+const anchor = require('markdown-it-anchor');
 const toc = require('markdown-it-toc-done-right');
 const { JSDOM } = require('jsdom');
 const { window } = new JSDOM('');
@@ -14,15 +15,89 @@ const md = new MarkdownIt({
   typographer: true
 });
 
-// Apply highlight.js plugin
+// Variables to store TOC data
+let currentTocHtml = ''; // Variable to store TOC HTML for the current file
+let currentTocData = []; // Variable to store structured TOC data
+
+// Apply highlight.js
 md.use(hljs);
 
-// Apply TOC plugin
-md.use(toc, {
-  containerClass: 'toc',
-  listType: 'ul',
-  level: [2, 3]
+// Configure anchor generation
+md.use(anchor, {
+  permalink: anchor.permalink.headerLink(),
+  slugify: s => String(s).toLowerCase().replace(/[^\w]+/g, '-')
 });
+
+// Function to generate TOC from HTML using JSDOM
+function generateTocFromHtml(html) {
+  try {
+    const dom = new JSDOM(html);
+    const doc = dom.window.document;
+    const headings = doc.querySelectorAll('h1, h2, h3');
+    
+    if (headings.length === 0) {
+      return {
+        tocHtml: `
+          <div class="toc-empty-notice p-4 bg-gray-100 dark:bg-slate-700 rounded-md">
+            <p极客 class="text-sm text-gray-600 dark:text-gray-300">No table of contents available</p>
+          </div>
+        `,
+        tocData: [],
+        updatedHtml: html
+      };
+    }
+    
+    let tocHtml = '<div class="toc"><ul>';
+    const tocData = [];
+    
+    headings.forEach(heading => {
+      const level = parseInt(heading.tagName.slice(1));
+      const text = heading.textContent;
+      const id = heading.id || text.toLowerCase().replace(/[^\w]+/g, '-');
+      
+      // Ensure heading has ID for linking
+      if (!heading.id) {
+        heading.id = id;
+      }
+      
+      tocHtml += `<li class="toc-item toc-level-${level}"><a href="#${id}" class="toc-link">${text}</a></li>`;
+      tocData.push({ level, content: text, anchor: id });
+    });
+    
+    tocHtml += '</ul></div>';
+    
+    // Update the HTML with any added IDs
+    const serializer = new dom.window.XMLSerializer();
+    const updatedHtml = serializer.serializeToString(doc);
+    
+    return {
+      tocHtml: DOMPurify.sanitize(tocHtml),
+      tocData,
+      updatedHtml
+    };
+  } catch (error) {
+    console.error('TOC generation from HTML error:', error);
+    return {
+      tocHtml: '',
+      tocData: [],
+      updatedHtml: html
+    };
+  }
+}
+
+// After markdown rendering, generate TOC from HTML
+const originalRender = md.render;
+md.render = function(...args) {
+  let html = originalRender.apply(this, args);
+  
+  // Generate TOC from rendered HTML
+  const { tocHtml, tocData, updatedHtml } = generateTocFromHtml(html);
+  currentTocHtml = tocHtml;
+  currentTocData = tocData;
+  
+  // Replace TOC placeholder if exists
+  return updatedHtml.replace('[[toc]]', currentTocHtml);
+};
 
 // Custom link renderer to convert .md to .html
 (function() {
@@ -96,7 +171,12 @@ function processMarkdownFiles() {
     try {
       // Read markdown content
       const markdown = fs.readFileSync(filePath, 'utf8');
-      
+      // currentTocHtml is reset by the callback logic for each md.render() effectively,
+      // but good practice to ensure it's clean if render is somehow called without toc generation.
+      // However, the plugin's callback should handle this per render.
+      // Let's ensure it's explicitly reset before md.render() if there's any doubt.
+      // currentTocHtml reset handled by plugin callback
+
       // Extract first H1 from markdown
       let firstH1 = '';
       const h1Match = markdown.match(/^#\s+(.+)$/m);
@@ -105,7 +185,12 @@ function processMarkdownFiles() {
       }
       
       // Convert to HTML
+      console.log(`Processing ${filePath}...`);
+      console.log('Markdown content:', markdown.substr(0, 200) + '...');
       let html = md.render(markdown);
+      console.log('Rendered HTML:', html.substr(0, 500) + '...');
+      console.log(`TOC generated for ${filePath}:`, currentTocData.length ? 'Success' : 'Fallback');
+      console.log(`TOC generated for ${filePath}:`, currentTocData.length ? 'Success' : 'Fallback');
       
       // Sanitize HTML
       html = DOMPurify.sanitize(html);
@@ -190,13 +275,18 @@ function processMarkdownFiles() {
         .replace(/{{page_title}}/g, firstH1 || path.basename(filePath, '.md'))
         .replace(/{{nav_previous_link}}/g, prevLink)
         .replace(/{{nav_toc_link}}/g, tocLink)
-        .replace(/{{nav_next_link}}/g, nextLink);
+        .replace(/{{nav_next_link}}/g, nextLink)
+        .replace(/{%PAGE_TOC%}/g, currentTocHtml)
+        .replace(/{%PAGE_TOC_DATA%}/g, JSON.stringify(currentTocData)); // Add structured TOC data
       
       // Ensure output directory exists
       fs.ensureDirSync(outputPath);
       
-      // Write final HTML file
-      fs.writeFileSync(outputFile, finalHtml);
+      // Write final HTML file with TOC data
+      const finalHtmlWithToc = finalHtml
+          .replace('{%PAGE_TOC%}', currentTocHtml)
+          .replace('{%PAGE_TOC_DATA%}', JSON.stringify(currentTocData));
+      fs.writeFileSync(outputFile, finalHtmlWithToc);
       
       console.log(`Generated: ${outputFile}`);
     } catch (error) {
@@ -287,7 +377,7 @@ function generateAllBooksPage() {
         ${books.map(book => `
           <li class="bg-white dark:bg-slate-800 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
             <a href="${book.path}/index.html" class="block p-6 sm:p-8">
-              <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-150">${book.name}</h2>
+              <h2 class="text-2xl font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors duration-150">${book.name}</h2>
               <p class="mt-2 text-slate-500 dark:text-slate-400">Open the book &rarr;</p>
             </a>
           </li>
