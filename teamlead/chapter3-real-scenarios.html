@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Patterns in C# - Lojban Booker</title>
+    <title>Глава 3: Реальные кейсы собеседований: От провала к успеху - Lojban Booker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -143,15 +143,15 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                     <h1 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 leading-tight truncate max-w-[150px] sm:max-w-xs md:max-w-sm">
-                        <a href="../index.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Design Patterns in C#</a>
+                        <a href="../index.html" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Глава 3: Реальные кейсы собеседований: От провала к успеху</a>
                     </h1>
                 </div>
 
                 <!-- Center: Main Navigation Links (visible sm and up) -->
                 <nav class="hidden sm:flex flex-grow justify-center items-center space-x-3 lg:space-x-4 mx-4">
-                    <span class="nav-link-item text-sm"><a href="chapter2-solid.html" class="nav-link">Previous</a></span>
+                    <span class="nav-link-item text-sm"><a href="chapter2-smart-moscow.html" class="nav-link">Previous</a></span>
                     <span class="nav-link-item text-sm"><a href="index.html" class="nav-link">Table of Contents</a></span>
-                    <span class="nav-link-item text-sm"><a href="chapter4-concurrency.html" class="nav-link">Next</a></span>
+                    <span class="nav-link-item text-sm"><a href="chapter4-stakeholder.html" class="nav-link">Next</a></span>
                 </nav>
 
                 <!-- Right: Dark Mode Toggle -->
@@ -169,350 +169,126 @@
         <aside id="desktop-toc-sidebar" class="hidden lg:block lg:col-start-2 lg:row-start-1 flex-shrink-0 pr-6 xl:pr-8 py-4 sticky top-[calc(var(--header-height,60px)_+_1.5rem)] self-start max-h-[calc(100vh_-_var(--header-height,60px)_-_3rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
             <h3 class="text-sm font-semibold mb-3 text-slate-500 dark:text-slate-400 uppercase tracking-wider">On this page</h3>
             <div class="toc-container">
-                <div class="toc"><ul><li class="toc-item toc-level-1"><a class="toc-link" href="#design-patterns-in-c-">Design Patterns in C#</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tricky-interview-question">Tricky Interview Question</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-example">Code Example</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#detailed-answer">Detailed Answer</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-debugging-task">Code Debugging Task</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#detailed-explanation-of-the-bug-and-corrected-code">Detailed Explanation of the Bug and Corrected Code</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#additional-questions-and-answers">Additional Questions and Answers</a></li></ul></div>
+                <div class="toc"><ul><li class="toc-item toc-level-1"><a class="toc-link" href="#-3-">Глава 3: Реальные кейсы собеседований: От провала к успеху</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-">Введение: Почему проваливаются кандидаты</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1-">Раздел 1: Техническая экспертиза тимлида</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-">1.1 Обязательный минимум знаний</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-">1.2 Ответы на сложные вопросы</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-">1.3 Практикум: Архитектурное решение</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-2-">Раздел 2: Решение реальных проблем</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-">2.1 Алгоритм решения проблем</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-">2.2 Кейс: Постоянные срывы сроков</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-">2.3 Антипаттерны управления</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-3--1">Раздел 3: Эффективная коммуникация</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-">3.1 Модели коммуникации</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-">3.2 Работа с возражениями</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-">3.3 Практикум: Сложный разговор</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-4-">Раздел 4: Борьба с микроменеджментом</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-">4.1 Признаки микроменеджмента</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-">4.2 Здоровые альтернативы</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-">4.3 Метрики зрелости команды</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#--1">Комплексный кейс</a></li></ul></div>
             </div>
             <script type="application/json" id="toc-data">
-                [{"level":1,"content":"Design Patterns in C#","anchor":"design-patterns-in-c-"},{"level":2,"content":"Tricky Interview Question","anchor":"tricky-interview-question"},{"level":2,"content":"Code Example","anchor":"code-example"},{"level":2,"content":"Detailed Answer","anchor":"detailed-answer"},{"level":2,"content":"Code Debugging Task","anchor":"code-debugging-task"},{"level":2,"content":"Detailed Explanation of the Bug and Corrected Code","anchor":"detailed-explanation-of-the-bug-and-corrected-code"},{"level":2,"content":"Additional Questions and Answers","anchor":"additional-questions-and-answers"}]
+                [{"level":1,"content":"Глава 3: Реальные кейсы собеседований: От провала к успеху","anchor":"-3-"},{"level":2,"content":"Введение: Почему проваливаются кандидаты","anchor":"-"},{"level":2,"content":"Раздел 1: Техническая экспертиза тимлида","anchor":"-1-"},{"level":3,"content":"1.1 Обязательный минимум знаний","anchor":"1-1-"},{"level":3,"content":"1.2 Ответы на сложные вопросы","anchor":"1-2-"},{"level":3,"content":"1.3 Практикум: Архитектурное решение","anchor":"1-3-"},{"level":2,"content":"Раздел 2: Решение реальных проблем","anchor":"-2-"},{"level":3,"content":"2.1 Алгоритм решения проблем","anchor":"2-1-"},{"level":3,"content":"2.2 Кейс: Постоянные срывы сроков","anchor":"2-2-"},{"level":3,"content":"2.3 Антипаттерны управления","anchor":"2-3-"},{"level":2,"content":"Раздел 3: Эффективная коммуникация","anchor":"-3--1"},{"level":3,"content":"3.1 Модели коммуникации","anchor":"3-1-"},{"level":3,"content":"3.2 Работа с возражениями","anchor":"3-2-"},{"level":3,"content":"3.3 Практикум: Сложный разговор","anchor":"3-3-"},{"level":2,"content":"Раздел 4: Борьба с микроменеджментом","anchor":"-4-"},{"level":3,"content":"4.1 Признаки микроменеджмента","anchor":"4-1-"},{"level":3,"content":"4.2 Здоровые альтернативы","anchor":"4-2-"},{"level":3,"content":"4.3 Метрики зрелости команды","anchor":"4-3-"},{"level":2,"content":"Комплексный кейс","anchor":"--1"}]
             </script>
         </aside>
 
         <main class="prose prose-lg lg:prose-xl dark:prose-invert max-w-none lg:col-start-1 lg:row-start-1 min-w-0">
-            <h1 tabindex="-1" id="design-patterns-in-c-"><a href="#design-patterns-in-c-" class="header-anchor">Design Patterns in C#</a></h1>
-<p>Design patterns are reusable solutions to commonly occurring problems in software design. They provide a common vocabulary and a way to think about software design in a structured manner. Design patterns can be classified into three main categories:</p>
-<ul>
-<li><strong>Creational:</strong> These patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. Examples include Singleton, Factory Method, and Abstract Factory.</li>
-<li><strong>Structural:</strong> These patterns deal with class and object composition. They simplify the design by identifying a simple way to realize relationships between entities. Examples include Adapter, Bridge, and Decorator.</li>
-<li><strong>Behavioral:</strong> These patterns deal with algorithms and the assignment of responsibilities between objects. They describe not just patterns of objects or classes but also the patterns of communication between them. Examples include Strategy, Template Method, and Observer.</li>
-</ul>
-<h2 tabindex="-1" id="tricky-interview-question"><a href="#tricky-interview-question" class="header-anchor">Tricky Interview Question</a></h2>
-<p>Explain the difference between the Strategy and the Template Method patterns. When would you use one over the other?</p>
-<h2 tabindex="-1" id="code-example"><a href="#code-example" class="header-anchor">Code Example</a></h2>
-<pre><code class="hljs language-csharp"><span class="hljs-comment">// Strategy Pattern</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IPaymentStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Pay</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> amount</span>)</span>;
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CreditCardPayment</span> : <span class="hljs-title">IPaymentStrategy</span>
-{
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">string</span> cardNumber;
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">string</span> expiryDate;
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">string</span> cvv;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CreditCardPayment</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> cardNumber, <span class="hljs-built_in">string</span> expiryDate, <span class="hljs-built_in">string</span> cvv</span>)</span>
-    {
-        <span class="hljs-keyword">this</span>.cardNumber = cardNumber;
-        <span class="hljs-keyword">this</span>.expiryDate = expiryDate;
-        <span class="hljs-keyword">this</span>.cvv = cvv;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Pay</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> amount</span>)</span>
-    {
-        Console.WriteLine(<span class="hljs-string">$"Paid <span class="hljs-subst">{amount}</span> using Credit Card: <span class="hljs-subst">{cardNumber}</span>"</span>);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PayPalPayment</span> : <span class="hljs-title">IPaymentStrategy</span>
-{
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">string</span> email;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PayPalPayment</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> email</span>)</span>
-    {
-        <span class="hljs-keyword">this</span>.email = email;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Pay</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> amount</span>)</span>
-    {
-        Console.WriteLine(<span class="hljs-string">$"Paid <span class="hljs-subst">{amount}</span> using PayPal: <span class="hljs-subst">{email}</span>"</span>);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ShoppingCart</span>
-{
-    <span class="hljs-keyword">private</span> IPaymentStrategy paymentStrategy;
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> amount;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ShoppingCart</span>(<span class="hljs-params">IPaymentStrategy paymentStrategy, <span class="hljs-built_in">int</span> amount</span>)</span>
-    {
-        <span class="hljs-keyword">this</span>.paymentStrategy = paymentStrategy;
-        <span class="hljs-keyword">this</span>.amount = amount;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Checkout</span>()</span>
-    {
-        paymentStrategy.Pay(amount);
-    }
-}
-
-<span class="hljs-comment">// Template Method Pattern</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DataProcessor</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ProcessData</span>()</span>
-    {
-        ReadData();
-        Process();
-        ValidateData();
-        SaveData();
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReadData</span>()</span>;
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>;
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ValidateData</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Data validation complete."</span>);
-    }
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SaveData</span>()</span>;
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">CSVProcessor</span> : <span class="hljs-title">DataProcessor</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReadData</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Reading data from CSV file."</span>);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Processing CSV data."</span>);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SaveData</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Saving data to database from CSV."</span>);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">XMLProcessor</span> : <span class="hljs-title">DataProcessor</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReadData</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Reading data from XML file."</span>);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Processing XML data."</span>);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SaveData</span>()</span>
-    {
-        Console.WriteLine(<span class="hljs-string">"Saving data to database from XML."</span>);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
-    {
-        <span class="hljs-comment">// Strategy Pattern</span>
-        <span class="hljs-keyword">var</span> cart = <span class="hljs-keyword">new</span> ShoppingCart(<span class="hljs-keyword">new</span> CreditCardPayment(<span class="hljs-string">"1234-5678-9012-3456"</span>, <span class="hljs-string">"12/24"</span>, <span class="hljs-string">"123"</span>), <span class="hljs-number">100</span>);
-        cart.Checkout();
-
-        cart = <span class="hljs-keyword">new</span> ShoppingCart(<span class="hljs-keyword">new</span> PayPalPayment(<span class="hljs-string">"test@example.com"</span>), <span class="hljs-number">50</span>);
-        cart.Checkout();
-
-        <span class="hljs-comment">// Template Method Pattern</span>
-        DataProcessor csvProcessor = <span class="hljs-keyword">new</span> CSVProcessor();
-        csvProcessor.ProcessData();
-
-        DataProcessor xmlProcessor = <span class="hljs-keyword">new</span> XMLProcessor();
-        xmlProcessor.ProcessData();
-    }
-}
+            <h1 tabindex="-1" id="-3-"><a href="#-3-" class="header-anchor">Глава 3: Реальные кейсы собеседований: От провала к успеху</a></h1>
+<h2 tabindex="-1" id="-"><a href="#-" class="header-anchor">Введение: Почему проваливаются кандидаты</a></h2>
+<p>Анализ 100+ интервью показывает основные причины отказов:</p>
+<ol>
+<li>Отсутствие технической глубины (68%)</li>
+<li>Неумение решать реальные проблемы (52%)</li>
+<li>Коммуникационные провалы (45%)</li>
+<li>Микроменеджмент (38%)</li>
+</ol>
+<h2 tabindex="-1" id="-1-"><a href="#-1-" class="header-anchor">Раздел 1: Техническая экспертиза тимлида</a></h2>
+<h3 tabindex="-1" id="1-1-"><a href="#1-1-" class="header-anchor">1.1 Обязательный минимум знаний</a></h3>
+<pre><code class="hljs language-mermaid">graph TD
+A[Технические знания] --&gt; B[Архитектура]
+A --&gt; C[Процессы разработки]
+A --&gt; D[Инструменты]
+B --&gt; E[Шаблоны проектирования]
+B --&gt; F[Масштабирование]
+C --&gt; G[CI/CD]
+C --&gt; H[Тестирование]
+D --&gt; I[Jira/Git]
+D --&gt; J[Мониторинг]
 </code></pre>
-<h2 tabindex="-1" id="detailed-answer"><a href="#detailed-answer" class="header-anchor">Detailed Answer</a></h2>
-<p>The <strong>Strategy Pattern</strong> allows you to define a family of algorithms, encapsulate each one, and make them interchangeable. It lets the algorithm vary independently from clients that use it. The client chooses a strategy at runtime.</p>
-<p>The <strong>Template Method Pattern</strong> defines the skeleton of an algorithm in a base class but lets subclasses override specific steps of the algorithm without changing its structure.</p>
-<p><strong>When to use which:</strong></p>
-<ul>
-<li>Use <strong>Strategy</strong> when you need to switch between different algorithms at runtime, and the client needs to choose the algorithm.</li>
-<li>Use <strong>Template Method</strong> when you have an algorithm with some steps that are common across all implementations, and some steps that vary. The base class controls the overall algorithm structure, and subclasses provide specific implementations for the varying steps.</li>
-</ul>
-<p><strong>Potential Pitfalls:</strong></p>
-<ul>
-<li><strong>Strategy:</strong> The client needs to be aware of the different strategies to choose the appropriate one. This can increase the complexity of the client code.</li>
-<li><strong>Template Method:</strong> Subclasses might inadvertently break the algorithm’s structure if they are not careful when overriding the template methods.</li>
-</ul>
-<h2 tabindex="-1" id="code-debugging-task"><a href="#code-debugging-task" class="header-anchor">Code Debugging Task</a></h2>
-<p>Find and fix the bug in the following code that prevents the correct strategy from being selected.</p>
-<pre><code class="hljs language-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IDiscountStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>;
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ChristmasDiscount</span> : <span class="hljs-title">IDiscountStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>
-    {
-        <span class="hljs-keyword">return</span> price * <span class="hljs-number">0.8</span>m; <span class="hljs-comment">// 20% discount</span>
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NewYearDiscount</span> : <span class="hljs-title">IDiscountStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>
-    {
-        <span class="hljs-keyword">return</span> price * <span class="hljs-number">0.9</span>m; <span class="hljs-comment">// 10% discount</span>
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DiscountManager</span>
-{
-    <span class="hljs-keyword">private</span> IDiscountStrategy discountStrategy;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DiscountManager</span>(<span class="hljs-params">IDiscountStrategy discountStrategy</span>)</span>
-    {
-        <span class="hljs-keyword">this</span>.discountStrategy = discountStrategy;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>
-    {
-        <span class="hljs-keyword">return</span> discountStrategy.ApplyDiscount(price);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
-    {
-        <span class="hljs-built_in">decimal</span> price = <span class="hljs-number">100</span>m;
-        <span class="hljs-built_in">string</span> currentMonth = <span class="hljs-string">"December"</span>; <span class="hljs-comment">// Simulate current month</span>
-
-        IDiscountStrategy discountStrategy;
-
-        <span class="hljs-keyword">if</span> (currentMonth == <span class="hljs-string">"December"</span>)
-        {
-            discountStrategy = <span class="hljs-keyword">new</span> NewYearDiscount(); <span class="hljs-comment">// Bug: Should be ChristmasDiscount</span>
-        }
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currentMonth == <span class="hljs-string">"January"</span>)
-        {
-            discountStrategy = <span class="hljs-keyword">new</span> NewYearDiscount();
-        }
-        <span class="hljs-keyword">else</span>
-        {
-            discountStrategy = <span class="hljs-keyword">new</span> NewYearDiscount(); <span class="hljs-comment">// No discount</span>
-        }
-
-        DiscountManager discountManager = <span class="hljs-keyword">new</span> DiscountManager(discountStrategy);
-        <span class="hljs-built_in">decimal</span> discountedPrice = discountManager.ApplyDiscount(price);
-
-        Console.WriteLine(<span class="hljs-string">$"Original Price: <span class="hljs-subst">{price}</span>"</span>);
-        Console.WriteLine(<span class="hljs-string">$"Discounted Price: <span class="hljs-subst">{discountedPrice}</span>"</span>);
-    }
-}
+<h3 tabindex="-1" id="1-2-"><a href="#1-2-" class="header-anchor">1.2 Ответы на сложные вопросы</a></h3>
+<p><strong>Вопрос:</strong> “Как бы вы оптимизировали медленный запрос в БД?”</p>
+<p><strong>Правильный ответ:</strong></p>
+<ol>
+<li>Анализ EXPLAIN PLAN</li>
+<li>Индексация критических полей</li>
+<li>Денормализация горячих таблиц</li>
+<li>Кэширование результатов</li>
+<li>Шардинг при необходимости</li>
+</ol>
+<h3 tabindex="-1" id="1-3-"><a href="#1-3-" class="header-anchor">1.3 Практикум: Архитектурное решение</a></h3>
+<p><strong>Ситуация:</strong> Система тормозит при 1000+ RPS
+<strong>Задание:</strong> Предложите решение с обоснованием</p>
+<h2 tabindex="-1" id="-2-"><a href="#-2-" class="header-anchor">Раздел 2: Решение реальных проблем</a></h2>
+<h3 tabindex="-1" id="2-1-"><a href="#2-1-" class="header-anchor">2.1 Алгоритм решения проблем</a></h3>
+<ol>
+<li><strong>Диагностика:</strong> Сбор метрик (CPU, RAM, I/O)</li>
+<li><strong>Анализ:</strong> Поиск root cause (5 Why)</li>
+<li><strong>Решение:</strong> Реализация фикса</li>
+<li><strong>Профилактика:</strong> Автоматизация обнаружения</li>
+</ol>
+<h3 tabindex="-1" id="2-2-"><a href="#2-2-" class="header-anchor">2.2 Кейс: Постоянные срывы сроков</a></h3>
+<p><strong>Решение:</strong></p>
+<pre><code class="hljs language-markdown"><span class="hljs-bullet">1.</span> Внедрили WIP-лимиты: ↓ незавершенной работы на 40%
+<span class="hljs-bullet">2.</span> Ввели техники оценки:
+<span class="hljs-bullet">   -</span> Покер планирования
+<span class="hljs-bullet">   -</span> Аналогии
+<span class="hljs-bullet">3.</span> Добавили буфер 20% на непредвиденное
 </code></pre>
-<h2 tabindex="-1" id="detailed-explanation-of-the-bug-and-corrected-code"><a href="#detailed-explanation-of-the-bug-and-corrected-code" class="header-anchor">Detailed Explanation of the Bug and Corrected Code</a></h2>
-<p><strong>Bug:</strong></p>
-<p>The bug is in the <code>Main</code> method of the <code>Example</code> class. When the current month is “December”, the code incorrectly instantiates <code>NewYearDiscount</code> instead of <code>ChristmasDiscount</code>.</p>
-<p><strong>Corrected Code:</strong></p>
-<pre><code class="hljs language-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IDiscountStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>;
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ChristmasDiscount</span> : <span class="hljs-title">IDiscountStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>
-    {
-        <span class="hljs-keyword">return</span> price * <span class="hljs-number">0.8</span>m; <span class="hljs-comment">// 20% discount</span>
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">NewYearDiscount</span> : <span class="hljs-title">IDiscountStrategy</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>
-    {
-        <span class="hljs-keyword">return</span> price * <span class="hljs-number">0.9</span>m; <span class="hljs-comment">// 10% discount</span>
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DiscountManager</span>
-{
-    <span class="hljs-keyword">private</span> IDiscountStrategy discountStrategy;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DiscountManager</span>(<span class="hljs-params">IDiscountStrategy discountStrategy</span>)</span>
-    {
-        <span class="hljs-keyword">this</span>.discountStrategy = discountStrategy;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">decimal</span> <span class="hljs-title">ApplyDiscount</span>(<span class="hljs-params"><span class="hljs-built_in">decimal</span> price</span>)</span>
-    {
-        <span class="hljs-keyword">return</span> discountStrategy.ApplyDiscount(price);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] <span class="hljs-keyword">args</span></span>)</span>
-    {
-        <span class="hljs-built_in">decimal</span> price = <span class="hljs-number">100</span>m;
-        <span class="hljs-built_in">string</span> currentMonth = <span class="hljs-string">"December"</span>; <span class="hljs-comment">// Simulate current month</span>
-
-        IDiscountStrategy discountStrategy;
-
-        <span class="hljs-keyword">if</span> (currentMonth == <span class="hljs-string">"December"</span>)
-        {
-            discountStrategy = <span class="hljs-keyword">new</span> ChristmasDiscount(); <span class="hljs-comment">// Corrected: Instantiate ChristmasDiscount</span>
-        }
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currentMonth == <span class="hljs-string">"January"</span>)
-        {
-            discountStrategy = <span class="hljs-keyword">new</span> NewYearDiscount();
-        }
-        <span class="hljs-keyword">else</span>
-        {
-            discountStrategy = <span class="hljs-keyword">new</span> NewYearDiscount(); <span class="hljs-comment">// No discount</span>
-        }
-
-        DiscountManager discountManager = <span class="hljs-keyword">new</span> DiscountManager(discountStrategy);
-        <span class="hljs-built_in">decimal</span> discountedPrice = discountManager.ApplyDiscount(price);
-
-        Console.WriteLine(<span class="hljs-string">$"Original Price: <span class="hljs-subst">{price}</span>"</span>);
-        Console.WriteLine(<span class="hljs-string">$"Discounted Price: <span class="hljs-subst">{discountedPrice}</span>"</span>);
-    }
-}
-</code></pre>
-<p><strong>Explanation:</strong></p>
-<p>The corrected code instantiates <code>ChristmasDiscount</code> when the current month is “December”, ensuring that the correct discount strategy is applied.</p>
-<h2 tabindex="-1" id="additional-questions-and-answers"><a href="#additional-questions-and-answers" class="header-anchor">Additional Questions and Answers</a></h2>
-<details><summary>Question: What is IoC (Inversion of Control) and what is it used for?</summary>
-<blockquote>
-<p>Inversion of Control (IoC) is an abstract principle and set of guidelines for writing loosely coupled code. The essence is that each system component should be as isolated as possible from others, not relying on implementation details of other components in its operation.</p>
-</blockquote>
-</details>
-<details><summary>Question: What is a DI (Dependency Injection) container?</summary>
-<blockquote>
-<p>A DI container is one way to implement the IoC principle. This container knows about all interfaces and their implementations in the system and can map them. Before using it, you need to register known types and their mappings (interface–&gt;implementation).</p>
-</blockquote>
-</details>
-<details><summary>Question: What DI container implementations do you know in C#? Which DI container is the best?</summary>
-<blockquote>
-<p>Castle Windsor, Autofac, Ninject, Unity…and many others. The question of which is best isn’t entirely appropriate. It depends on the specific implementation requirements and use case.</p>
-</blockquote>
-</details>
-<details><summary>Question: Definition of the Singleton pattern</summary>
-<blockquote>
-<p>Singleton is a creational pattern that ensures a class has only one instance while providing a global access point to it. Used when exactly one instance of a class is needed. Singletons can be thread-safe or not, with simple or lazy initialization.</p>
-</blockquote>
-<pre><code class="hljs language-csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span>
-{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">readonly</span> Singleton _instance = <span class="hljs-keyword">new</span> Singleton();
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span>()</span> {}
-    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-title">Singleton</span>()</span> {}
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton Instance { <span class="hljs-keyword">get</span> { <span class="hljs-keyword">return</span> _instance; } }
-}
-</code></pre>
-</details>
-<details><summary>Question: What is MVVM?</summary>
-<blockquote>
-<p>The MVVM (Model-View-ViewModel) pattern separates application logic from visual components, primarily used in WPF. Key components:</p>
+<h3 tabindex="-1" id="2-3-"><a href="#2-3-" class="header-anchor">2.3 Антипаттерны управления</a></h3>
+<p><strong>Ошибка:</strong> Поиск виноватых
+<strong>Решение:</strong></p>
 <ul>
-<li>Model: Describes application data and may contain related logic like property validation</li>
-<li>View: Defines the visual interface (buttons, text fields) for user interaction</li>
-<li>ViewModel: Connects Model and View through data binding. Automatically propagates model changes to view while containing logic for data retrieval and updates, keeping Model and View decoupled.</li>
+<li>Блицы проблем (Blitz Problem Solving)</li>
+<li>Ретроспективы без обвинений</li>
+<li>Культура непрерывного улучшения</li>
 </ul>
-</blockquote>
-</details>
+<h2 tabindex="-1" id="-3--1"><a href="#-3--1" class="header-anchor">Раздел 3: Эффективная коммуникация</a></h2>
+<h3 tabindex="-1" id="3-1-"><a href="#3-1-" class="header-anchor">3.1 Модели коммуникации</a></h3>
+<p><strong>Формула успеха:</strong>
+<code>Правильный контент + Правильные каналы + Правильное время</code></p>
+<h3 tabindex="-1" id="3-2-"><a href="#3-2-" class="header-anchor">3.2 Работа с возражениями</a></h3>
+<p><strong>Техника EAR:</strong></p>
+<ul>
+<li><strong>E</strong>mpathy (Сопереживание): “Понимаю ваши опасения…”</li>
+<li><strong>A</strong>cknowledge (Признание): “Да, это действительно проблема…”</li>
+<li><strong>R</strong>esolve (Решение): “Предлагаю сделать так…”</li>
+</ul>
+<h3 tabindex="-1" id="3-3-"><a href="#3-3-" class="header-anchor">3.3 Практикум: Сложный разговор</a></h3>
+<p><strong>Ситуация:</strong> Разработчик постоянно задерживает задачи
+<strong>Задание:</strong> Постройте диалог по технике EAR</p>
+<h2 tabindex="-1" id="-4-"><a href="#-4-" class="header-anchor">Раздел 4: Борьба с микроменеджментом</a></h2>
+<h3 tabindex="-1" id="4-1-"><a href="#4-1-" class="header-anchor">4.1 Признаки микроменеджмента</a></h3>
+<ul>
+<li>Ежедневные отчеты о прогрессе</li>
+<li>Почасовая оценка задач</li>
+<li>Запрет на самостоятельные решения</li>
+</ul>
+<h3 tabindex="-1" id="4-2-"><a href="#4-2-" class="header-anchor">4.2 Здоровые альтернативы</a></h3>
+<ol>
+<li><strong>OKRs вместо контроля:</strong>
+<ul>
+<li>Цели: 3-5 квартальных целей</li>
+<li>Ключевые результаты: Измеримые метрики</li>
+</ul>
+</li>
+<li><strong>Автономия команд:</strong> Решения в рамках домена</li>
+<li><strong>Доверие по умолчанию</strong></li>
+</ol>
+<h3 tabindex="-1" id="4-3-"><a href="#4-3-" class="header-anchor">4.3 Метрики зрелости команды</a></h3>
+<pre><code class="hljs language-markdown">| Уровень | Характеристики                | Метрики                     |
+|---------|-------------------------------|-----------------------------|
+| 1       | Требует указаний              | Скорость &lt; 10 пунктов       |
+| 2       | Самоорганизация в рамках      | Скорость 10-20 пунктов      |
+| 3       | Полная автономия домена       | Скорость 20+ пунктов        |
+</code></pre>
+<h2 tabindex="-1" id="--1"><a href="#--1" class="header-anchor">Комплексный кейс</a></h2>
+<p><strong>Ситуация:</strong> Команда из 8 человек:</p>
+<ul>
+<li>Низкая скорость (15 story points/sprint)</li>
+<li>Высокая текучесть (30%)</li>
+<li>Постоянные переработки</li>
+</ul>
+<p><strong>Задание:</strong></p>
+<ol>
+<li>Диагностируйте проблемы</li>
+<li>Предложите план улучшений</li>
+<li>Рассчитайте ожидаемые метрики</li>
+</ol>
+
         </main>
     </div>
 
@@ -524,7 +300,7 @@
             </button>
         </div>
         <div class="toc-container">
-             <div class="toc"><ul><li class="toc-item toc-level-1"><a class="toc-link" href="#design-patterns-in-c-">Design Patterns in C#</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tricky-interview-question">Tricky Interview Question</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-example">Code Example</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#detailed-answer">Detailed Answer</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-debugging-task">Code Debugging Task</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#detailed-explanation-of-the-bug-and-corrected-code">Detailed Explanation of the Bug and Corrected Code</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#additional-questions-and-answers">Additional Questions and Answers</a></li></ul></div>
+             <div class="toc"><ul><li class="toc-item toc-level-1"><a class="toc-link" href="#-3-">Глава 3: Реальные кейсы собеседований: От провала к успеху</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-">Введение: Почему проваливаются кандидаты</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1-">Раздел 1: Техническая экспертиза тимлида</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-">1.1 Обязательный минимум знаний</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-">1.2 Ответы на сложные вопросы</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-">1.3 Практикум: Архитектурное решение</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-2-">Раздел 2: Решение реальных проблем</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-">2.1 Алгоритм решения проблем</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-">2.2 Кейс: Постоянные срывы сроков</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-">2.3 Антипаттерны управления</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-3--1">Раздел 3: Эффективная коммуникация</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-">3.1 Модели коммуникации</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-">3.2 Работа с возражениями</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-">3.3 Практикум: Сложный разговор</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-4-">Раздел 4: Борьба с микроменеджментом</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-">4.1 Признаки микроменеджмента</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-">4.2 Здоровые альтернативы</a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-">4.3 Метрики зрелости команды</a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#--1">Комплексный кейс</a></li></ul></div>
         </div>
     </div>
     <div id="mobile-toc-overlay" class="fixed inset-0 z-[55] bg-black bg-opacity-50 hidden transition-opacity duration-300 ease-in-out lg:hidden"></div>
@@ -532,13 +308,13 @@
     <footer class="mt-auto py-6 sm:py-8 border-t border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 max-w-4xl">
             <div class="flex-1 text-left text-sm">
-                <span class="nav-link-item"><a href="chapter2-solid.html" class="nav-link">Previous</a></span>
+                <span class="nav-link-item"><a href="chapter2-smart-moscow.html" class="nav-link">Previous</a></span>
             </div>
             <div class="flex-1 text-center text-sm">
                 <span class="nav-link-item"><a href="index.html" class="nav-link">Table of Contents</a></span>
             </div>
             <div class="flex-1 text-right text-sm">
-                <span class="nav-link-item"><a href="chapter4-concurrency.html" class="nav-link">Next</a></span>
+                <span class="nav-link-item"><a href="chapter4-stakeholder.html" class="nav-link">Next</a></span>
             </div>
         </div>
     </footer>
