@@ -138,10 +138,10 @@ pre,
 
 /* Nav links */
 .nav-link { 
-  @apply text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 no-underline transition-colors duration-150; 
+  @apply text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-500 no-underline transition-all duration-200 flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800; 
 }
 .nav-link-disabled { 
-  @apply text-slate-400 dark:text-slate-600 cursor-not-allowed; 
+  @apply text-slate-400 dark:text-slate-600 cursor-not-allowed flex items-center gap-2 py-2 px-3; 
 }
 
 /* TOC Styles */

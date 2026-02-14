@@ -239,31 +239,40 @@ function processMarkdownFiles() {
         if (filesInDir.length > 1) {
           const firstChapter = filesInDir.find(f => path.basename(f) !== 'index.md');
           if (firstChapter) {
-            nextLink = `<a href="${path.basename(firstChapter, '.md') + '.html'}" class="nav-link">First chapter</a>`;
+            nextLink = `<a href="${path.basename(firstChapter, '.md') + '.html'}" class="nav-link">
+              <span>First chapter</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M18 12H6"></path></svg>
+            </a>`;
           } else {
-            nextLink = `<span class="nav-link-disabled">First chapter</span>`;
+            nextLink = `<span class="nav-link-disabled">No chapters</span>`;
           }
-          prevLink = `<span class="nav-link-disabled">Previous</span>`; // No previous for main index
-          tocLink = `<span class="nav-link-disabled">Table of Contents</span>`; // No TOC for main index pointing to itself
+          prevLink = `<span class="nav-link-disabled"></span>`;
+          tocLink = `<span class="nav-link-disabled">Book Index</span>`;
         }
       } else {
         // Regular behavior for non-index files
         // Previous link
         if (currentIndex > 0) {
           const prevFile = filesInDir[currentIndex - 1];
-          // Handle if prevFile is index.md
-          const prevFileName = path.basename(prevFile) === 'index.md' ? 'Up to Contents' : 'Previous';
-          prevLink = `<a href="${path.basename(prevFile, '.md') + '.html'}" class="nav-link">${prevFileName}</a>`;
+          const isIndex = path.basename(prevFile) === 'index.md';
+          const prevFileName = isIndex ? 'Contents' : 'Previous';
+          prevLink = `<a href="${path.basename(prevFile, '.md') + '.html'}" class="nav-link">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5 5-5M6 12h12"></path></svg>
+            <span>${prevFileName}</span>
+          </a>`;
         } else {
-          prevLink = `<span class="nav-link-disabled">Previous</span>`;
+          prevLink = `<span class="nav-link-disabled"></span>`;
         }
         
         // Next link
         if (currentIndex < filesInDir.length - 1) {
           const nextFile = filesInDir[currentIndex + 1];
-          nextLink = `<a href="${path.basename(nextFile, '.md') + '.html'}" class="nav-link">Next</a>`;
+          nextLink = `<a href="${path.basename(nextFile, '.md') + '.html'}" class="nav-link">
+            <span>Next</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M18 12H6"></path></svg>
+          </a>`;
         } else {
-          nextLink = `<span class="nav-link-disabled">Next</span>`;
+          nextLink = `<span class="nav-link-disabled">End</span>`;
         }
         
         // TOC link (points to index.html in current directory)
@@ -271,14 +280,16 @@ function processMarkdownFiles() {
         if (path.basename(filePath) !== 'index.md') {
             const indexFileInDir = filesInDir.find(f => path.basename(f) === 'index.md');
             if (indexFileInDir) {
-                 tocLink = `<a href="index.html" class="nav-link">Table of Contents</a>`;
+                 tocLink = `<a href="index.html" class="nav-link">
+                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+                   <span class="hidden sm:inline">Table of Contents</span>
+                   <span class="sm:hidden">TOC</span>
+                 </a>`;
             } else {
-                // If there's no index.md, maybe disable TOC or link to main book listing?
-                // For now, disable if no index.md in the current book's directory.
-                tocLink = `<span class="nav-link-disabled">Table of Contents</span>`;
+                tocLink = `<span class="nav-link-disabled">TOC</span>`;
             }
         } else {
-             tocLink = `<span class="nav-link-disabled">Table of Contents</span>`; // Already on TOC
+             tocLink = `<span class="nav-link-disabled"></span>`;
         }
       }
       
