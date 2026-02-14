@@ -10,123 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style id="tailwind-styles">
         /* {%TAILWIND_CSS%} */
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        .prose {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        .prose code {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 16px;
-        }
-        .prose pre {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 16px;
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            color: #1e293b;
-            border-radius: 0.375rem;
-            padding: 1em;
-            overflow-x: auto;
-            line-height: 1.6;
-        }
-        .dark .prose pre {
-            background-color: #1e293b;
-            border-color: #334155;
-            color: #f1f5f9;
-        }
-        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-        .prose details {
-            background-color: #f9fafb; border: 1px solid #e5e7eb;
-            border-radius: 0.375rem; padding: 1rem; margin-bottom: 1rem;
-        }
-        .prose summary { font-weight: 600; cursor: pointer; outline: none; }
-        .prose summary:focus-visible { box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); }
-        .prose details[open] > summary { margin-bottom: 0.5rem; }
-        .nav-link { @apply text-teal-600 hover:text-teal-800 text-decoration: none transition-colors duration-150; }
-        .nav-link-disabled { @apply text-gray-400 cursor-not-allowed; }
-
-        .toc-container nav.toc { @apply p-0 m-0 bg-transparent shadow-none rounded-none my-0; }
-        .toc-container nav.toc > ul { @apply list-none p-0 m-0; }
-        .toc-container nav.toc > ul > li { @apply mb-1; }
-        .toc-container nav.toc > ul > li > a {
-            @apply text-slate-600 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 text-sm font-medium;
-            @apply transition-colors duration-150 block py-3 rounded-md px-3;
-        }
-        .toc-container nav.toc > ul > li > a:hover {
-            @apply bg-slate-100 dark:bg-slate-700;
-            transform: translateX(2px);
-        }
-        .toc-container nav.toc > ul > li > ul { @apply list-none pl-3 mt-1 border-l border-slate-200 dark:border-slate-700 ml-2; }
-        .toc-container nav.toc > ul > li > ul > li { @apply mb-0.5; }
-        .toc-container nav.toc > ul > li > ul > li > a {
-            @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-xs;
-            @apply transition-colors duration-150 block py-2 px-3 rounded-md;
-        }
-        .toc-container nav.toc > ul > li > ul > li > a:hover {
-            @apply bg-slate-100 dark:bg-slate-700;
-            transform: translateX(2px);
-        }
-        .toc-container nav.toc a.active {
-            @apply text-white dark:text-white font-semibold bg-blue-600 dark:bg-blue-700;
-            transform: translateX(4px);
-        }
-        .toc-container nav.toc > ul > li > details > summary {
-            @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-sm font-medium;
-            @apply transition-colors duration-150 block py-3 rounded-md px-3 cursor-pointer;
-            list-style: none;
-        }
-        .toc-container nav.toc > ul > li > details > summary::-webkit-details-marker {
-            display: none;
-        }
-        .toc-container nav.toc > ul > li > details > summary:hover {
-            @apply bg-slate-100 dark:bg-slate-700;
-            transform: translateX(2px);
-        }
-        .toc-container nav.toc > ul > li > details[open] > summary {
-            @apply text-blue-600 dark:text-blue-400;
-        }
-        
-        body.overflow-hidden-important { overflow: hidden !important; }
-
-        #scrollToTopBtn.visible {
-            @apply opacity-100 translate-y-0 pointer-events-auto;
-        }
-        @media (max-width: 768px) {
-            body {
-                overflow-x: hidden;
-            }
-            #mobile-toc-panel {
-                position: sticky;
-                top: var(--header-height);
-                height: calc(100vh - var(--header-height));
-                z-index: 40;
-            }
-            #mobile-toc-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(0,0,0,0.5);
-                z-index: 55;
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-            }
-            #mobileMenuButton {
-                display: block;
-            }
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 min-h-screen flex flex-col transition-colors duration-300">
@@ -163,7 +46,7 @@
     </header>
 
     <div class="flex-grow w-full max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 grid grid-cols-1 lg:grid-cols-[1fr_minmax(240px,280px)] gap-8 lg:gap-12">
-        <main class="prose prose-lg lg:prose-xl dark:prose-invert max-w-reading lg:max-w-reading mx-auto lg:mx-0 lg:col-start-1 lg:row-start-1 min-w-0 w-full">
+        <main class="prose md:prose-lg dark:prose-invert max-w-reading lg:max-w-reading mx-auto lg:mx-0 lg:col-start-1 lg:row-start-1 min-w-0 w-full">
             {%MARKDOWN_CONTENT%}
         </main>
         <aside id="desktop-toc-sidebar" class="hidden lg:block lg:col-start-2 lg:row-start-1 flex-shrink-0 py-2 sticky top-[calc(var(--header-height,60px)_+_1.5rem)] self-start max-h-[calc(100vh_-_var(--header-height,60px)_-_3rem)] overflow-y-auto">
@@ -424,79 +307,6 @@
             scrollToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-        }
-
-        // runCode function (existing)
-        async function runCode(codeElementId, outputElementId, language) {
-            const codeElement = document.getElementById(codeElementId);
-            const outputElement = document.getElementById(outputElementId);
-            if (!codeElement || !outputElement) {
-                console.error("Code or output element not found for", codeElementId, outputElementId);
-                return;
-            }
-            const code = codeElement.textContent;
-            outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Running...</span>';
-            try {
-                if (language === 'go') {
-                    if (!window.Go) {
-                        await new Promise((resolve, reject) => {
-                            const script = document.createElement('script'); script.src = '../wasm/wasm_exec.js';
-                            script.onload = resolve; script.onerror = reject; document.head.appendChild(script);
-                        });
-                    }
-                    if (!window.goRunnerInstance) {
-                        const go = new Go();
-                        const result = await WebAssembly.instantiateStreaming(fetch('../wasm/go_runner.wasm'), go.importObject);
-                        window.goRunnerInstance = result.instance; go.run(window.goRunnerInstance); 
-                    }
-                    outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Executing Go code...</span>';
-                    const result = await window.executeGoCode(code);
-                    if (result.error) { outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`; }
-                    else { outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`; }
-                } else if (language === 'csharp') {
-                    if (!window.csharpWasmRuntimeStarted) {
-                        outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Loading .NET Wasm runtime...</span>';
-                        try {
-                            if (!document.querySelector('script[src="../wasm/csharp/blazor.webassembly.js"]')) {
-                                const script = document.createElement('script'); script.src = '../wasm/csharp/blazor.webassembly.js';
-                                script.defer = true; document.body.appendChild(script);
-                                await new Promise((resolve, reject) => {
-                                    const checkInterval = setInterval(() => { if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') { clearInterval(checkInterval); resolve();}}, 100);
-                                    setTimeout(() => { clearInterval(checkInterval); reject(new Error('.NET runtime loading timed out.')); }, 30000);
-                                });
-                            } else {
-                                 await new Promise((resolve, reject) => { 
-                                    const checkInterval = setInterval(() => { if (window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function') { clearInterval(checkInterval); resolve(); }}, 100);
-                                     setTimeout(() => { clearInterval(checkInterval); reject(new Error('.NET runtime already loaded but not ready.'));}, 30000);
-                                });
-                            }
-                            window.csharpWasmRuntimeStarted = true;
-                             outputElement.innerHTML = '<span class="text-green-600 dark:text-green-400">.NET Wasm runtime loaded.</span>';
-                        } catch (loadError) {
-                            console.error("Error loading .NET Wasm runtime:", loadError);
-                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error loading .NET Wasm runtime:\n${loadError.message || loadError}</pre>`;
-                            return;
-                        }
-                    }
-                    try {
-                        outputElement.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Executing C# code...</span>';
-                        if (!(window.DotNet && typeof window.DotNet.invokeMethodAsync === 'function')) {
-                            outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">.NET runtime not available for invoking method.</pre>`; return;
-                        }
-                        const result = await window.DotNet.invokeMethodAsync('CSharpWasmRunner', 'ExecuteCodeAsync', code);
-                        if (result.error) { outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${result.error}</pre>`; }
-                        else { outputElement.innerHTML = `<pre class="text-green-600 dark:text-green-400">Output:\n${result.output}</pre>`; }
-                    } catch (execError) {
-                        console.error("Error executing C# code:", execError);
-                        outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error executing C# code:\n${execError.message || execError}</pre>`;
-                    }
-                } else {
-                    outputElement.innerHTML = `<p class="text-yellow-500 dark:text-yellow-400">Execution for ${language} is not supported.</p>`;
-                }
-            } catch (error) {
-                outputElement.innerHTML = `<pre class="text-red-500 dark:text-red-400">Error:\n${error.message}</pre>`;
-                console.error('Code execution error:', error);
-            }
         }
     </script>
 </body>

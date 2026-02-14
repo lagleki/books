@@ -14,10 +14,10 @@
 /* Base: readable text and selection */
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth text-[15px] sm:text-[16px];
   }
   body {
-    @apply antialiased;
+    @apply antialiased min-h-screen flex flex-col;
   }
   ::selection {
     @apply bg-teal-200 dark:bg-teal-800/80 text-slate-900 dark:text-slate-100;
@@ -40,12 +40,19 @@ pre,
 .prose pre {
   background-color: var(--color-slate-100);
   color: var(--color-slate-900);
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  line-height: 1.6;
 }
 :where(.dark) pre,
 :where(.dark) .prose pre {
   background-color: var(--color-slate-800);
   color: var(--color-slate-100);
   border-color: var(--color-slate-700);
+}
+
+.prose code {
+  @apply font-mono text-[0.9em] font-medium;
 }
 
 /* Book content: optimal reading width when no sidebar (e.g. narrow viewports) */
@@ -124,4 +131,63 @@ pre,
 
 .prose p {
   @apply leading-relaxed;
+}
+
+/* Nav links */
+.nav-link { 
+  @apply text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 no-underline transition-colors duration-150; 
+}
+.nav-link-disabled { 
+  @apply text-slate-400 dark:text-slate-600 cursor-not-allowed; 
+}
+
+/* TOC Styles */
+.toc-container nav.toc { @apply p-0 m-0 bg-transparent shadow-none rounded-none my-0; }
+.toc-container nav.toc > ul { @apply list-none p-0 m-0 border-none; }
+.toc-container nav.toc > ul > li { @apply mb-1; }
+.toc-container nav.toc > ul > li > a {
+    @apply text-slate-600 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 text-sm font-medium;
+    @apply transition-all duration-150 block py-3 rounded-md px-3 no-underline;
+}
+.toc-container nav.toc > ul > li > a:hover {
+    @apply bg-slate-100 dark:bg-slate-700 translate-x-[2px];
+}
+.toc-container nav.toc > ul > li > ul { @apply list-none pl-3 mt-1 border-l border-slate-200 dark:border-slate-700 ml-2; }
+.toc-container nav.toc > ul > li > ul > li { @apply mb-0.5; }
+.toc-container nav.toc > ul > li > ul > li > a {
+    @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-xs;
+    @apply transition-all duration-150 block py-2 px-3 rounded-md no-underline;
+}
+.toc-container nav.toc > ul > li > ul > li > a:hover {
+    @apply bg-slate-100 dark:bg-slate-700 translate-x-[2px];
+}
+.toc-container nav.toc a.active {
+    @apply text-white! dark:text-white font-semibold bg-teal-600 dark:bg-teal-700 translate-x-[4px];
+}
+.toc-container nav.toc > ul > li > details > summary {
+    @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-sm font-medium;
+    @apply transition-all duration-150 block py-3 rounded-md px-3 cursor-pointer list-none no-underline;
+}
+.toc-container nav.toc > ul > li > details > summary::-webkit-details-marker {
+    @apply hidden;
+}
+.toc-container nav.toc > ul > li > details > summary:hover {
+    @apply bg-slate-100 dark:bg-slate-700 translate-x-[2px];
+}
+.toc-container nav.toc > ul > li > details[open] > summary {
+    @apply text-teal-600 dark:text-teal-400;
+}
+
+/* Mobile Toggles and Panels */
+body.overflow-hidden-important { @apply overflow-hidden; }
+
+#scrollToTopBtn.visible {
+    @apply opacity-100 translate-y-0 pointer-events-auto;
+}
+
+@media (max-width: 1023px) {
+    #mobile-toc-panel {
+        @apply sticky top-[var(--header-height)] z-40;
+        height: calc(100vh - var(--header-height));
+    }
 }
