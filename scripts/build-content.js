@@ -125,6 +125,18 @@ fs.ensureDirSync('dist');
 fs.ensureDirSync('temp');
 fs.ensureDirSync('docs');
 
+// Copy static assets (e.g. favicon) to docs
+const staticDir = 'static';
+if (fs.existsSync(staticDir)) {
+  const staticFiles = fs.readdirSync(staticDir);
+  staticFiles.forEach(file => {
+    const src = path.join(staticDir, file);
+    if (fs.statSync(src).isFile()) {
+      fs.copySync(src, path.join('docs', file));
+    }
+  });
+}
+
 // Read template file
 const template = fs.readFileSync('templates/universal_book_template.html', 'utf8');
 const tailwindCss = fs.readFileSync('dist/styles.css', 'utf8');
@@ -342,51 +354,46 @@ function generateAllBooksPage() {
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Books - Lojban Booker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>All Books – Lojban Booker</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style id="tailwind-styles">
     ${tailwindCss}
-    /* Minimal inline styles for body if Tailwind doesn't load, and for basic structure */
-    body {
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen flex flex-col items-center py-8 sm:py-12 transition-colors duration-300">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-3xl">
-    <header class="mb-10 flex justify-between items-center">
-      <div class="text-center flex-grow">
-        <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">All Available Books</h1>
-        <p class="mt-3 text-lg text-slate-600 dark:text-slate-400">Browse our collection of programming books.</p>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen flex flex-col transition-colors duration-300">
+  <div class="w-full max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10 lg:py-12 flex flex-col flex-grow">
+    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 sm:mb-12">
+      <div class="flex-1 min-w-0">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Books</h1>
+        <p class="mt-2 text-base sm:text-lg text-slate-600 dark:text-slate-400">Pick a book to read. Optimized for mobile and desktop.</p>
       </div>
-      <button id="darkModeToggle" aria-label="Toggle dark mode" class="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors flex-shrink-0">
-          <svg id="theme-toggle-dark-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707zm12.728 0l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      <button id="darkModeToggle" aria-label="Toggle dark mode" class="self-start sm:self-center p-3 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-colors touch-manipulation flex-shrink-0">
+        <svg id="theme-toggle-dark-icon" class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-slate-600 dark:text-slate-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 011.414-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707zm12.728 0l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
       </button>
     </header>
-    
-    <main>
-      <ul class="space-y-4">
+
+    <main class="flex-1">
+      <ul class="space-y-4 sm:space-y-5" role="list">
         ${books.map(book => `
-          <li class="bg-white dark:bg-slate-800 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
-            <a href="${book.path}/index.html" class="block p-6 sm:p-8">
-              <h2 class="text-2xl font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors duration-150">${book.name}</h2>
-              <p class="mt-2 text-slate-500 dark:text-slate-400">Open the book &rarr;</p>
+          <li>
+            <a href="${book.path}/index.html" class="group block bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-teal-200 dark:hover:border-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition-all duration-200 p-5 sm:p-6 lg:p-8 min-h-[72px] sm:min-h-0 flex items-center justify-between gap-4">
+              <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors line-clamp-2">${book.name}</h2>
+              <span class="flex-shrink-0 text-teal-600 dark:text-teal-400" aria-hidden="true">&rarr;</span>
             </a>
           </li>
         `).join('')}
       </ul>
-      ${books.length === 0 ? '<p class="text-center text-slate-500 dark:text-slate-400 mt-8">No books found. Try running the build script.</p>' : ''}
+      ${books.length === 0 ? '<p class="text-center text-slate-500 dark:text-slate-400 py-12">No books found. Run the build script to generate content.</p>' : ''}
     </main>
 
-    <footer class="mt-12 text-center text-sm text-slate-500 dark:text-slate-400">
-      <p>&copy; ${new Date().getFullYear()} Lojban Booker. All rights reserved.</p>
-      <p class="mt-1">Generated by Booker Script</p>
+    <footer class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p>&copy; ${new Date().getFullYear()} Lojban Booker</p>
     </footer>
   </div>
   <script>
