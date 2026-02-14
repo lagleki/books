@@ -3,6 +3,7 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", "Georgia", serif;
   --font-mono: "Roboto Mono", ui-monospace, monospace;
 
   --max-width-reading: 70ch;
@@ -57,7 +58,8 @@ pre,
 
 /* Book content: optimal reading width when no sidebar (e.g. narrow viewports) */
 .prose {
-  @apply max-w-reading;
+  @apply max-w-reading font-serif text-slate-900 dark:text-slate-100;
+  line-height: 1.75;
 }
 .prose.max-w-none {
   max-width: none;
@@ -126,11 +128,12 @@ pre,
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
-  @apply font-bold tracking-tight;
+  @apply font-semibold tracking-tight text-slate-900 dark:text-white;
+  font-family: var(--font-serif);
 }
 
 .prose p {
-  @apply leading-relaxed;
+  @apply leading-relaxed mb-6;
 }
 
 /* Nav links */
@@ -142,39 +145,39 @@ pre,
 }
 
 /* TOC Styles */
-.toc-container nav.toc { @apply p-0 m-0 bg-transparent shadow-none rounded-none my-0; }
-.toc-container nav.toc > ul { @apply list-none p-0 m-0 border-none; }
-.toc-container nav.toc > ul > li { @apply mb-1; }
-.toc-container nav.toc > ul > li > a {
+.toc-container .toc { @apply p-0 m-0 bg-transparent shadow-none rounded-none my-0; }
+.toc-container .toc > ul { @apply list-none p-0 m-0 border-none; }
+.toc-container .toc > ul > li { @apply mb-1; }
+.toc-container .toc > ul > li > a {
     @apply text-slate-600 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 text-sm font-medium;
     @apply transition-all duration-150 block py-3 rounded-md px-3 no-underline;
 }
-.toc-container nav.toc > ul > li > a:hover {
+.toc-container .toc > ul > li > a:hover {
     @apply bg-slate-100 dark:bg-slate-700 translate-x-[2px];
 }
-.toc-container nav.toc > ul > li > ul { @apply list-none pl-3 mt-1 border-l border-slate-200 dark:border-slate-700 ml-2; }
-.toc-container nav.toc > ul > li > ul > li { @apply mb-0.5; }
-.toc-container nav.toc > ul > li > ul > li > a {
+.toc-container .toc > ul > li > ul { @apply list-none pl-3 mt-1 border-l border-slate-200 dark:border-slate-700 ml-2; }
+.toc-container .toc > ul > li > ul > li { @apply mb-0.5; }
+.toc-container .toc > ul > li > ul > li > a {
     @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-xs;
     @apply transition-all duration-150 block py-2 px-3 rounded-md no-underline;
 }
-.toc-container nav.toc > ul > li > ul > li > a:hover {
+.toc-container .toc > ul > li > ul > li > a:hover {
     @apply bg-slate-100 dark:bg-slate-700 translate-x-[2px];
 }
-.toc-container nav.toc a.active {
+.toc-container .toc a.active {
     @apply text-white! dark:text-white font-semibold bg-teal-600 dark:bg-teal-700 translate-x-[4px];
 }
-.toc-container nav.toc > ul > li > details > summary {
+.toc-container .toc > ul > li > details > summary {
     @apply text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 text-sm font-medium;
     @apply transition-all duration-150 block py-3 rounded-md px-3 cursor-pointer list-none no-underline;
 }
-.toc-container nav.toc > ul > li > details > summary::-webkit-details-marker {
+.toc-container .toc > ul > li > details > summary::-webkit-details-marker {
     @apply hidden;
 }
-.toc-container nav.toc > ul > li > details > summary:hover {
+.toc-container .toc > ul > li > details > summary:hover {
     @apply bg-slate-100 dark:bg-slate-700 translate-x-[2px];
 }
-.toc-container nav.toc > ul > li > details[open] > summary {
+.toc-container .toc > ul > li > details[open] > summary {
     @apply text-teal-600 dark:text-teal-400;
 }
 
@@ -187,7 +190,7 @@ body.overflow-hidden-important { @apply overflow-hidden; }
 
 @media (max-width: 1023px) {
     #mobile-toc-panel {
-        @apply sticky top-[var(--header-height)] z-40;
-        height: calc(100vh - var(--header-height));
+        @apply fixed top-0 left-0 z-[70];
+        height: 100vh;
     }
 }

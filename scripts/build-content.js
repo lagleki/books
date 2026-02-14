@@ -66,9 +66,8 @@ function generateTocFromHtml(html) {
     
     tocHtml += '</ul></div>';
     
-    // Update the HTML with any added IDs
-    const serializer = new dom.window.XMLSerializer();
-    const updatedHtml = serializer.serializeToString(doc);
+    // Use body innerHTML to avoid serializing the whole document (prevents nested <html> tags)
+    const updatedHtml = doc.body.innerHTML;
     
     return {
       tocHtml: DOMPurify.sanitize(tocHtml),
@@ -289,16 +288,13 @@ function processMarkdownFiles() {
         .replace(/{{nav_toc_link}}/g, tocLink)
         .replace(/{{nav_next_link}}/g, nextLink)
         .replace(/{%PAGE_TOC%}/g, currentTocHtml)
-        .replace(/{%PAGE_TOC_DATA%}/g, JSON.stringify(currentTocData)); // Add structured TOC data
+        .replace(/{%PAGE_TOC_DATA%}/g, JSON.stringify(currentTocData));
       
       // Ensure output directory exists
       fs.ensureDirSync(outputPath);
       
-      // Write final HTML file with TOC data
-      const finalHtmlWithToc = finalHtml
-          .replace('{%PAGE_TOC%}', currentTocHtml)
-          .replace('{%PAGE_TOC_DATA%}', JSON.stringify(currentTocData));
-      fs.writeFileSync(outputFile, finalHtmlWithToc);
+      // Write final HTML file
+      fs.writeFileSync(outputFile, finalHtml);
       
       console.log(`Generated: ${outputFile}`);
     } catch (error) {
@@ -359,7 +355,7 @@ function generateAllBooksPage() {
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style id="tailwind-styles">
     ${tailwindCss}
   </style>
@@ -368,8 +364,8 @@ function generateAllBooksPage() {
   <div class="w-full max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10 lg:py-12 flex flex-col flex-grow">
     <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 sm:mb-12">
       <div class="flex-1 min-w-0">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Books</h1>
-        <p class="mt-2 text-base sm:text-lg text-slate-600 dark:text-slate-400">Pick a book to read. Optimized for mobile and desktop.</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">Library</h1>
+        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">Discover a collection of books optimized for an immersive reading experience. Pick a title to start your journey.</p>
       </div>
       <button id="darkModeToggle" aria-label="Toggle dark mode" class="self-start sm:self-center p-3 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 transition-colors touch-manipulation flex-shrink-0">
         <svg id="theme-toggle-dark-icon" class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
@@ -381,9 +377,11 @@ function generateAllBooksPage() {
       <ul class="space-y-4 sm:space-y-5" role="list">
         ${books.map(book => `
           <li>
-            <a href="${book.path}/index.html" class="group block bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-teal-200 dark:hover:border-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition-all duration-200 p-5 sm:p-6 lg:p-8 min-h-[72px] sm:min-h-0 flex items-center justify-between gap-4">
-              <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors line-clamp-2">${book.name}</h2>
-              <span class="flex-shrink-0 text-teal-600 dark:text-teal-400" aria-hidden="true">&rarr;</span>
+            <a href="${book.path}/index.html" class="group block bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-teal-500/30 dark:hover:border-teal-500/30 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition-all duration-300 p-6 sm:p-8 lg:p-10 flex items-center justify-between gap-6">
+              <h2 class="text-2xl sm:text-3xl font-serif font-semibold text-slate-900 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors line-clamp-2">${book.name}</h2>
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400 group-hover:bg-teal-600 group-hover:text-white transition-all duration-300" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </div>
             </a>
           </li>
         `).join('')}
