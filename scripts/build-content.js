@@ -39,7 +39,7 @@ function generateTocFromHtml(html) {
       return {
         tocHtml: `
           <div class="toc-empty-notice p-4 bg-gray-100 dark:bg-slate-700 rounded-md">
-            <p极客 class="text-sm text-gray-600 dark:text-gray-300">No table of contents available</p>
+            <p class="text-sm text-gray-600 dark:text-gray-300">No table of contents available</p>
           </div>
         `,
         tocData: [],
@@ -296,12 +296,13 @@ function processMarkdownFiles() {
   });
 }
 
-// Recursively find all markdown files in directory
+// Recursively find all markdown files in directory (skips dot-directories like .specstory)
 function getMarkdownFiles(dir) {
   const files = fs.readdirSync(dir);
   let markdownFiles = [];
   
   files.forEach(file => {
+    if (file.startsWith('.')) return; // skip dot-files and dot-directories
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     
@@ -324,19 +325,16 @@ function generateAllBooksPage() {
   const booksDir = 'data';
   const outputFile = 'docs/index.html';
   
-  // Get all book directories
+  // Get all book directories (exclude dot-directories like .specstory)
   const bookDirs = fs.readdirSync(booksDir)
-    .filter(file => {
-      const fullPath = path.join(booksDir, file);
-      return fs.statSync(fullPath).isDirectory();
-    });
+    .filter(file => !file.startsWith('.') && fs.statSync(path.join(booksDir, file)).isDirectory());
 
-  // Process each book to get its name and path
+  // Process each book to get its name and path; include every book, fallback name if no index H1
   const books = bookDirs.map(dir => {
     const bookPath = path.join(booksDir, dir);
-    const name = getBookName(bookPath, dir);
+    const name = getBookName(bookPath, dir) || dir.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
     return { name, path: dir };
-  }).filter(book => book.name); // Filter out books without names
+  });
 
   // Generate HTML content
   const htmlContent = `
