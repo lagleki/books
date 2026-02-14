@@ -101,8 +101,6 @@ pre,
   --tw-prose-counters: var(--color-slate-500);
   --tw-prose-bullets: var(--color-slate-300);
   --tw-prose-hr: var(--color-slate-200);
-  --tw-prose-quotes: var(--color-slate-900);
-  --tw-prose-quote-borders: var(--color-slate-200);
   --tw-prose-captions: var(--color-slate-500);
   --tw-prose-code: var(--color-slate-900);
   --tw-prose-pre-code: var(--color-slate-100);
@@ -117,8 +115,6 @@ pre,
   --tw-prose-invert-counters: var(--color-slate-400);
   --tw-prose-invert-bullets: var(--color-slate-600);
   --tw-prose-invert-hr: var(--color-slate-700);
-  --tw-prose-invert-quotes: var(--color-slate-100);
-  --tw-prose-invert-quote-borders: var(--color-slate-700);
   --tw-prose-invert-captions: var(--color-slate-400);
   --tw-prose-invert-code: var(--color-white);
   --tw-prose-invert-pre-code: var(--color-slate-300);
@@ -134,6 +130,14 @@ pre,
 
 .prose p {
   @apply leading-relaxed mb-6;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-slate-300 dark:border-slate-600 pl-4 py-1 my-6 italic text-slate-700 dark:text-slate-300;
+}
+
+.prose blockquote p {
+  @apply mb-0;
 }
 
 /* Nav links */

@@ -144,21 +144,32 @@ const tailwindCss = fs.readFileSync('dist/styles.css', 'utf8');
 function getOrderedMarkdownFiles(dir) {
   const files = fs.readdirSync(dir);
   const markdownFiles = files
-    .filter(file => path.extname(file) === '.md')
-    .sort()
+    .filter(file => path.extname(file) === '.md' && path.basename(file) !== 'README.md')
+    .sort((a, b) => {
+      // Natural sort by numbers in filename for fallback
+      const numA = parseInt(a.match(/\d+/)?.[0] || 0);
+      const numB = parseInt(b.match(/\d+/)?.[0] || 0);
+      return numA - numB;
+    })
     .map(file => path.join(dir, file));
   
-  // Check for index.md to determine order
+  // Check for index.md to determine custom order
   const indexFile = path.join(dir, 'index.md');
   if (fs.existsSync(indexFile)) {
     const indexContent = fs.readFileSync(indexFile, 'utf8');
     const chapterOrder = indexContent
       .split('\n')
       .filter(line => line.match(/^\s*\*\s+\[.*\]\(.*\.md\)/))
-      .map(line => line.match(/\(([^)]+\.md)\)/)[1]);
+      .map(line => {
+        const match = line.match(/\(([^)]+\.md)\)/);
+        return match ? path.join(dir, match[1]) : null;
+      })
+      .filter(Boolean);
     
     if (chapterOrder.length > 0) {
-      return chapterOrder.map(chapter => path.join(dir, chapter));
+      // Return chapterOrder with index.md at the start if not already present
+      const finalOrder = chapterOrder.includes(indexFile) ? chapterOrder : [indexFile, ...chapterOrder];
+      return finalOrder;
     }
   }
   
@@ -221,12 +232,7 @@ function processMarkdownFiles() {
       }
       // Get navigation links
       const dir = path.dirname(filePath);
-      const filesInDir = filesByDir[dir].sort((a, b) => {
-        // Extract numbers from filenames for natural sorting
-        const numA = parseInt(a.match(/\d+/)?.[0] || 0);
-        const numB = parseInt(b.match(/\d+/)?.[0] || 0);
-        return numA - numB;
-      });
+      const filesInDir = filesByDir[dir];
       const currentIndex = filesInDir.indexOf(filePath);
       const isIndexFile = path.basename(filePath) === 'index.md';
       
