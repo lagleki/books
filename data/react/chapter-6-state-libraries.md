@@ -391,7 +391,16 @@ function ProductDetail() {
 
 ### Overview
 
-TanStack Query is the **gold standard for server state** in React. It handles caching, background refetching, stale-while-revalidate, pagination, optimistic updates, and mutations — things `useEffect` + `useState` combinations do badly.
+TanStack Query (often still called **React Query**) is the **gold standard for server state** in React.
+
+**Server state** means:
+
+- **Lives on the server** (database / API is the source of truth)
+- **Shared between many clients** (you + other users)
+- **Can change without your app knowing** (webhooks, cron jobs, admins)
+- Needs **caching, refetching, retries, pagination, optimistic updates**
+
+These are exactly the things that `useEffect` + `useState` + `fetch` are bad at at scale; TanStack Query centralizes all of this in a cache and gives you a consistent API.
 
 ```typescript
 import { QueryClient, QueryClientProvider, useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -416,7 +425,7 @@ function App() {
 }
 ```
 
-### useQuery
+### useQuery — reading server state
 
 ```typescript
 function ProductsPage({ category }: { category: string }) {
@@ -449,7 +458,7 @@ function ProductsPage({ category }: { category: string }) {
 }
 ```
 
-### useMutation
+### useMutation — writing server state
 
 ```typescript
 function CreateProductForm() {
@@ -484,7 +493,7 @@ function CreateProductForm() {
 }
 ```
 
-### Infinite Queries
+### Infinite Queries — cursor / page based lists
 
 ```typescript
 const {
@@ -502,6 +511,76 @@ const {
 // data.pages is an array of pages
 const allProducts = data?.pages.flatMap(page => page.items) ?? [];
 ```
+
+### Mental model & key concepts
+
+- **Query key** — the identity of a piece of data in the cache  
+  - `['products', category]` and `['products', 'infinite']` are **different** caches  
+  - Always use **arrays**, and include all inputs that affect the fetch
+- **Stale vs fresh**  
+  - Fresh (\(isStale = false\)): data is trusted, no auto-refetch  
+  - Stale (\(isStale = true\)): data might be outdated; background refetches happen
+- **Cache vs network**  
+  - First render often comes from cache (instant), then a background refetch
+- **Declarative, not imperative**  
+  - You describe **what** data a component needs; the library decides **when** to fetch/refetch
+
+**Anti-pattern:**
+
+```tsx
+// ❌ useEffect + fetch + local state — no cache, duplicated logic, race conditions
+function ProductsPage() {
+  const [data, setData] = useState<Product[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    fetch('/api/products')
+      .then(r => r.json())
+      .then(d => {
+        if (!cancelled) setData(d);
+      })
+      .catch(e => {
+        if (!cancelled) setError(e as Error);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // ...
+}
+```
+
+**Good pattern:**
+
+```tsx
+// ✅ TanStack Query — caching, retries, background refetch out of the box
+function ProductsPage() {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['products'],
+    queryFn: () => fetchProducts(),
+  });
+
+  if (isLoading) return <Skeleton />;
+  if (isError) return <ErrorMessage error={error} />;
+
+  return <ProductsList products={data} />;
+}
+```
+
+### When to choose TanStack Query
+
+- You have **many endpoints** and want a single, consistent way to manage loading / error / caching
+- You need **invalidation** and **optimistic updates** for mutations
+- You want **infinite scroll**, **background refetching**, and **fine-grained cache control**
+- You are building a **SPA or React app** (Vite/CRA/Next) where the **client is responsible** for talking to APIs
 
 ---
 
@@ -580,7 +659,9 @@ function Checkout() {
 
 ## SWR
 
-SWR (stale-while-revalidate) is Vercel's lightweight alternative to TanStack Query. Perfect for Next.js apps with simpler fetching needs:
+SWR (often mistyped as "SWL") stands for **stale-while-revalidate** — a HTTP caching strategy that serves **stale cached data immediately**, then **revalidates it in the background** and updates the UI when fresh data arrives.
+
+The SWR library from Vercel implements this pattern for React. It is a **lightweight alternative** to TanStack Query with a very small API surface and excellent integration with **Next.js**.
 
 ```typescript
 import useSWR from 'swr';
@@ -599,6 +680,35 @@ function Profile() {
   return <UserCard user={data} onUpdate={() => mutate()} />;
 }
 ```
+
+### Mental model & key concepts
+
+- **Key** — string identifying the resource in the cache (`'/api/user'`)
+- **Fetcher** — pure function `key => Promise<data>`; can wrap `fetch`, Axios, etc.
+- **Revalidation triggers**:
+  - On window **focus**
+  - On **network reconnect**
+  - At a configured **interval** (`refreshInterval`)
+- **mutate** — imperative way to update or revalidate the cache (for optimistic updates)
+
+SWR **prioritizes simplicity**:
+
+- No dedicated mutations API (you call your own `fetch`/Axios and then `mutate`)
+- No complex invalidation graph — you usually use **key patterns** (e.g. `mutate('/api/products')`)
+
+### When to choose SWR vs TanStack Query
+
+**Choose SWR when:**
+
+- You are in a **Next.js** app and want a tiny, hook-based fetching layer
+- Your use cases are mostly **simple reads** with occasional manual writes
+- You prefer **minimal configuration** and a small mental model
+
+**Choose TanStack Query when:**
+
+- You need **mutations with lifecycle** (`onSuccess`, `onError`, `onSettled`)
+- You need powerful **cache invalidation**, **infinite queries**, or **advanced pagination**
+- You are building a **larger SPA** with many complex data flows
 
 ---
 

@@ -12,6 +12,39 @@ React has evolved dramatically. Gone are class components, lifecycle methods lik
 
 ---
 
+## Rendering Strategies: CSR, SSR, SSG, RSC
+
+Before you choose libraries, you need to know **how** your React app is rendered.
+
+- **CSR (Client-Side Rendering)**  
+  - The server sends a **bare HTML shell** and a **JavaScript bundle**.  
+  - The browser downloads JS, then React renders everything **on the client**.  
+  - Examples: Vite SPA, legacy CRA apps.  
+  - Pros: very simple deployment (static hosting / CDN), great for dashboards and apps behind auth.  
+  - Cons: slower **first contentful paint** on slow networks/devices; worse SEO if not pre-rendered.
+
+- **SSR (Server-Side Rendering)**  
+  - The server renders HTML for a route **on every request**, then React **hydrates** it on the client.  
+  - Examples: Next.js pages router `getServerSideProps`, Remix.  
+  - Pros: fast initial HTML, better SEO, can use request-specific data (cookies, auth) at render time.  
+  - Cons: higher server cost; every request hits your server code.
+
+- **SSG (Static Site Generation)**  
+  - HTML is generated **at build time** and served from a CDN.  
+  - Examples: Next.js `getStaticProps`, Astro + React islands.  
+  - Pros: extremely fast and cheap; perfect for mostly-static content (docs, marketing).  
+  - Cons: content is only as fresh as your last build; dynamic data needs client-side fetching or ISR.
+
+- **ISR (Incremental Static Regeneration)**  
+  - Hybrid between SSR and SSG (Next.js). Pages are **static** but can be **re-generated in the background** after a `revalidate` window.  
+  - Pros: cache-friendly like SSG, stays fresh without full rebuilds.  
+  - Cons: more complex mental model; cache invalidation and consistency need careful design.
+
+- **RSC (React Server Components)**  
+  - Covered in detail later in this chapter. In short: components can run **only on the server** and stream HTML + serialized props to the client, drastically reducing JS shipped to the browser.
+
+When interviewing seniors, be able to clearly explain **CSR vs SSR vs SSG vs RSC**, when to choose each, and why your current app architecture uses one over the others.
+
 ## Project Structure
 
 A well-organized React app uses a **feature-first** (vertical slice) structure rather than a type-based structure:
